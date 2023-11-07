@@ -12,12 +12,6 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Soug</title>
-        <meta name="description" content="Ecommerce site Miloua Mokhtar" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div>
           <Hero />
