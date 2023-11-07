@@ -3,12 +3,28 @@ import Delivery from '@/pages/icons/Delivery.svg'
 import Checkmark from '@/pages/icons/Checkmark--outline.svg'
 import Purchase from '@/pages/icons/Purchase.svg'
 import Sprout from '@/pages/icons/Sprout.svg'
-import product1 from '@/pages/img/dandy-chair.svg'
-import product2 from '@/pages/img/vase.svg'
-import product3 from '@/pages/img/sily-vase.svg'
-import product4 from '@/pages/img/lamp.svg'
+import { useState, useEffect } from 'react';
 
 export default function Brand() {
+    const [products, setProducts] = useState([]);
+    const [popularProducts, setPopularProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/products')
+        .then((res) => res.json())
+        .then((data) => {
+            setProducts(data.data);
+        })
+    }, []);
+
+    useEffect(() => {
+        fetch('/api/popular')
+        .then((res) => res.json())
+        .then((data) => {
+            setPopularProducts(data.data);
+        })
+    }, []);
+
     return(
         <>
          <div className="brand-info">
@@ -38,28 +54,36 @@ export default function Brand() {
         </div>
         <div className="new-ceramics">
             <a>New ceramics</a>
-        <div className="new-products">
-                <div className='product'>
-                    <Image src={product1}/>
-                    <a>The Dandy Chair</a><br/>
-                    <a>£250</a>
-                </div>
-                <div className='product'>
-                    <Image src={product2}/>
-                    <a>Rustic Vase Set</a><br/>
-                    <a>£155</a>
-                </div>
-                <div className='product'>
-                    <Image src={product3}/>
-                    <a>The Silky Vase</a><br/>
-                    <a>£155</a>
-                </div>
-                <div className='product'>
-                    <Image src={product4}/>
-                    <a>The lucy Lamp</a><br/>
-                    <a>£399</a>
-                </div>
+             <div className="new-products">
+                  {products.slice(0, 4).map((product) => (
+                  <div key={product.id} className="product">
+                  <Image src={product.image} alt={product.name} width={305} height={375}/>
+                  <a>{product.product_name}</a>
+                  <br />
+                  <a>£{product.price}</a>
+             </div>
+          ))}
         </div>
+        </div>
+        <div className='view-col'>
+                <button id="viewCol">View collection</button>
+        </div>
+        <div className="popular">
+            <a>Our popular products</a>
+             <div className="popular-products">
+                  {popularProducts.map((product) => (
+                  <div key={product.id} className="our-product">
+                  <Image src={product.image} alt={product.name}  width={500} height={500} sizes="100vw"/>
+                  <br/>
+                  <a>{product.product_name}</a>
+                  <br />
+                  <a>£{product.price}</a>
+             </div>
+          ))}
+        </div>
+        </div>
+        <div className='view-col'>
+                <button id="viewCol">View collection</button>
         </div>
         </>
     )

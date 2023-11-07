@@ -6,7 +6,7 @@ export default function Hero(){
     return(
         <>
         <div className='hero'>
-            <Image className='hero-img' src={HeroImg} alt="Hero-image"/>
+            <Image priority={true} className='hero-img' src={HeroImg} alt="Hero-image"/>
             <div className="block">
                 <p id="hero-text">Luxury homeware for people<br/>who love timelesss design quality</p>
                 <p id="hero-text-phone">Luxury homeware for people who love timelesss design quality</p>
