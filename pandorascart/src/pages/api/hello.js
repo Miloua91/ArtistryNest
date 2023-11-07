@@ -1,5 +1,13 @@
-
 import { createClient } from '@supabase/supabase-js'
 
-// Create a single supabase client for interacting with your database
-const supabase = createClient('http://localhost:3000/', 'public-anon-key')
+const supabaseUrl = 'https://mgdkamqbxvrywiscpsvh.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+export default async function Products(req, res){
+
+  const { data: products, error } = await supabase
+  .from('products')
+  .select('*')
+  res.status(200).json({ data: products });
+}
