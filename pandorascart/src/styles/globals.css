@@ -4,6 +4,7 @@
     --nav-bottom: #F9F9F9;
     --foot-back: #4E4D93;
     --butt: #2A254B;
+    --paragraph: #505977;
 }
 body {
     margin: 0;
@@ -153,7 +154,6 @@ body {
     width: 100%;
     height: 1px; 
     background-color: aliceblue;
-
 }
 .adress > *{
     cursor:auto;
@@ -164,6 +164,7 @@ body {
     display: flex;
     justify-content: center;
     bottom: 56px;
+    margin-bottom: -56px;
 }
 .hero-img{
     position: relative;
@@ -172,11 +173,12 @@ body {
 }
 .block{
     position: absolute;
-    width: 610px;
-    height: 450px;
+    width: 600px;
+    height: 400px;
     background-color: #ffffff;
     align-self: center;
     right: 56px;
+    object-fit: cover;
     
 }
 #hero-text{
@@ -216,10 +218,15 @@ body {
     color: var(--nav-bottom);
     background-color: var(--nav-color);
 }
+#viewButt:active{
+    background-color: var(--nav-bottom);
+    color: var(--foot-back);
+}
 .brand-info{
     text-align: center;
     font-family: satoshi;
     color: var(--butt);
+    margin-top: 40px;
 }
 .brand-info-grid{
     display: grid;
@@ -264,6 +271,10 @@ body {
 .product > *{
     width: 100%;
     height: auto;
+    cursor: pointer;
+}
+.product img:hover{
+    opacity: 60%;
 }
 .product a{
     font-size: 24px;
@@ -283,6 +294,10 @@ body {
 #viewCol:hover{
     color: var(--nav-bottom);
     background-color: var(--nav-color);
+}
+#viewCol:active{
+    background-color: var(--nav-bottom);
+    color: var(--foot-back);
 }
 .view-col{
     display: flex;
@@ -312,11 +327,160 @@ body {
 .our-product > *{
     width: 100%;
     height: auto;
+    cursor: pointer;
+}
+.our-product img:hover{
+    opacity: 60%;
 }
 .our-product a{
     font-size: 24px;
     margin-left: 0px;
 }
+#signup-image{
+    position: relative;
+    margin-top: 20px;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    margin-bottom: -5px;
+}
+.email-signup{
+    position: relative;
+    font-family: satoshi;
+    text-align: center;
+    color: white;
+}
+.join-the-club{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    font-size: 36px;
+    width: 100%;
+}
+.newsletter{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 35%;
+}
+.email-checkbox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    width: 100%;
+}
+.email-checkbox > *{
+    margin: 20px;
+}
+input[type='checkbox'] {
+    position: relative;
+    cursor: pointer;
+}
+input[type='checkbox']::before {
+    border-radius: 50%;
+    position: absolute;
+    width: 1.6em;
+    height: 1.6em;
+    content: '';
+    top: -3px;
+    left: -2.5px;
+    background-color: white;
+}
+input[type='checkbox']:checked::before {
+    content: '‎ ✔' ;
+    background: var(--nav-color);
+}
+.email-input{
+    position: absolute;
+    display: flex;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.email-input input{
+    width: 380px;
+    height: 50px;
+    font-size: 24px;
+    font-family: satoshi;
+    padding-left: 30px;
+    outline: none;
+    color: var(--nav-name);
+}
+.email-input input::placeholder{
+    opacity: 80%;
+}
+.email-input button{
+    height: 56px;
+    width: 100px;
+    background-color: var(--butt);
+    color: var(--nav-bottom);
+    font-family: satoshi;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.email-input button:active{
+    background-color: var(--nav-bottom);
+    color: var(--butt);
+}
+.email-input button:hover{
+    opacity: 90%;
+}
+.pdp{
+    display: flex;
+    background-color: var(--nav-bottom);
+    margin-top: -56px;
+}
+.pdp > *{
+    margin: 50px;
+}
+.pd-image{
+    width: 500px;
+    height: 500px;
+}
+.pd-image > *{
+    object-fit: cover;
+    object-position: center;
+    width: 110%;
+    height: 100%;
+}
+.product-details{
+    position: relative;
+    width: 500px;
+    font-family: satoshi;
+    color: var(--butt);
+}
+.details{
+    color: var(--paragraph);
+}
+.product-details h2{
+    margin-top: -10px;
+}
+.product-details::before{
+    content: ''; 
+    position: absolute; 
+    top: 113px;
+    width: 100%;
+    height: 1px; 
+    background-color: #EBE8F4;
+}
+.dimensions{
+    display: flex;
+    gap: 100px;
+}
+.title{
+    font-family: clashDisplay;
+}
+  
+  
+  
+  
 
 @media screen and (max-width: 360px) {
     .top-right h2{
@@ -361,7 +525,7 @@ body {
         display: flex;
         height: 550px;
         flex-direction: column-reverse;
-        bottom: 56px;
+        bottom: 86px;
     }
     .hero-img{
         position: relative;
@@ -469,6 +633,88 @@ body {
         font-size: 14px;
         margin-left: 0px;
     }
+    .email-signup{
+        position: relative;
+        font-family: satoshi;
+        text-align: left;
+        color: var(--nav-bottom);
+    }
+    .join-the-club{
+        position: absolute;
+        top: 20%;
+        font-size: 24px;
+        width: 90%;
+    }
+    .newsletter{
+        position: absolute;
+        top: 30%;
+        font-size: 14px;
+        width: 90%;
+    }
+    .email-checkbox{
+        position: absolute;
+        top: 10%;
+        width: 90%;
+    }
+    .email-checkbox > *{
+        display: flex;
+        margin-left: 0;
+    }
+    .email-checkbox > * > *{
+        margin-right: 20px;
+    }
+    .email-input{
+        top: 72%;
+    }
+    .email-input input{
+        width: 60%;
+        height: 40px;
+        font-size: 16px;
+        padding-left: 10px;
+    }
+    .email-input button{
+        height: 46px;
+        width: 60px;
+        font-size: 14px;
+    }
+    .pdp{
+        position: relative;
+        display: block;
+        background-color: var(--nav-bottom);
+        margin-top: -56px;
+    }
+    .pdp > *{
+        margin: 18px;
+    }
+    .pd-image{
+        width: unset;
+        height: unset;
+        margin: 0;
+    }
+    .pd-image > *{
+        object-fit: auto;
+        width: 100%;
+        height: 100%;
+    }
+    .product-details{
+        position: relative;
+        width: unset;
+        font-family: satoshi;
+        color: var(--butt);
+    }
+    .product-details::before{
+        top: 132px;
+    }
+    .dimensions::before{
+        content: ''; 
+        position: absolute; 
+        top: 300px;
+        width: 100%;
+        height: 1px; 
+        background-color: #EBE8F4;
+    }
+    
+    
   }
   
 
@@ -516,6 +762,7 @@ body {
     height: 600px;
     flex-direction: column-reverse;
     bottom: 56px;
+    margin-bottom: 40px;
 }
 .hero-img{
     position: relative;
@@ -641,6 +888,86 @@ body {
     font-size: 16px;
     margin-left: 0px;
 }
+.email-signup{
+    position: relative;
+    font-family: satoshi;
+    text-align: left;
+    color: var(--nav-bottom);
+}
+.join-the-club{
+    position: absolute;
+    top: 20%;
+    font-size: 24px;
+    width: 80%;
+}
+.newsletter{
+    position: absolute;
+    top: 30%;
+    font-size: 14px;
+    width: 80%;
+}
+.email-checkbox{
+    position: absolute;
+    top: 10%;
+    width: 80%;
+}
+.email-checkbox > *{
+    display: flex;
+    margin-left: 0;
+}
+.email-checkbox > * > *{
+    margin-right: 20px;
+}
+.email-input{
+    top: 72%;
+}
+.email-input input{
+    width: 60%;
+    height: 40px;
+    font-size: 16px;
+    padding-left: 10px;
+}
+.email-input button{
+    height: 46px;
+    width: 60px;
+    font-size: 14px;
+}
+.pdp{
+    position: relative;
+    display: block;
+    background-color: var(--nav-bottom);
+    margin-top: -56px;
+}
+.pdp > *{
+    margin: 20px;
+}
+.pd-image{
+    width: unset;
+    height: unset;
+    margin: 0;
+}
+.pd-image > *{
+    object-fit: auto;
+    width: 100%;
+    height: 100%;
+}
+.product-details{
+    position: relative;
+    width: unset;
+    font-family: satoshi;
+    color: var(--butt);
+}
+.product-details::before{
+    top: 93px;
+}
+.dimensions::before{
+    content: ''; 
+    position: absolute; 
+    top: 217px;
+    width: 100%;
+    height: 1px; 
+    background-color: #EBE8F4;
+}
 }
 
 @media screen and (min-width: 512px) and (max-width: 880px){
@@ -677,7 +1004,7 @@ body {
     .block{
         position: absolute;
         width: 400px;
-        height: 320px;
+        height: 240px;
         background-color: #ffffff;
         align-self: center;
         right: 56px;
@@ -690,7 +1017,7 @@ body {
         display: flex;
         position: absolute;
         font-family: satoshi;
-        font-size: 32px;
+        font-size: 24px;
         left: 8%;
         right: 5%;
         color: var(--nav-name);
@@ -698,9 +1025,9 @@ body {
     #shop-text{
         position: absolute;
         font-family: satoshi;
-        font-size: 18px;
+        font-size: 16px;
         left: 8%;
-        top: 160px;
+        top: 75px;
     }
     #viewButt{
         position: absolute;
@@ -712,6 +1039,9 @@ body {
         height: 56px;
         border: 1px solid var(--foot-back);
         background-color: var(--nav-bottom);
+    }
+    .brand-info{
+        margin-top: -20px;
     }
     .brand-info-grid{
         display: grid;
@@ -774,5 +1104,58 @@ body {
     .our-product a{
         font-size: 16px;
         margin-left: 0px;
+    }
+    .newsletter{
+        width: 60%;
+    }
+    .email-input{
+        top: 65%;
+    }
+    .email-input input{
+        width: 400px;
+        height: 40px;
+        font-size: 16px;
+        padding-left: 10px;
+    }
+    .email-input button{
+        height: 46px;
+        width: 60px;
+        font-size: 14px;
+    }
+    .pdp{
+        position: relative;
+        display: block;
+        background-color: var(--nav-bottom);
+        margin-top: -116px;
+    }
+    .pdp > *{
+        margin: 60px;
+    }
+    .pd-image{
+        width: unset;
+        height: unset;
+        margin: 60px;
+    }
+    .pd-image > *{
+        object-fit: auto;
+        width: 100%;
+        height: 100%;
+    }
+    .product-details{
+        position: relative;
+        width: unset;
+        font-family: satoshi;
+        color: var(--butt);
+    }
+    .product-details::before{
+        top: 93px;
+    }
+    .dimensions::before{
+        content: ''; 
+        position: absolute; 
+        top: 193px;
+        width: 100%;
+        height: 1px; 
+        background-color: #EBE8F4;
     }
 }

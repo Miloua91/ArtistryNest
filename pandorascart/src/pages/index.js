@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Hero from '@/pages/components/Hero'
 import Brand from '@/pages/components/Brand'
-import Header from '@/pages/components/Header'
-import Footer from '@/pages/components/Footer'
+import OurProducts from '@/pages/components/OurProducts'
+import Esign from '@/pages/components/Esignup'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 
@@ -16,6 +15,8 @@ export default function Home() {
         <div>
           <Hero />
           <Brand />
+          <OurProducts />
+          <Esign />
         </div>
       </main>
     </>

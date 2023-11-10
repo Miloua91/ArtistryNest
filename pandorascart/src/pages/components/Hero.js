@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import HeroImg from '@/pages/img/hero.jpg'
+import HeroImg from '@/pages/img/hero.svg'
 
 
 export default function Hero(){
