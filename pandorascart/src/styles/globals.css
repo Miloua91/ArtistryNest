@@ -325,7 +325,7 @@ body {
     grid-row: span 2;
     grid-column: span 2;
 }
-.our-product > *{
+.our-product > *>*{
     width: 100%;
     height: auto;
     cursor: pointer;
