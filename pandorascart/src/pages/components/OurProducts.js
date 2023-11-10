@@ -4,6 +4,7 @@ import Checkmark from '@/pages/icons/Checkmark--outline.svg'
 import Purchase from '@/pages/icons/Purchase.svg'
 import Sprout from '@/pages/icons/Sprout.svg'
 import { useState, useEffect } from 'react';
+import Link from 'next/link'
 
 export default function OurProducts() {
     const [products, setProducts] = useState([]);
@@ -32,9 +33,9 @@ export default function OurProducts() {
              <div className="new-products">
                   {products.slice(0, 4).map((product) => (
                   <div key={product.id} className="product">
-                  <a href={`/products/${product.id}`}>
+                  <Link href={`/products/${product.id}`}>
                     <Image src={product.image} alt={product.name} width={305} height={375}/>
-                    </a>
+                    </Link>
                     <a>{product.product_name}</a>
                     <br />
                     <a>£{product.price}</a>
@@ -50,7 +51,10 @@ export default function OurProducts() {
              <div className="popular-products">
                   {popularProducts.map((product) => (
                   <div key={product.id} className="our-product">
+                <Link href={`/products/${product.id}`}>
                   <Image src={product.image} alt={product.name}  width={500} height={500} sizes="100vw"/>
+
+                </Link>
                   <br/>
                   <a>{product.product_name}</a>
                   <br />

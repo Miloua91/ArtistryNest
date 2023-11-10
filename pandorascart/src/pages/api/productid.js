@@ -10,5 +10,5 @@ export default async function Products(req, res){
   .from('products')
   .select('*')
   .eq('id', id)
-  res.status(200).json({ data: products });
+  res.status(200).json({ data: products })
 }

@@ -36,9 +36,6 @@ export default function Esign(){
     useEffect(() => {
         document.getElementById("signupBtn").addEventListener("click", handleSignUp);
 
-        return () => {
-            document.getElementById("signupBtn").removeEventListener("click", handleSignUp);
-        };
     }, [email, sub]);
     
     return (

@@ -5,12 +5,14 @@ import Image from 'next/image'
 import Prod from '@/pages/img/Photo.svg'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
+import Link from 'next/link'
 
 
 export default function ProductDetail() {
     const [product, setProduct] = useState([]);
     const router = useRouter();
     const { id } = router.query;
+    console.log(router.query)
     
     useEffect(() => {
         fetch(`/api/productid?id=${id}`)
@@ -24,8 +26,7 @@ export default function ProductDetail() {
             }
         })
     }, [id]);
-    console.log(product)
-   
+   console.log(product);
     return(
         <>
             <div key={product.id} className='pdp'>

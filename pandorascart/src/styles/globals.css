@@ -31,6 +31,7 @@ body {
     font-family: clashDisplay;
     cursor: pointer;
 }
+
 .top-right{
     position: relative;
     display: flex;

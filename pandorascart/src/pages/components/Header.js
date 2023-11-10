@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import searchIcon from '@/pages/icons/Search.svg'
 import cartIcon from '@/pages/icons/Shopping--cart.svg'
 import userIcon from '@/pages/icons/User--avatar.svg'
@@ -7,10 +8,14 @@ export default function Header(){
     return(
         <>
         <div className="name">
-            <h1 onClick={() => location="/"}>ArtistryNest</h1>
+            <Link href={'/'}>
+            <h1 >ArtistryNest</h1>
+            </Link>
         </div>
         <div className="top-right">
-            <h2 onClick={() => location="/about"} className="about">About us</h2>
+            <Link href={'/about'}>
+            <h2 className="about">About us</h2>
+            </Link>
             <h2 className="contact">Contact</h2>
             <div className="searchIcon">
                 <Image src={searchIcon} alt="Search"/>
