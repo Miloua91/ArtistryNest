@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import HeroImg from '@/pages/img/hero.svg'
+import HeroImg from '@/pages/img/hero.webp'
 
 
 export default function Hero(){
     return(
         <>
         <div className='hero'>
-            <Image priority={true} className='hero-img' src={HeroImg} alt="Hero-image"/>
+            <Image className='hero-img' src={HeroImg} alt="Hero-image" width={1920} height={1080} priority/>
             <div className="block">
                 <p id="hero-text">Luxury homeware for people<br/>who love timelesss design quality</p>
                 <p id="hero-text-phone">Luxury homeware for people who love timelesss design quality</p>

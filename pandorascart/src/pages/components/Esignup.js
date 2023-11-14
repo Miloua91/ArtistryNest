@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Signup from '@/pages/img/signup.svg'
+import Signup from '@/pages/img/signup.webp'
 
 export default function Esign(){
     const [email, setEmail] = useState('');

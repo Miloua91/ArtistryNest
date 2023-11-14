@@ -52,7 +52,7 @@ export default function OurProducts() {
                   {popularProducts.map((product) => (
                   <div key={product.id} className="our-product">
                 <Link href={`/products/${product.id}`}>
-                  <Image src={product.image} alt={product.name}  width={500} height={500} sizes="100vw"/>
+                  <Image src={product.image} alt={product.name}  width={305} height={375} sizes="100vw"/>
 
                 </Link>
                   <br/>
