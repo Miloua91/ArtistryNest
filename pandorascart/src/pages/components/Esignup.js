@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Signup from '@/pages/img/signup.webp'
+import { toast } from 'sonner'
 
 export default function Esign(){
     const [email, setEmail] = useState('');
@@ -8,23 +9,18 @@ export default function Esign(){
         
     const handleSub = (e) => {
         const { value, checked } = e.target;
-        const { subType } = sub;
-        if (checked) {
-            setSub({subType: [...subType, value]})
-        }
-
-        else {
-            setSub({subType: subType.filter((e) => e !== value)})
-        }
-    }
+        setSub((prevSub) => ({
+            subType: checked ? [...prevSub.subType, value] : prevSub.subType.filter((e) => e !== value),
+        }));
+    };
+    
     
     const handleSignUp = () => {
         if (validateEmail(email)) {
           console.log(email, sub);
-          const username = email.split('@')[0];
-          alert(`Thank you ${username} for subscribing`)
+          toast.success('Thank you for subscribing!');
         } else {
-          alert('Please enter a valid email address.');
+            toast.error('Please enter a valide email.');
         }
       };
     
@@ -33,10 +29,7 @@ export default function Esign(){
         return emailPattern.test(email);
       };
 
-    useEffect(() => {
-        document.getElementById("signupBtn").addEventListener("click", handleSignUp);
-
-    }, [email, sub]);
+      
     
     return (
         <>
@@ -52,7 +45,7 @@ export default function Esign(){
             </div>
             <div className='email-input'>
                 <input id='email' type='email' onChange={(e) => setEmail(e.target.value)} value={email} placeholder='your@email.com'/>
-                <button id='signupBtn'>Sign up</button>
+                <button onClick={handleSignUp} id='signupBtn'>Sign up</button>
             </div>
         </div>
         </>

@@ -34,7 +34,7 @@ export default function OurProducts() {
                   {products.slice(0, 4).map((product) => (
                   <div key={product.id} className="product">
                   <Link href={`/products/${product.id}`}>
-                    <Image src={product.image} alt={product.name} width={305} height={375}/>
+                      <Image src={product.image} alt="ArtistryNest Product" width={305} height={375}/>
                     </Link>
                     <a>{product.product_name}</a>
                     <br />
@@ -52,7 +52,7 @@ export default function OurProducts() {
                   {popularProducts.map((product) => (
                   <div key={product.id} className="our-product">
                 <Link href={`/products/${product.id}`}>
-                  <Image src={product.image} alt={product.name}  width={305} height={375} sizes="100vw"/>
+                  <Image src={product.image} alt="ArtistryNest Product" width={305} height={375} sizes="100vw"/>
 
                 </Link>
                   <br/>

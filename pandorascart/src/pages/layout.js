@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Header from '@/pages/components/Header'
 import Footer from '@/pages/components/Footer'
 
+
+
  
 export default function Layout({ children }) {
   return (
