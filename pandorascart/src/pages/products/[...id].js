@@ -29,7 +29,7 @@ export default function ProductDetail() {
             <div className='pdp'>
                 <div className='pd-image'>
                     {product.image && (
-                        <Image src={product.image} alt={`Product`} width={305} height={375} />
+                        <Image src={product.image} alt={product.product_name} width={305} height={375} />
                     )}
                 </div>
             <div className='product-details'>

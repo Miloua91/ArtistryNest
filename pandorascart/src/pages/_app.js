@@ -6,7 +6,7 @@ import { Toaster } from 'sonner'
 
 export default function MyApp({ Component, pageProps }) {
     return <Layout>
-      <Toaster position="bottom-center"/>
+      <Toaster richColors closeButton position="bottom-center"/>
       <Component {...pageProps} />
       </Layout>
   }

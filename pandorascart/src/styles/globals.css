@@ -13,14 +13,17 @@ body {
 @font-face {
     font-family: clashDisplay;
     src: url(clashdisplay-regular.woff2) format('woff2');
+    font-display: swap;
 }
 @font-face {
     font-family: satoshi;
     src: url(satoshi-regular.woff2) format('woff2');
+    font-display: swap;
 }
 @font-face {
     font-family: satoshiLight;
     src: url(satoshi-light.woff2) format('woff2');
+    font-display: swap;
 }
 .name{
     position: relative;
