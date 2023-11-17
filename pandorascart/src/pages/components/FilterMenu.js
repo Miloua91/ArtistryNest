@@ -35,13 +35,13 @@ export default function Filter({ onPriceChange, onSortingChange }) {
     return (
         <div className='filter'>
             <DropDown
-                selectOptions={price}
+                options={price}
                 label={'Price'}
                 selectedOption={priceOption}
                 onOptionChange={handlePriceChange}
             />
             <DropDown
-                selectOptions={sorting}
+                options={sorting}
                 label={'Sort by'}
                 selectedOption={sortingOption}
                 onOptionChange={handleSortingChange}
