@@ -29,8 +29,6 @@ export default function Esign(){
         return emailPattern.test(email);
       };
 
-      
-    
     return (
         <>
         <div className='email-signup'>

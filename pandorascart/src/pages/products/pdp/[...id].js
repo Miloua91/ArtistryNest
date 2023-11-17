@@ -4,10 +4,12 @@ import Esign from '@/pages/components/Esignup'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
+import { toast } from 'sonner'
 
 
 export default function ProductDetail() {
     const [product, setProduct] = useState([]);
+    const [count, setCount] = useState(0);
     const router = useRouter();
     const { id } = router.query;
     
@@ -24,12 +26,36 @@ export default function ProductDetail() {
             });
         }, [id]);
         
+        const increment = () => {
+            if (count < 10) {
+              setCount(count + 1);
+            }
+          };
+        
+          const decrement = () => {
+            if (count > 0) {
+              setCount(count - 1);
+            }
+          };
+          const handleCart = () => {
+            if (count == 0) {
+                toast.error(`Please add a specific quantity of items to your cart.`)
+            } else if (count == 1){
+                toast.success(`${count} item of ${product.product_name} added to your cart.`)
+            } else {
+                toast.success(`${count} items of ${product.product_name} added to your cart.`)
+            }
+        }
+          function resetCount() {
+            setCount(0);
+          };
+          console.log(product)
         return(
             <>
             <div className='pdp'>
                 <div className='pd-image'>
                     {product.image && (
-                        <Image src={product.image} alt={product.product_name} width={305} height={375} />
+                            <Image src={product.image} alt={product.product_name} width={305} height={375} />
                     )}
                 </div>
             <div className='product-details'>
@@ -48,14 +74,19 @@ export default function ProductDetail() {
                         <a className='details'>{product.width}cm</a>
                     </div>
                 </div>
-                <div>
-
-                    <button>Add to cart</button>
+                <div className="addToCart-section">
+                    <div className="counter">
+                    <a>Amount:</a>
+                    <button onClick={decrement}>-</button>    
+                    <p>{count}</p> 
+                    <button onClick={increment}>+</button>   
+                    </div>
+                    <button onClick={handleCart} id="addToCartBtn">Add to cart</button>
                 </div>
             </div>
         </div>
     <Brand />
-    <OurProducts />
+    <OurProducts  resetCount={resetCount}/>
     <Esign />
     </>
     )

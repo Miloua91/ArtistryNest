@@ -24,14 +24,14 @@ export default function Header(){
             </div>
         </div>
         <div className="bottom-nav">
-                <h2>All products</h2>
-                <h2>Plant pots</h2>
-                <h2>Ceramics</h2>
-                <h2>Tables</h2>
-                <h2>Chairs</h2>
-                <h2>Crockery</h2>
-                <h2>Tablware</h2>
-                <h2>Cutlery</h2>
+                <h2> <Link href={'/products/all'}>All products</Link></h2>
+                <h2><Link href={'/products/pots'}>Plant pots</Link></h2>
+                <h2><Link href={'/products/ceramics'}>Ceramics</Link></h2>
+                <h2><Link href={'/products/tables'}>Tables</Link></h2>
+                <h2><Link href={'/products/chairs'}>Chairs</Link></h2>
+                <h2><Link href={'/products/crockery'}>Crockery</Link></h2>
+                <h2><Link href={'/products/tableware'}>Tablware</Link></h2>
+                <h2><Link href={'/products/cutlery'}>Cutlery</Link></h2>
             </div>
         </>
     )

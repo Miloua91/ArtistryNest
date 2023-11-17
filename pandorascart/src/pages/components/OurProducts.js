@@ -1,12 +1,8 @@
 import Image from 'next/image'
-import Delivery from '@/pages/icons/Delivery.svg'
-import Checkmark from '@/pages/icons/Checkmark--outline.svg'
-import Purchase from '@/pages/icons/Purchase.svg'
-import Sprout from '@/pages/icons/Sprout.svg'
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
 
-export default function OurProducts() {
+export default function OurProducts({ resetCount }) {
     const [products, setProducts] = useState([]);
     const [popularProducts, setPopularProducts] = useState([]);
 
@@ -26,17 +22,18 @@ export default function OurProducts() {
         })
     }, []);
 
+
     return(
         <>
         <div className="new-ceramics">
             <a>New ceramics</a>
-             <div className="new-products">
+             <div className="new-products" >
                   {products.slice(0, 4).map((product) => (
                   <div key={product.id} className="product">
-                  <Link href={`/products/${product.id}`}>
+                  <Link onClick={resetCount} href={`/products/pdp/${product.id}`} style={{ textDecoration: 'none'}}>
                       <Image src={product.image} alt="ArtistryNest Product" width={305} height={375}/>
+                    <a >{product.product_name}</a>
                     </Link>
-                    <a>{product.product_name}</a>
                     <br />
                     <a>£{product.price}</a>
              </div>
@@ -44,27 +41,25 @@ export default function OurProducts() {
         </div>
         </div>
         <div className='view-col'>
-                <button id="viewCol">View collection</button>
+              <Link href={'/products/all'}><button id="viewCol" >View collection</button></Link>
         </div>
         <div className="popular">
             <a>Our popular products</a>
              <div className="popular-products">
                   {popularProducts.map((product) => (
                   <div key={product.id} className="our-product">
-                <Link href={`/products/${product.id}`}>
+                <Link onClick={resetCount} href={`/products/pdp/${product.id}`} style={{ textDecoration: 'none'}}>
                   <Image src={product.image} alt="ArtistryNest Product" width={305} height={375} sizes="100vw"/>
-
+                  <a>{product.product_name}</a>
                 </Link>
                   <br/>
-                  <a>{product.product_name}</a>
-                  <br />
                   <a>£{product.price}</a>
              </div>
           ))}
         </div>
         </div>
         <div className='view-col'>
-                <button id="viewCol">View collection</button>
+          <Link href={'/products/all'}><button id="viewCol" >View collection</button></Link>
         </div>
         </>
     )
