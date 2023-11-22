@@ -31,12 +31,11 @@ body {
     font-size: 16px;
     color: var(--nav-name);
 }
-.drop-down >*:focus{
+.drop-down > *:focus{
     outline: none;
 }
-.drop-down>*:hover{
-    background-color: var(--nav-color);
-    color: var(--nav-bottom);
+.drop-down > *:hover{
+    background-color: var(--nav-bottom);
     border-radius: 5px;
 }
 .filter{
@@ -49,11 +48,12 @@ body {
     position: relative;
     top: 4px;
     margin-left: 20px;
+    width: 120px;
     font-size: 10px;
     font-family: clashDisplay;
     cursor: pointer;
 }
-.name > *{
+.name > * > *{
     text-decoration: none;
     color: var(--nav-name);
 }
@@ -70,13 +70,14 @@ body {
     color: var(--nav-color);
 }
 .top-right h2 {
-    text-decoration: none; 
-    color: var(--nav-color);
     position: relative;
     display: inline-block; 
-    cursor: pointer; 
     margin: 20px;
   }
+.top-right a{
+    text-decoration: none; 
+    color: var(--nav-color);
+}
 .top-right h2::after {
     content: ''; 
     position: absolute; 
@@ -149,7 +150,6 @@ body {
     left: 0;
     bottom: 0;
 }
-
 .foot > * > *{
     cursor: pointer;
 }
@@ -268,9 +268,9 @@ body {
     margin-right: 60px;
     margin-bottom: 50px;
     margin-top: 40px;
-
 }
 .brand-info-grid > *{
+    width: 100%;
     background-color: var(--nav-bottom);
     border-radius: 1%;
 }
@@ -344,13 +344,24 @@ body {
 .popular-products{
     position: relative;
     display: flex;
+    justify-content: space-between;
     gap: 20px;
     margin-left: 60px;
     margin-right: 60px;
-    overflow: auto;
+}
+.popular-container {
+    display: flex;
+    box-sizing: border-box;
 }
 .our-product img{
-    width: auto;
+    flex: 0 0 auto; 
+    box-sizing: border-box;
+    margin-right: 50px;
+}
+.our-product img {
+    width: 100%; 
+    max-width: 100%; 
+    object-fit: cover; 
 }
 .our-product img:hover{
     opacity: 60%;
@@ -358,6 +369,30 @@ body {
 .our-product a{
     font-size: 24px;
     margin-left: 0px;
+}
+#viewPopCol{
+    position: relative;
+    font-family: satoshi;
+    font-size: 18px;
+    width: 170px;
+    height: 56px;
+    border: 1px solid var(--foot-back);
+    background-color: var(--nav-bottom);
+    color: var(--butt);
+    cursor: pointer;
+}
+#viewPopCol:hover{
+    color: var(--nav-bottom);
+    background-color: var(--nav-color);
+}
+#viewPopCol:active{
+    background-color: var(--nav-bottom);
+    color: var(--foot-back);
+}
+.view-pop-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #signup-image{
     position: relative;
@@ -591,8 +626,125 @@ input[type='checkbox']:checked::before {
     justify-content: center;
     margin: 20px;
 }
+.about-us{
+    margin-top: -20px;
+}
+.about-us h2{
+    font-family: clashdisplay;
+}
+.about-us p{
+    font-family: satoshi;
+}
+.about-title{
+    font-family: clashdisplay;
+    color: var(--butt);
+    width: 700px;
+    margin: auto;
+}
+.about-1st{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 60px;
+}
+.about-1st > *{
+    width: 100%;
+    height: auto;
+}
+.about-1st img{
+    width: 100%;
+    height: auto;
+}
+.about-idea{
+    position: relative;
+    background-color: var(--butt);
+}
+.about-idea > *{
+    width: 80%;
+    margin-left: 40px;
+    color: var(--nav-bottom);
+}
+.about-idea > h2{
+    margin-top: 40px;
+}
+.about-2nd{
+    display: flex;
+}
+.about-2nd > *{
+    width: 100%;
+    height: auto;
+}
+.about-2nd img{
+    width: 100%;
+    height: auto;
+}
+.about-brand{
+    position: relative;
+    background-color: var(--nav-bottom);
+}
+.about-brand > *{
+    width: 90%;
+    margin-bottom: -5px;
+    margin-left: 40px;
+    color: var(--butt);
+}
+.about-brand > h2{
+    margin-top: 40px;
+}
+.about-viewBtn{
+    position: absolute;
+    bottom: 40px;
+}
+#about-view-colBtn{
+    position: relative;
+    font-family: satoshi;
+    font-size: 18px;
+    width: 170px;
+    height: 56px;
+    border: none;
+    background-color: var(--nav-color);
+    color: var(--nav-bottom);
+    cursor: pointer;
+}
+#about-view-colBtn:active{
+    background-color: var(--nav-bottom);
+    color: var(--butt);
+}
+.about-getBtn{
+    position: absolute;
+    bottom: 40px;
+}
+#about-getInTouchBtn{
+    position: relative;
+    font-family: satoshi;
+    font-size: 18px;
+    width: 170px;
+    height: 56px;
+    border: none;
+    background-color: white;
+    color: var(--butt);
+    cursor: pointer;
+}
+#about-getInTouchBtn:active{
+    background-color: var(--nav-color);
+    color: var(--nav-bottom);
+}
+.about-img{
+    margin-bottom: -4px;
+}
+
 
 @media screen and (max-width: 360px) {
+    .drop-down{   
+       width: 45%;
+    }
+    .drop-down > *{
+        width: 100%;
+    }
+    .filter{
+        margin-left: 20px;
+        gap: 5px;
+    }
     .top-right h2{
         display: none;
     }
@@ -728,7 +880,20 @@ input[type='checkbox']:checked::before {
         margin-top: 18px;
         margin-left: 18px;
         margin-right: 18px;
-        overflow-x: auto;
+        overflow: auto;
+    }
+    .popular-container {
+        display: unset;
+        box-sizing: unset;
+        height: auto;
+        width: auto;
+    }
+    .our-product img{
+        box-sizing: unset;
+        margin-right: 0;
+        width: auto; 
+        max-width: unset; 
+        object-fit: unset; 
     }
     .our-product a{
         font-size: 14px;
@@ -755,7 +920,8 @@ input[type='checkbox']:checked::before {
     .email-checkbox{
         position: absolute;
         top: 10%;
-        width: 90%;
+        left: 35%;
+        width: unset;
     }
     .email-checkbox > *{
         display: flex;
@@ -830,12 +996,82 @@ input[type='checkbox']:checked::before {
         margin-right: 18px;
         margin-right: 18px;
     }
-
+    .about-title{
+        width: 85%;
+        margin-left: 18px;
+    }
+    .about-1st{
+        flex-direction: column;
+        margin: 18px;
+    }
+    .about-1st > *{
+        width: 100%;
+        height: auto;
+    }
+    .about-1st img{
+        width: 100%;
+        height: auto;
+    }
+    .about-idea{
+        height: 350px;
+    }
+    .about-idea > *{
+        width: 85%;
+        margin-left: 18px;
+    }
+    .about-idea > h2{
+        margin-top: 18px;
+    }
+    .about-2nd{
+        flex-direction: column;
+    }
+    .about-2nd > *{
+        width: 100%;
+        height: auto;
+    }
+    .about-2nd img{
+        width: 100%;
+        height: auto;
+    }
+    .about-brand{
+        height: 500px;
+        background-color: var(--nav-bottom);
+    }
+    .about-brand > *{
+        width: 85%;
+        margin-left: 18px;
+    }
+    .about-brand > h2{
+        margin-top: 18px;
+    }
+    .about-viewBtn{
+        bottom: 18px;
+    }
+    #about-view-colBtn{
+        width: 100%;
+    }
+    .about-getBtn{
+        bottom: 18px;
+    }
+    #about-getInTouchBtn{
+        width: 100%;
+    }
+    
     
   }
   
 
 @media screen and (min-width: 360px) and (max-width: 512px){
+.drop-down{
+    width: 100%;
+}
+.drop-down > *{
+    width: 90%;
+}
+.filter{
+    margin-left: 20px;
+    gap: 10px;
+}
 .top-right h2{
     display: none;
 }
@@ -992,6 +1228,19 @@ input[type='checkbox']:checked::before {
     margin-left: 20px;
     margin-right: 20px;
 }
+.popular-container {
+    display: unset;
+    box-sizing: unset;
+    height: auto;
+    width: auto;
+}
+.our-product img{
+    box-sizing: unset;
+    margin-right: 0;
+    width: auto; 
+    max-width: unset; 
+    object-fit: unset; 
+}
 .our-product a{
     font-size: 16px;
     margin-left: 0px;
@@ -1017,11 +1266,11 @@ input[type='checkbox']:checked::before {
 .email-checkbox{
     position: absolute;
     top: 10%;
-    width: 80%;
+    left: 29%;
+    width: unset;
 }
 .email-checkbox > *{
     display: flex;
-    margin-left: 0;
 }
 .email-checkbox > * > *{
     margin-right: 20px;
@@ -1092,6 +1341,68 @@ input[type='checkbox']:checked::before {
     margin-right: 20px;
     margin-right: 20px;
 }
+.about-title{
+    width: 85%;
+    margin-left: 20px;
+}
+.about-1st{
+    flex-direction: column;
+    margin: 20px;
+}
+.about-1st > *{
+    width: 100%;
+    height: auto;
+}
+.about-1st img{
+    width: 100%;
+    height: auto;
+}
+.about-idea{
+    height: 300px;
+}
+.about-idea > *{
+    width: 88%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.about-idea > h2{
+    margin-top: 30px;
+}
+.about-2nd{
+    flex-direction: column;
+}
+.about-2nd > *{
+    width: 100%;
+    height: auto;
+}
+.about-2nd img{
+    width: 100%;
+    height: auto;
+}
+.about-brand{
+    height: 450px;
+    background-color: var(--nav-bottom);
+}
+.about-brand > *{
+    width: 88%;
+    margin-left: 20px;
+}
+.about-brand > h2{
+    margin-top: 30px;
+}
+.about-viewBtn{
+    bottom: 30px;
+}
+#about-view-colBtn{
+    width: 100%;
+}
+.about-getBtn{
+    bottom: 30px;
+}
+#about-getInTouchBtn{
+    width: 100%;
+}
+
 }
 
 @media screen and (min-width: 512px) and (max-width: 880px){
@@ -1216,6 +1527,19 @@ input[type='checkbox']:checked::before {
         margin-left: 60px;
         margin-right: 60px;
     }
+    .popular-container {
+        display: unset;
+        box-sizing: unset;
+        height: auto;
+        width: auto;
+    }
+    .our-product img{
+        box-sizing: unset;
+        margin-right: 0;
+        width: auto; 
+        max-width: unset; 
+        object-fit: unset; 
+    }
     .our-product a{
         font-size: 16px;
         margin-left: 0px;
@@ -1278,5 +1602,75 @@ input[type='checkbox']:checked::before {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
         font-size: 18px;
+    }
+    .about-title{
+        width: 85%;
+        margin-bottom: 56px;
+        margin-left: 60px;
+    }
+    .about-1st{
+        margin: 60px;
+    }
+    .about-idea > *{
+        width: 88%;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: -1px;
+    }
+    .about-idea > h2{
+        margin-top: 20px;
+    }
+    .about-2nd{
+        flex-direction: column;
+        margin: 60px;
+    }
+    .about-2nd > *{
+        width: 100%;
+        height: auto;
+    }
+    .about-2nd img{
+        width: 100%;
+        height: auto;
+    }
+    .about-brand{
+        height: 450px;
+        background-color: var(--nav-bottom);
+    }
+    .about-brand > *{
+        width: 88%;
+        margin-left: 20px;
+    }
+    .about-brand > h2{
+        margin-top: 60px;
+    }
+    .about-viewBtn{
+        bottom: 20px;
+    }
+    #about-view-colBtn{
+        width: 100%;
+    }
+    .about-getBtn{
+        bottom: 60px;
+    }
+}
+@media screen and (min-width: 512px) and (max-width: 780px){
+    .about-1st{
+        flex-direction: column;
+    }
+    .about-idea{
+        height: 400px;
+    }
+    .about-idea > h2{
+        margin-top: 60px;
+
+    }
+    .about-idea > *{
+        margin-left: 40px;
+    }
+    #about-view-colBtn{
+        width: 170px;
+    }
+    .about-viewBtn{
+        bottom: 60px;
     }
 }
