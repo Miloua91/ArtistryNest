@@ -4,6 +4,7 @@ import Esign from '@/pages/components/Esignup'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
+import { useCart } from '@/pages/context/CartContext'
 import { toast } from 'sonner'
 
 
@@ -13,7 +14,14 @@ export default function ProductDetail() {
     const router = useRouter();
     const { id } = router.query;
     
-    
+    const { addToCart } = useCart();    
+    const productInfo = {
+        image: product.image,
+        product_name: product.product_name,
+        description: product.description,
+        price: product.price,
+      };
+
     useEffect(() => {
             fetch(`/api/productid?id=${id}`)
             .then((res) => res.json())
@@ -42,14 +50,16 @@ export default function ProductDetail() {
                 toast.error(`Please add a specific quantity of items to your cart.`)
             } else if (count == 1){
                 toast.success(`${count} item of ${product.product_name} added to your cart.`)
+                addToCart(count, product.id, productInfo);
             } else {
                 toast.success(`${count} items of ${product.product_name} added to your cart.`)
+                addToCart(count, product.id, productInfo);
             }
         }
           function resetCount() {
             setCount(0);
           };
-          console.log(product)
+         
         return(
             <>
             <div className='pdp'>

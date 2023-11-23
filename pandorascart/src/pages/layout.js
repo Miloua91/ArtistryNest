@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '@/pages/components/Header'
 import Footer from '@/pages/components/Footer'
+import { CartProvider } from '@/pages/context/CartContext'
 
 
 
@@ -14,8 +15,10 @@ export default function Layout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <CartProvider>
       <Header />
       <main>{children}</main>
+      </CartProvider>
       <Footer />
     </>
   )

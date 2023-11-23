@@ -33,10 +33,10 @@ export default function OurProducts({ resetCount }) {
                   <Link onClick={resetCount} href={`/products/pdp/${product.id}`} style={{ textDecoration: 'none'}}>
                       <Image src={product.image} alt="ArtistryNest Product" width={305} height={375}/>
                       <br/>
-                    <a >{product.product_name}</a>
+                    {product.product_name}
                     </Link>
                     <br />
-                    <a>£{product.price}</a>
+                    £{product.price}
              </div>
           ))}
         </div>
@@ -50,13 +50,11 @@ export default function OurProducts({ resetCount }) {
                   {popularProducts.map((product) => (
                   <div key={product.id} className="our-product">
                 <Link onClick={resetCount} href={`/products/pdp/${product.id}`} style={{ textDecoration: 'none'}}>
-                  <div className='popular-container'>
                   <Image src={product.image} alt="ArtistryNest Product" width={305} height={375} sizes="100vw"/>
-                  </div>
-                  <a>{product.product_name}</a>
+                  {product.product_name}
                 </Link>
                   <br/>
-                  <a>£{product.price}</a>
+                  £{product.price}
              </div>
           ))}
         </div>

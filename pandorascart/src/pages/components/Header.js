@@ -1,10 +1,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useCart } from '@/pages/context/CartContext'
+import { useRouter } from 'next/router'
 import searchIcon from '@/pages/icons/Search.svg'
 import cartIcon from '@/pages/icons/Shopping--cart.svg'
 import userIcon from '@/pages/icons/User--avatar.svg'
 
 export default function Header(){
+    const { cart } = useCart();
+    const router = useRouter();
+
+    const handleCartIconClick = () => {
+        router.push({
+            pathname: '/cart',
+            query: {
+                count: cart.count,
+                items: cart.items.map(item => `${item.productId}-${item.count}`).join(','),
+            },
+        });
+    };
+    
     return(
         <>
         <div className="name">
@@ -15,7 +30,8 @@ export default function Header(){
             <h2 className="contact"><Link href={''}>Contact</Link></h2>
             <div className="searchIcon">
                 <Image src={searchIcon} alt="Search"/>
-                <Image src={cartIcon} alt="Cart"/>
+                <Image src={cartIcon} onClick={handleCartIconClick} alt="Cart"/>
+                {cart.count > 0 && <span onClick={handleCartIconClick} className="cart-count">{cart.count}</span>}
                 <Image src={userIcon} alt="User"/>
             </div>
         </div>

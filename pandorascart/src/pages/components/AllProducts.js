@@ -69,10 +69,10 @@ export default function Products({ apiEndpoint }) {
                 <div key={product.id} className='products'>
                     <Link href={`/products/pdp/${product.id}`} style={{textDecoration: 'none'}}>
                         <Image src={product.image} alt='ArtistryNest Product' width={305} height={375}/>
-                        <a>{product.product_name}</a>
+                        {product.product_name}
                     </Link>
                     <br/>
-                    <a>£{product.price}</a>
+                    £{product.price}
                 </div>
             ))}
         </div>

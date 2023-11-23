@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import Brand from '@/pages/components/Brand'
@@ -18,7 +16,7 @@ export default function About(){
             <h2>It started with a small idea</h2>
             <p>A global brand with local beginnings, our story began in a small studio in South London in early 2014</p>
             <div className='about-viewBtn'>
-              <button id='about-view-colBtn'>View Collection</button>
+              <Link href={'/products/all'}><button id='about-view-colBtn'>View Collection</button></Link>
             </div>
         </div>
         <div className='about-img'>
@@ -34,7 +32,7 @@ export default function About(){
           <p>When we started ArtisteryNest, the idea was simple. Make high quality furniture affordable and avaiblable for the mass market.</p>
           <p>Handmade, and lovingly crafted furniture and homeware is what we live breathe and design so our Chelsea boutique becomes the hotbed for the London interior design community.</p>
           <div className='about-getBtn'>
-          <button id='about-getInTouchBtn'>Get in touch</button>
+          <Link href={'/contact-us'}><button id='about-getInTouchBtn'>Get in touch</button></Link>
           </div>
         </div>
       </div>
