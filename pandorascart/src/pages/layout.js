@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '@/pages/components/Header'
 import Footer from '@/pages/components/Footer'
-import { CartProvider } from '@/pages/context/CartContext'
+import { CartProvider } from '@/context/CartContext'
 
 
 

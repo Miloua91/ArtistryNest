@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCart } from '@/pages/context/CartContext'
+import { useCart } from '@/context/CartContext'
 import { useRouter } from 'next/router'
 import searchIcon from '@/pages/icons/Search.svg'
 import cartIcon from '@/pages/icons/Shopping--cart.svg'

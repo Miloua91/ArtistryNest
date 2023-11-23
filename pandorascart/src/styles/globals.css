@@ -770,6 +770,7 @@ input[type='checkbox']:checked::before {
     background-color: var(--nav-bottom);
     padding: 50px;
     font-family: satoshi;
+    color: var(--butt);
 }
 .cart a{
     font-family: clashdisplay;

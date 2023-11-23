@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import Layout from "@/pages/layout"
-import { CartProvider } from '@/pages/context/CartContext'
+import { CartProvider } from '@/context/CartContext'
 import { Toaster } from 'sonner'
 
 

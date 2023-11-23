@@ -1,4 +1,4 @@
-import { useCart } from '@/pages/context/CartContext';
+import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 
 export default function Cart() {

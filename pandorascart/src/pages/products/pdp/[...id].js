@@ -4,7 +4,7 @@ import Esign from '@/pages/components/Esignup'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
-import { useCart } from '@/pages/context/CartContext'
+import { useCart } from '@/context/CartContext'
 import { toast } from 'sonner'
 
 
