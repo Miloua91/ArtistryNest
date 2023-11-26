@@ -46,26 +46,32 @@ export default function ProductDetail() {
             }
           };
           const handleCart = () => {
-            if (count == 0) {
-                toast.error(`Please add a specific quantity of items to your cart.`)
-            } else if (count == 1){
-                toast.success(`${count} item of ${product.product_name} added to your cart.`)
-                addToCart(count, product.id, productInfo);
+            const { newCount, existingItem } = addToCart(count, product.id, productInfo);
+          
+            if (count === 0) {
+              toast.error(`Please add a specific quantity of items to your cart.`);
+            } else if (newCount >= 10) {
+              if ((newCount - existingItem.count) === 0) {
+                toast.info(`You can't add more than 10 items.`);
+              } else {
+                toast.info(`We've added ${newCount - existingItem.count} to your cart, but you can't exceed 10 of this item.`);
+              }
             } else {
-                toast.success(`${count} items of ${product.product_name} added to your cart.`)
-                addToCart(count, product.id, productInfo);
+              toast.success(`${count} ${count === 1 ? 'item' : 'items'} of ${product.product_name} added to your cart.`);
             }
-        }
+          };
+          
+          
+          
           function resetCount() {
             setCount(0);
           };
-         
         return(
             <>
             <div className='pdp'>
                 <div className='pd-image'>
                     {product.image && (
-                            <Image src={product.image} alt={product.product_name} width={305} height={375} />
+                            <Image src={product.image} alt={product.product_name} width={1200} height={1200} />
                     )}
                 </div>
             <div className='product-details'>

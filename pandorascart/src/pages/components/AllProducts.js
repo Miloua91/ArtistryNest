@@ -68,7 +68,7 @@ export default function Products({ apiEndpoint }) {
             {displayedProducts.map((product) => (
                 <div key={product.id} className='products'>
                     <Link href={`/products/pdp/${product.id}`} style={{textDecoration: 'none'}}>
-                        <Image src={product.image} alt='ArtistryNest Product' width={305} height={375}/>
+                        <Image src={product.image} alt='ArtistryNest Product' width={405} height={475}/>
                         {product.product_name}
                     </Link>
                     <br/>

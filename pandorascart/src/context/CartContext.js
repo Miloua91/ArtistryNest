@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import { toast } from 'sonner'
 
 const CartContext = createContext();
 
@@ -8,20 +9,22 @@ export function CartProvider({ children }) {
 //TODO:implemant cookies;
 
 const addToCart = (count, productId, productInfo) => {
-  const existingItem = cart.items.find((item) => item.productId === productId);
+  const existingItemIndex = cart.items.findIndex((item) => item.productId === productId);
 
-  if (existingItem) {
-    const updatedItems = cart.items.map((item) =>
-      item.productId === productId
-        ? { ...item, count: item.count + count }
-        : item
-    );
+  if (existingItemIndex !== -1) {
+    var existingItem = cart.items[existingItemIndex];
+
+    var newCount = Math.min(existingItem.count + count, 10);
+
+    const updatedItems = [...cart.items];
+    updatedItems[existingItemIndex] = { ...existingItem, count: newCount };
 
     setCart({
-      count: cart.count + count,
+      count: cart.count + (newCount - existingItem.count),
       items: updatedItems,
     });
-  } else {
+  } 
+  else {
     setCart({
       count: cart.count + count,
       items: [
@@ -34,6 +37,10 @@ const addToCart = (count, productId, productInfo) => {
       ],
     });
   }
+  return {
+    newCount,
+    existingItem,
+  };
 };
 
 

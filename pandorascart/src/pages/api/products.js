@@ -7,6 +7,6 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 export default async function Products(req, res){
   const { data: products, error } = await supabase
   .from('products')
-  .select('*')
+  .select('id, product_name, image, price')
   res.status(200).json({ data: products });
 }

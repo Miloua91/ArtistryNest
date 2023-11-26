@@ -10,7 +10,7 @@ export default function Cart() {
       <div className='cart'>
         <div className='cart-headers'>
           <a>Product</a>
-          <div>
+          <div className='cart-headers-total'>
             <a>Quantity</a>
             <a>Total</a>
           </div>
