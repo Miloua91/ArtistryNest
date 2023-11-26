@@ -1,12 +1,12 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = 'https://mgdkamqbxvrywiscpsvh.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
+const supabaseUrl = "https://mgdkamqbxvrywiscpsvh.supabase.co";
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default async function Products(req, res){
+export default async function Products(req, res) {
   const { data: products, error } = await supabase
-  .from('products')
-  .select('id, product_name, image, price')
+    .from("products")
+    .select("id, product_name, image, price");
   res.status(200).json({ data: products });
 }

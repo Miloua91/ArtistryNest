@@ -10,7 +10,7 @@ import { toast } from 'sonner'
 
 export default function ProductDetail() {
     const [product, setProduct] = useState([]);
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const router = useRouter();
     const { id } = router.query;
     
@@ -61,10 +61,8 @@ export default function ProductDetail() {
             }
           };
           
-          
-          
           function resetCount() {
-            setCount(0);
+            setCount(1);
           };
         return(
             <>
