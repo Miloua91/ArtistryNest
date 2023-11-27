@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import facebookLogo from "@/pages/icons/Logo--facebook.svg";
 import instagramLogo from "@/pages/icons/Logo--instagram.svg";
@@ -28,23 +29,35 @@ export default function Footer() {
         </div>
         <div className="menu">
           <h2>Menu</h2>
-          <h3>New arrivals</h3>
-          <h3>Best sellers</h3>
-          <h3>Recently viewed</h3>
-          <h3>Popular this week</h3>
           <h3>All products</h3>
+          <h3>Best sellers</h3>
+          <h3>New arrivals</h3>
+          <h3>Popular this week</h3>
+          <h3>Recently viewed</h3>
         </div>
         <div className="categories">
           <h2>Categories</h2>
-          <h3>Crockery</h3>
-          <h3>Furniture</h3>
-          <h3>Homeware</h3>
-          <h3>Plant pots</h3>
-          <h3>Chairs</h3>
+          <Link href={"/products/chairs"}>
+            <h3>Chairs</h3>
+          </Link>
+          <Link href={"/products/lamps"}>
+            <h3>Lamps</h3>
+          </Link>
+          <Link href={"/products/pots"}>
+            <h3>Plant Pots</h3>
+          </Link>
+          <Link href={"/products/sofas"}>
+            <h3>Sofas</h3>
+          </Link>
+          <Link href={"/products/tables"}>
+            <h3>Tables</h3>
+          </Link>
         </div>
         <div className="company">
           <h2>Our company</h2>
-          <h3>About us</h3>
+          <Link href={"/about"}>
+            <h3>About us</h3>
+          </Link>
           <h3>Vacancies</h3>
           <h3>Contact us</h3>
           <h3>Privacy</h3>

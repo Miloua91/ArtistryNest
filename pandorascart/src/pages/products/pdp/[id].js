@@ -13,6 +13,10 @@ export default function ProductDetail() {
   const router = useRouter();
   const { id } = router.query;
 
+  function goBack(){
+    router.back();
+  }
+
   const { addToCart } = useCart();
   const productInfo = {
     image: product.image,
@@ -40,8 +44,10 @@ export default function ProductDetail() {
   };
 
   const decrement = () => {
-    if (count > 0) {
+    if (count > 1) {
       setCount(count - 1);
+    } else {
+      goBack();
     }
   };
   const handleCart = () => {
