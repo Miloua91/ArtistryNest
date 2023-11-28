@@ -12,18 +12,16 @@ import userIcon from "@/pages/icons/User--avatar.svg";
 export default function Header() {
   const { cart } = useCart();
   const router = useRouter();
-  const { updateSearchQuery } = useSearch();
+  const { searchQuery, updateSearchQuery } = useSearch();
 
   const [isSearchVisible, setSearchVisible] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleInputQuery = (e) => {
+  function handleInputQuery(e){
     const query = e.target.value;
     updateSearchQuery(query);
-    setSearchQuery(query);
   };
-
-
+  
+  
   const handleCartIconClick = () => {
     router.push({
       pathname: "/cart",
@@ -36,20 +34,18 @@ export default function Header() {
     });
   };
 
-  const resetSearchQuery = () => {
-    setSearchQuery('');
-    updateSearchQuery('');
-
-  };
-
   useEffect(() => {
     if (router.pathname === '/products/special') {
       setSearchVisible(true);
     } else {
       setSearchVisible(false);
-      resetSearchQuery();
+      if (searchQuery !== '') {
+        updateSearchQuery('');
+      }
     }
-  }, [router.pathname]);
+    // Log the updated value of searchQuery
+    console.log(searchQuery);
+  }, [router.pathname]); // Include relevant dependencies
   
   
   
@@ -84,7 +80,11 @@ export default function Header() {
         </h2>
         {isSearchVisible && (
           <div className="search-input-container">
-            <input onChange={handleInputQuery} value={searchQuery} type="text" name="search" placeholder="Search for an item" />
+            <input onChange={handleInputQuery} 
+            value={searchQuery} 
+            type="text" 
+            name="search" 
+            placeholder="Search for an item" />
           </div>
         )}
         <div className="searchIcon">
