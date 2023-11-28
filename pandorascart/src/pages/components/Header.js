@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
+import { useSearch } from "@/context/SearchContext";
 import { useRouter } from "next/router";
+import { debounce } from 'lodash';
 import searchIcon from "@/pages/icons/Search.svg";
 import cartIcon from "@/pages/icons/Shopping--cart.svg";
 import userIcon from "@/pages/icons/User--avatar.svg";
@@ -10,8 +12,17 @@ import userIcon from "@/pages/icons/User--avatar.svg";
 export default function Header() {
   const { cart } = useCart();
   const router = useRouter();
+  const { updateSearchQuery } = useSearch();
 
   const [isSearchVisible, setSearchVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleInputQuery = (e) => {
+    const query = e.target.value;
+    updateSearchQuery(query);
+    setSearchQuery(query);
+  };
+
 
   const handleCartIconClick = () => {
     router.push({
@@ -25,10 +36,30 @@ export default function Header() {
     });
   };
 
+  useEffect(() => {
+    if (router.pathname == '/products/special'){
+      setSearchVisible(isSearchVisible);
+    } else {
+      setSearchVisible(false);
+      updateSearchQuery('')
+      setSearchQuery('');
+    }
+  }, [router.pathname])
+
   const handleSearchIconClick = () => {
+    if (!isSearchVisible && searchQuery.trim() !== '') {
+      updateSearchQuery(searchQuery.trim());
+    } else if (searchQuery.trim() !== '') {
+      router.push({
+        pathname: '/products/special',
+        query: {searchQuery},
+    });
+      return;
+    }
     setSearchVisible(!isSearchVisible);
   };
-
+  
+  
   return (
     <>
       <div className="name">
@@ -45,7 +76,7 @@ export default function Header() {
         </h2>
         {isSearchVisible && (
           <div className="search-input-container">
-            <input type="text" name="search" placeholder="Search for an item" />
+            <input onChange={handleInputQuery} value={searchQuery} type="text" name="search" placeholder="Search for an item" />
           </div>
         )}
         <div className="searchIcon">

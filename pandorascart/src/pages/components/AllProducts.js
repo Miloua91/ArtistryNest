@@ -3,6 +3,7 @@ import Link from "next/link";
 import Filter from "./FilterMenu";
 import { useState, useEffect } from "react";
 
+
 export default function Products({ apiEndpoint }) {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
@@ -10,6 +11,7 @@ export default function Products({ apiEndpoint }) {
   const [selectedPriceOption, setSelectedPriceOption] = useState("");
   const [selectedSortingOption, setSelectedSortingOption] = useState("");
   const [filterProducts, setFilterProducts] = useState([]);
+  const [noProduct, setNoProduct] = useState(false);
 
   useEffect(() => {
     fetch(apiEndpoint)
@@ -20,6 +22,7 @@ export default function Products({ apiEndpoint }) {
         setFilterProducts(sortedProducts);
         setDisplayedProducts(sortedProducts.slice(0, 12));
         setLoading(false);
+        setNoProduct(sortedProducts.length === 0);
       });
   }, [apiEndpoint]);
 
@@ -57,14 +60,17 @@ export default function Products({ apiEndpoint }) {
     const remainingProducts = filterProducts.slice(
       currentProducts,
       currentProducts + 12
-    );
-    setDisplayedProducts([...displayedProducts, ...remainingProducts]);
-  }
-  console.log(selectedSortingOption);
-  return (
-    <>
+      );
+      setDisplayedProducts([...displayedProducts, ...remainingProducts]);
+    }
+    return (
+      <>
+    {noProduct ? (
+      <div className="no-product"><h1>We are sorry,<br/>there are no products found that fits your search</h1></div>
+    ) : (
+      <>
       <Filter
-        onPriceChange={setSelectedPriceOption}
+      onPriceChange={setSelectedPriceOption}
         onSortingChange={setSelectedSortingOption}
       />
       <div className="all-products">
@@ -89,11 +95,13 @@ export default function Products({ apiEndpoint }) {
       </div>
       {displayedProducts.length < products.length && (
         <div className="load-button">
-          <button id="loadBtn" onClick={loadProducts} disabled={loading}>
-            Load
-          </button>
+        <button id="loadBtn" onClick={loadProducts} disabled={loading}>
+        Load
+        </button>
         </div>
-      )}
+        )}
+        </>
+        )};
     </>
   );
 }

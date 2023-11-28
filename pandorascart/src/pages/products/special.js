@@ -1,12 +1,12 @@
 import AllProducts from "@/pages/components/AllProducts";
 import { useSearch } from "@/context/SearchContext";
 
-export default function Chairs() {
+export default function All() {
   const { searchQuery } = useSearch();
-  const chairs = `/api/category?category=chairs&search=${searchQuery}`;
+  const all = `/api/query?search=${searchQuery}`;
   return (
     <>
-      <AllProducts apiEndpoint={chairs} />
+      <AllProducts apiEndpoint={all} />
     </>
   );
 }
