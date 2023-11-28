@@ -41,7 +41,7 @@ export default function Header() {
       setSearchVisible(isSearchVisible);
     } else {
       setSearchVisible(false);
-      updateSearchQuery('')
+      updateSearchQuery('*')
       setSearchQuery('');
     }
   }, [router.pathname])
