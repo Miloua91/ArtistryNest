@@ -9,7 +9,7 @@ export default async function ProductCategory(req, res) {
   const { category } = req.query;
   const { data: products, error } = await supabase
     .from("products")
-    .select("id, product_name, price, image, category")
+    .select("id, product_name, price, image, category, date_added")
     .eq("category", category)
     .ilike('product_name', `%${search}%`);
   res.status(200).json({ data: products, error });

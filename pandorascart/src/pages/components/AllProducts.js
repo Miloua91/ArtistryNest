@@ -35,8 +35,8 @@ export default function Products({ apiEndpoint }) {
     "high-to-low": (a, b) => b.price - a.price,
     "alphabitical_a-z": (a, b) => a.product_name.localeCompare(b.product_name),
     "alphabitical_z-a": (a, b) => b.product_name.localeCompare(a.product_name),
-    new: (a, b) => new Date(b.date_added) - new Date(a.date_added),
-    old: (a, b) => new Date(a.date_added) - new Date(b.date_added),
+    "new": (a, b) => new Date(b.date_added) - new Date(a.date_added),
+    "old": (a, b) => new Date(a.date_added) - new Date(b.date_added),
   };
 
   function filteringProducts() {

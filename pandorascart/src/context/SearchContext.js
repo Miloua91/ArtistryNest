@@ -4,8 +4,8 @@ const SearchContext = createContext();
 
 export function SearchProvider ({ children }){
     const [searchQuery, setSearchQuery] = useState('');
-
-    const updateSearchQuery = (query) => {
+    
+    function updateSearchQuery(query){
         setSearchQuery(query);
     };
 

@@ -36,20 +36,28 @@ export default function Header() {
     });
   };
 
+  const resetSearchQuery = () => {
+    setSearchQuery('');
+    updateSearchQuery('');
+
+  };
+
   useEffect(() => {
-    if (router.pathname == '/products/special'){
-      setSearchVisible(isSearchVisible);
+    if (router.pathname === '/products/special') {
+      setSearchVisible(true);
     } else {
       setSearchVisible(false);
-      updateSearchQuery('*')
-      setSearchQuery('');
+      resetSearchQuery();
     }
-  }, [router.pathname])
-
+  }, [router.pathname]);
+  
+  
+  
   const handleSearchIconClick = () => {
-    if (!isSearchVisible && searchQuery.trim() !== '') {
-      updateSearchQuery(searchQuery.trim());
-    } else if (searchQuery.trim() !== '') {
+    const trimmedQuery = searchQuery.trim();
+    if (!isSearchVisible && trimmedQuery !== '') {
+      updateSearchQuery(trimmedQuery);
+    } else if (trimmedQuery !== '') {
       router.push({
         pathname: '/products/special',
         query: {searchQuery},
