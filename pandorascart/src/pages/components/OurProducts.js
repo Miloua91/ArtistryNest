@@ -7,7 +7,7 @@ export default function OurProducts({ resetCount }) {
   const [popularProducts, setPopularProducts] = useState([]);
 
   useEffect(() => {
-    fetch("/api/products")
+    fetch("/api/products?search=*")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.data);
