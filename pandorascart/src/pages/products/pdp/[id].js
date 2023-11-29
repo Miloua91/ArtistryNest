@@ -66,7 +66,7 @@ export default function ProductDetail() {
         toast.info(
           `We've added ${
             newCount - existingItem.count
-          } to your cart, but you can't exceed 10 of this item.`
+          } to your cart, but you can't exceed 10 of ${product.product_name}s.`
         );
       }
     } else {

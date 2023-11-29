@@ -822,12 +822,32 @@ input[type="checkbox"]:checked::before {
 }
 .price-quantity {
   display: flex;
-  gap: 150px;
+  gap: 85px;
   margin-right: -30px;
 }
-.price-quantity > a {
+.price-quantity > * {
   width: 100px;
   text-align: center;
+}
+.removeBtn{
+  position: relative;
+  width: 28px;
+  height: 28px;
+  background-color: #dcdbe0;
+  border: none;
+  border-radius: 5%;
+  margin-left: -55px;
+  margin-top: 1px;
+}
+.removeBtn img{
+  position: absolute;
+  width: 36px;
+  margin-top: -27px;
+  margin-left: -18px;
+}
+.removeBtn:hover{
+  opacity: 90%;
+  cursor: pointer;
 }
 .checkoutBtn {
   position: relative;
@@ -1283,11 +1303,31 @@ input[type="checkbox"]:checked::before {
     display: flex;
     gap: 10px;
   }
-  .price-quantity > a {
+  .price-quantity > * {
     position: relative;
-    width: 100px;
+    width: 90px;
     text-align: center;
     top: 160px;
+  }
+  .removeBtn{
+    position: relative;
+    width: 26px;
+    height: 26px;
+    background-color: #dcdbe0;
+    border: none;
+    border-radius: 5%;
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+  .removeBtn img{
+    position: absolute;
+    width: 36px;
+    margin-top: -61px;
+    margin-left: -18px;
+  }
+  .removeBtn:hover{
+    opacity: 90%;
+    cursor: pointer;
   }
   .checkoutBtn {
     width: 100%;
@@ -1686,11 +1726,29 @@ input[type="checkbox"]:checked::before {
     right: 0;
   }
 
-  .price-quantity > a {
+  .price-quantity > * {
     position: relative;
-    width: 100px;
+    width: 90px;
     text-align: center;
     top: 120px;
+  }
+  .removeBtn{
+    position: relative;
+    width: 28px;
+    height: 28px;
+    background-color: #dcdbe0;
+    border: none;
+    border-radius: 5%;
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+  .removeBtn img{
+    position: absolute;
+    width: 36px;
+  }
+  .removeBtn:hover{
+    opacity: 90%;
+    cursor: pointer;
   }
   .checkoutBtn {
     width: 100%;
@@ -2005,11 +2063,29 @@ input[type="checkbox"]:checked::before {
     right: 105px;
   }
 
-  .price-quantity > a {
+  .price-quantity > * {
     position: relative;
     width: 100px;
     text-align: center;
     top: 160px;
+  }
+  .removeBtn{
+    position: relative;
+    width: 28px;
+    height: 28px;
+    background-color: #dcdbe0;
+    border: none;
+    border-radius: 5%;
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+  .removeBtn img{
+    position: absolute;
+    width: 36px;
+  }
+  .removeBtn:hover{
+    opacity: 90%;
+    cursor: pointer;
   }
   .search-input-container {
     width: 40%;

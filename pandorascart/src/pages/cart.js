@@ -1,9 +1,53 @@
 import { useCart } from "@/context/CartContext";
+import { toast } from "sonner";
 import Image from "next/image";
+import RemoveIcon from "@/pages/img/remove-icon.svg";
 
 export default function Cart() {
-  const { cart, calculateSubtotal } = useCart();
+  const { updateItemCount, undoRemove, cart, calculateSubtotal } = useCart();
   const { items } = cart;
+
+  const handleIncrease = (productId) => {
+    const { updatedItems, currentCount } = updateItemCount(productId, 1);
+    const itemName = updatedItems.find(
+      (item) => item.productId === productId
+    )?.product_name;
+    if (currentCount >= 10) {
+      toast.info(`You can't add more than 10 of ${itemName}s.`);
+    }
+  };
+  
+
+  const handleDecrease = (productId) => {
+    const { currentCount } = updateItemCount(productId, -1);
+    const originalItem = cart.items.find(
+      (item) => item.productId === productId
+    );
+    const itemName = originalItem?.product_name;
+
+    if (currentCount <= 1) {
+      toast.warning(`You have removed ${itemName} from your cart.`, {
+        action: {
+          label: "Undo",
+          onClick: () => undoRemove(productId),
+        },
+      });
+    }
+  };
+
+  const handleRemove = (productId) => {
+    const originalItem = cart.items.find(
+      (item) => item.productId === productId
+    );
+    const itemName = originalItem?.product_name;
+    updateItemCount(productId, -cart.items.find((item) => item.productId === productId).count);
+    toast.warning(`You have removed ${itemName} from your cart.`, {
+      action: {
+        label: "Undo",
+        onClick: () => undoRemove(productId),
+      },
+    });
+  };
 
   return (
     <div className="cart-container">
@@ -40,7 +84,16 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="price-quantity">
-                  <a>{item.count}</a>
+                  <div className="counter">
+                    <button onClick={() => handleDecrease(item.productId)}>
+                      -
+                    </button>
+                    <p>{item.count}</p>
+                    <button onClick={() => handleIncrease(item.productId)}>
+                      +
+                    </button>
+                  </div>
+                  <button className="removeBtn" onClick={() => handleRemove(item.productId)}><Image src={RemoveIcon}/></button>
                   <a>£{item.price * item.count}</a>
                 </div>
               </div>

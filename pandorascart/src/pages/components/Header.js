@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { useSearch } from "@/context/SearchContext";
 import { useRouter } from "next/router";
-import { debounce } from 'lodash';
 import searchIcon from "@/pages/icons/Search.svg";
 import cartIcon from "@/pages/icons/Shopping--cart.svg";
 import userIcon from "@/pages/icons/User--avatar.svg";
@@ -39,14 +38,10 @@ export default function Header() {
       setSearchVisible(true);
     } else {
       setSearchVisible(false);
-      if (searchQuery !== '') {
-        updateSearchQuery('');
-      }
+      updateSearchQuery('');
+
     }
-    // Log the updated value of searchQuery
-    console.log(searchQuery);
-  }, [router.pathname]); // Include relevant dependencies
-  
+  }, [router.pathname]);
   
   
   const handleSearchIconClick = () => {
