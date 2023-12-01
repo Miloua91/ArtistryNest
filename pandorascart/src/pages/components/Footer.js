@@ -13,10 +13,10 @@ export default function Footer() {
       <div className="foot">
         <div className="adress">
           <h1 className="foot-name">ArtistryNest</h1>
-          <h3>21 New York Street</h3>
+          <h3>21st St, Brooklyn</h3>
           <h3>New York City</h3>
           <h3>United States of America</h3>
-          <h3>432 34</h3>
+          <h3>112 15</h3>
         </div>
         <div className="socials">
           <h2>Social links</h2>
@@ -38,30 +38,38 @@ export default function Footer() {
         <div className="categories">
           <h2>Categories</h2>
           <Link href={"/products/chairs"}>
-            <h3>Chairs</h3>
+            Chairs
           </Link>
           <Link href={"/products/lamps"}>
-            <h3>Lamps</h3>
+            Lamps
           </Link>
           <Link href={"/products/pots"}>
-            <h3>Plant Pots</h3>
+            Plant Pots
           </Link>
           <Link href={"/products/sofas"}>
-            <h3>Sofas</h3>
+            Sofas
           </Link>
           <Link href={"/products/tables"}>
-            <h3>Tables</h3>
+            Tables
           </Link>
         </div>
         <div className="company">
           <h2>Our company</h2>
           <Link href={"/about"}>
-            <h3>About us</h3>
+            About
           </Link>
-          <h3>Vacancies</h3>
-          <h3>Contact us</h3>
-          <h3>Privacy</h3>
-          <h3>Return policy</h3>
+          <Link href={'/contact'}>
+            Contact us
+          </Link>
+          <Link href={'/'}>
+          Return policy
+          </Link>
+          <Link href={'/'}>
+          Privacy
+          </Link>
+          <Link href={'/'}>
+          Vacancies
+          </Link>
         </div>
         <div className="credit">
           <h3>Copyright 2023 ArtistryNest LLC</h3>

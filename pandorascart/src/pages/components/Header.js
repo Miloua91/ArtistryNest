@@ -68,10 +68,10 @@ export default function Header() {
       </div>
       <div className="top-right">
         <h2 className="about">
-          <Link href={"/about"}>About us</Link>
+          <Link href={"/about"}>About</Link>
         </h2>
         <h2 className="contact">
-          <Link href={""}>Contact</Link>
+          <Link href={"/contact"}>Contact us</Link>
         </h2>
         {isSearchVisible && (
           <div className="search-input-container">

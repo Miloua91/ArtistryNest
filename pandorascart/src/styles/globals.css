@@ -169,10 +169,17 @@ body {
 }
 .foot > * > * {
   color: var(--nav-bottom);
+  font-size: 14px;
+  margin-bottom: 5px;
 }
-.foot h2 {
-  text-decoration: none;
-  cursor: auto;
+.categories > *{
+  display: flex;
+}
+.menu > *{
+  display: flex;
+}
+.company > * {
+  display: flex;
 }
 .foot-name {
   font-family: clashDisplay;
@@ -307,6 +314,7 @@ body {
   color: var(--butt);
 }
 .new-products {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -315,6 +323,11 @@ body {
   align-items: end;
   font-family: satoshi;
   font-size: 20px;
+}
+.product{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .product img {
   width: 100%;
@@ -611,6 +624,11 @@ input[type="checkbox"]:checked::before {
   align-items: end;
   color: var(--butt);
   margin-bottom: 50px;
+}
+.products{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .products > * {
   color: var(--butt);
@@ -927,6 +945,116 @@ input[type="checkbox"]:checked::before {
   margin-top: 100px;
   font-family: clashdisplay;
 }
+.contact{
+  display: flex;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-bottom: 60px;
+  font-family: satoshi;
+  font-size: 16px;
+  color: var(--nav-name);
+}
+.contact-form{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 650px;
+  background-color: var(--nav-bottom);
+}
+.contact-form h1{
+  font-family: clashdisplay;
+  margin-bottom: -10px;
+}
+.contact-form > *{
+  margin-left: 60px;
+  margin-right: 200px;
+  width: 47%;
+}
+.contact-input{
+  position: relative;
+}
+.contact-input input{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  font-family: satoshi;
+  font-size: 16px;
+  padding-left: 15px;
+  border-style: hidden;
+  border-bottom: solid var(--butt);
+  outline: none;
+  background-color: var(--nav-bottom);
+}
+.contact.input input:focus{
+  border-bottom: solid var(--nav-bottom);
+}
+.contact-city{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+#contact-postcode{
+  position: absolute;
+  width: 35%;
+  right: -20px;
+}
+#contact-city{
+  width: 110%;
+}
+#contact-message{
+  position: relative;
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  border: none;
+  border-bottom: solid var(--butt);
+  outline: none;
+  font-family: satoshi;
+  font-size: 16px;
+  padding-left: 15px;
+  background-color: var(--nav-bottom);
+}
+#contact-message:focus{
+  height: 100px;
+}
+#contact-submitBtn{
+  font-family: satoshi;
+  font-size: 18px;
+  width: 100%;
+  height: 56px;
+  border: none;
+  background-color: var(--butt);
+  color: var(--nav-bottom);
+  cursor: pointer;
+  border-radius: 2px;
+}
+.submit-section{
+  display: flex;
+  flex-direction: column;
+  margin-right: -17px;
+}
+.submit-section > *{
+  margin-bottom: 15px;
+}
+.contact-info{
+  display: flex;
+  justify-content: space-between;
+}
+.contact-info > *{
+  text-decoration: none;
+  color: var(--nav-name);
+  font-size: 18px;
+}
+.contact-map{
+  position: relative;
+  margin-top: 20px;
+  margin-left: -200px;
+}
+.contact-map > *{
+  width: 80vh;
+  height: 550px;
+}
+
 
 @media screen and (max-width: 360px) {
   .drop-down {
@@ -1065,6 +1193,10 @@ input[type="checkbox"]:checked::before {
   #viewCol {
     width: 100%;
   }
+  .view-col{
+    display: block;
+    margin: 18px;
+  }
   .popular a {
     font-size: 16px;
     margin-left: 18px;
@@ -1093,6 +1225,13 @@ input[type="checkbox"]:checked::before {
   .our-product a {
     font-size: 14px;
     margin-left: 0px;
+  }
+  #viewPopCol{
+    width: 100%;
+  }
+  .view-pop-col{
+    display: block;
+    margin: 18px;
   }
   .email-signup {
     position: relative;
@@ -1348,6 +1487,36 @@ input[type="checkbox"]:checked::before {
     left: 0;
     transition: width 0.5s ease-out;
   }
+  .contact{
+    flex-direction: column;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-bottom: 18px;
+  }
+  .contact-form{
+    width: 100%;
+    height: 710px;
+  }
+  .contact-form > *{
+    margin-left: 18px;
+    margin-right: 18px;
+    width: 80%;
+  }
+  .contact-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  .contact-map{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  .contact-map > *{
+    width: 100%;
+    height: 450px;
+  }
 }
 
 @media screen and (min-width: 360px) and (max-width: 512px) {
@@ -1503,6 +1672,9 @@ input[type="checkbox"]:checked::before {
   #viewCol {
     width: 100%;
   }
+  .view-col{
+    display: block;
+  }
   .popular a {
     font-size: 24px;
     margin-left: 20px;
@@ -1531,6 +1703,13 @@ input[type="checkbox"]:checked::before {
   .our-product a {
     font-size: 16px;
     margin-left: 0px;
+  }
+  #viewPopCol{
+    width: 100%;
+  }
+  .view-pop-col{
+    display: block;
+    margin: 20px;
   }
   .email-signup {
     position: relative;
@@ -1778,6 +1957,36 @@ input[type="checkbox"]:checked::before {
   .search-input-container input {
     width: 100%;
     left: 0;
+  }
+  .contact{
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  .contact-form{
+    width: 100%;
+    height: 690px;
+  }
+  .contact-form > *{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 80%;
+  }
+  .contact-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  .contact-map{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  .contact-map > *{
+    width: 100%;
+    height: 450px;
   }
 }
 
@@ -2091,6 +2300,28 @@ input[type="checkbox"]:checked::before {
     width: 40%;
   }
   .search-input-container input {
+    width: 100%;
+  }
+  .contact{
+    flex-direction: column;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 60px;
+  }
+  .contact-form{
+    width: 100%;
+  }
+  .contact-form > *{
+    margin-left: 60px;
+    margin-right: 60px;
+    width: 78%;
+  }
+  .contact-map{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  .contact-map > *{
     width: 100%;
   }
 }

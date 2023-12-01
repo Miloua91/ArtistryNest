@@ -101,7 +101,7 @@ export default function Products({ apiEndpoint }) {
         </div>
         )}
         </>
-        )};
+        )}
     </>
   );
 }

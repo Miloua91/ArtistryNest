@@ -50,7 +50,7 @@ export default function About() {
             for the London interior design community.
           </p>
           <div className="about-getBtn">
-            <Link href={"/contact-us"}>
+            <Link href={"/contact"}>
               <button id="about-getInTouchBtn">Get in touch</button>
             </Link>
           </div>
