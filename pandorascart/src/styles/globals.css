@@ -957,7 +957,7 @@ input[type="checkbox"]:checked::before {
 .contact-form{
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
   height: 650px;
   background-color: var(--nav-bottom);
 }
@@ -1048,10 +1048,11 @@ input[type="checkbox"]:checked::before {
 .contact-map{
   position: relative;
   margin-top: 20px;
-  margin-left: -200px;
+  margin-left: -260px;
+  width: 50%;
 }
 .contact-map > *{
-  width: 80vh;
+  width: 100%;
   height: 550px;
 }
 
@@ -1512,6 +1513,7 @@ input[type="checkbox"]:checked::before {
     position: relative;
     margin-top: 20px;
     margin-left: 0;
+    width: 100%;
   }
   .contact-map > *{
     width: 100%;
@@ -1983,6 +1985,7 @@ input[type="checkbox"]:checked::before {
     position: relative;
     margin-top: 20px;
     margin-left: 0;
+    width: 100%;
   }
   .contact-map > *{
     width: 100%;
@@ -2320,6 +2323,7 @@ input[type="checkbox"]:checked::before {
     position: relative;
     margin-top: 20px;
     margin-left: 0;
+    width: 100%;
   }
   .contact-map > *{
     width: 100%;
@@ -2352,5 +2356,10 @@ input[type="checkbox"]:checked::before {
   }
   .search-input-container input {
     width: 100%;
+  }
+  .contact-form > *{
+    margin-left: 60px;
+    margin-right: 60px;
+    width: 70%;
   }
 }
