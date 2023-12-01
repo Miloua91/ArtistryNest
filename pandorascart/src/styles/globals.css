@@ -2357,6 +2357,12 @@ input[type="checkbox"]:checked::before {
   .search-input-container input {
     width: 100%;
   }
+  .contact-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+  }
   .contact-form > *{
     margin-left: 60px;
     margin-right: 60px;

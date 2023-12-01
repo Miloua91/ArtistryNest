@@ -50,8 +50,8 @@ export default function Contact() {
             <div className="submit-section">
               <button id="contact-submitBtn">Submit</button>
               <div className="contact-info">
-                <a href='mailto:sales@artistrynest.shop' className="contact-email">sales@artisterynest.shop</a>
-                <a href='tel:0538614224' className="contact-phone">0538614224</a>
+                <a href='mailto:mokh@artistrynest.shop' className="contact-email">mokh@artistrynest.shop</a>
+                <a href='tel:+1 718-724-9873' className="contact-phone">718-724-9873</a>
               </div>
             </div>
           </div>
