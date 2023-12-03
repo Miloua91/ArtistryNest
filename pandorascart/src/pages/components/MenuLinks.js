@@ -1,24 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import Filter from "./FilterMenu";
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
 
 export default function Products({ apiEndpoint }) {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
-  const [selectedPriceOption, setSelectedPriceOption] = useState("");
-  const [selectedSortingOption, setSelectedSortingOption] = useState("");
   const [filterProducts, setFilterProducts] = useState([]);
   const [noProduct, setNoProduct] = useState(false);
-  const router = useRouter();
   
   useEffect(() => {
     fetch(apiEndpoint)
       .then((res) => res.json())
       .then((data) => {
-        const sortedProducts = data.data.sort((a, b) => a.id - b.id);
+        const sortedProducts = data.data.sort((a, b) => new Date(b.date_added) - new Date(a.date_added));
         setProducts(data.data);
         setFilterProducts(sortedProducts);
         setDisplayedProducts(sortedProducts.slice(0, 12));
@@ -26,34 +21,6 @@ export default function Products({ apiEndpoint }) {
         setNoProduct(sortedProducts.length === 0);
       });
   }, [apiEndpoint]);
-  
-  useEffect(() => {
-    filteringProducts();
-  }, [selectedPriceOption, selectedSortingOption]);
-
-  const filterFunctions = {
-    "low-to-high": (a, b) => a.price - b.price,
-    "high-to-low": (a, b) => b.price - a.price,
-    "alphabitical_a-z": (a, b) => a.product_name.localeCompare(b.product_name),
-    "alphabitical_z-a": (a, b) => b.product_name.localeCompare(a.product_name),
-    "new": (a, b) => new Date(b.date_added) - new Date(a.date_added),
-    "old": (a, b) => new Date(a.date_added) - new Date(b.date_added),
-  };
-  
-  function filteringProducts() {
-    let filteredProducts = [...filterProducts];
-      if (selectedPriceOption && filterFunctions[selectedPriceOption]) {
-        filteredProducts.sort(filterFunctions[selectedPriceOption]);
-      } else {
-        filteredProducts.sort((a, b) => a.id - b.id);
-      }
-      
-      if (selectedSortingOption && filterFunctions[selectedSortingOption]) {
-        filteredProducts.sort(filterFunctions[selectedSortingOption]);
-      }
-    setDisplayedProducts(filteredProducts.slice(0, displayedProducts.length));
-    setFilterProducts(filteredProducts);
-  }
 
   function loadProducts() {
     const currentProducts = displayedProducts.length;
@@ -69,10 +36,6 @@ export default function Products({ apiEndpoint }) {
       <div className="no-product"><h1>We are sorry,<br/>there are no products found that fits your search</h1></div>
     ) : (
       <>
-      <Filter
-      onPriceChange={setSelectedPriceOption}
-        onSortingChange={setSelectedSortingOption}
-      />
       <div className="all-products">
         {displayedProducts.map((product) => (
           <div key={product.id} className="products">

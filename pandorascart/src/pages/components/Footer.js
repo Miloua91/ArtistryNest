@@ -13,10 +13,10 @@ export default function Footer() {
       <div className="foot">
         <div className="adress">
           <h1 className="foot-name">ArtistryNest</h1>
-          <h3>21st St, Brooklyn</h3>
-          <h3>New York City</h3>
-          <h3>United States of America</h3>
-          <h3>112 15</h3>
+          <a>21st St, Brooklyn</a>
+          <a>New York City</a>
+          <a>United States of America</a>
+          <a>112 15</a>
         </div>
         <div className="socials">
           <h2>Social links</h2>
@@ -29,47 +29,27 @@ export default function Footer() {
         </div>
         <div className="menu">
           <h2>Menu</h2>
-          <h3>All products</h3>
-          <h3>Best sellers</h3>
-          <h3>New arrivals</h3>
-          <h3>Popular this week</h3>
-          <h3>Recently viewed</h3>
+          <Link href={"/products/all"}>All products</Link>
+          <Link href={"/products/best-sellers"}>Best sellers</Link>
+          <Link href={"/products/new-arrivals"}>New arrivals</Link>
+          <Link href={"/products/popular-this-week"}>Popular this week</Link>
+          <Link href={"/products/all"}>Recently viewed</Link>
         </div>
         <div className="categories">
           <h2>Categories</h2>
-          <Link href={"/products/chairs"}>
-            Chairs
-          </Link>
-          <Link href={"/products/lamps"}>
-            Lamps
-          </Link>
-          <Link href={"/products/pots"}>
-            Plant Pots
-          </Link>
-          <Link href={"/products/sofas"}>
-            Sofas
-          </Link>
-          <Link href={"/products/tables"}>
-            Tables
-          </Link>
+          <Link href={"/products/chairs"}>Chairs</Link>
+          <Link href={"/products/lamps"}>Lamps</Link>
+          <Link href={"/products/pots"}>Plant Pots</Link>
+          <Link href={"/products/sofas"}>Sofas</Link>
+          <Link href={"/products/tables"}>Tables</Link>
         </div>
         <div className="company">
           <h2>Our company</h2>
-          <Link href={"/about"}>
-            About
-          </Link>
-          <Link href={'/contact'}>
-            Contact us
-          </Link>
-          <Link href={'/'}>
-          Return policy
-          </Link>
-          <Link href={'/'}>
-          Privacy
-          </Link>
-          <Link href={'/'}>
-          Vacancies
-          </Link>
+          <Link href={"/about"}>About us</Link>
+          <Link href={"/contact"}>Contact</Link>
+          <Link href={"/"}>Return policy</Link>
+          <Link href={"/"}>Privacy</Link>
+          <Link href={"/"}>Vacancies</Link>
         </div>
         <div className="credit">
           <h3>Copyright 2023 ArtistryNest LLC</h3>

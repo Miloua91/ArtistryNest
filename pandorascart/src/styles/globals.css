@@ -209,8 +209,7 @@ body {
   background-color: aliceblue;
 }
 .adress > * {
-  cursor: auto;
-  text-decoration: none;
+  display: flex;
 }
 .hero {
   position: relative;

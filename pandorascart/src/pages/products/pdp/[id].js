@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Brand from "@/pages/components/Brand";
 import OurProducts from "@/pages/components/OurProducts";
 import Esign from "@/pages/components/Esignup";
@@ -13,7 +14,7 @@ export default function ProductDetail() {
   const router = useRouter();
   const { id } = router.query;
 
-  function goBack(){
+  function goBack() {
     router.back();
   }
 
@@ -83,6 +84,9 @@ export default function ProductDetail() {
   }
   return (
     <>
+      <Head>
+        <title>{product.product_name} | ArtistryNest</title>
+      </Head>
       <div className="pdp">
         <div className="pd-image">
           {product.image && (

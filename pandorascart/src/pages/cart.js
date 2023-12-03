@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
 import Image from "next/image";
@@ -16,7 +17,6 @@ export default function Cart() {
       toast.info(`You can't add more than 10 of ${itemName}s.`);
     }
   };
-  
 
   const handleDecrease = (productId) => {
     const { currentCount } = updateItemCount(productId, -1);
@@ -40,7 +40,10 @@ export default function Cart() {
       (item) => item.productId === productId
     );
     const itemName = originalItem?.product_name;
-    updateItemCount(productId, -cart.items.find((item) => item.productId === productId).count);
+    updateItemCount(
+      productId,
+      -cart.items.find((item) => item.productId === productId).count
+    );
     toast.warning(`You have removed ${itemName} from your cart.`, {
       action: {
         label: "Undo",
@@ -50,69 +53,79 @@ export default function Cart() {
   };
 
   return (
-    <div className="cart-container">
-      <div className="cart">
-        <div className="cart-headers">
-          <a>Product</a>
-          <div className="cart-headers-total">
-            <a>Quantity</a>
-            <a>Total</a>
+    <>
+      <Head>
+        <title>Cart | ArtistryNest</title>
+      </Head>
+      <div className="cart-container">
+        <div className="cart">
+          <div className="cart-headers">
+            <a>Product</a>
+            <div className="cart-headers-total">
+              <a>Quantity</a>
+              <a>Total</a>
+            </div>
+          </div>
+          <div>
+            {items.length === 0 ? (
+              <p className="empty-cart">Your shopping cart is empty</p>
+            ) : (
+              items.map((item) => (
+                <div key={item.productId} className="cart-product">
+                  <div>
+                    <div className="cart-product-container">
+                      <Image
+                        src={item.image}
+                        alt={item.product_name}
+                        width={100}
+                        height={150}
+                      />
+                    </div>
+                    <div className="cart-product-description">
+                      <h1>{item.product_name}</h1>
+                      <p>
+                        Beautiful and simple, this one is for the classic
+                        collections
+                      </p>
+                      <a>£{item.price}</a>
+                    </div>
+                  </div>
+                  <div className="price-quantity">
+                    <div className="counter">
+                      <button onClick={() => handleDecrease(item.productId)}>
+                        -
+                      </button>
+                      <p>{item.count}</p>
+                      <button onClick={() => handleIncrease(item.productId)}>
+                        +
+                      </button>
+                    </div>
+                    <button
+                      className="removeBtn"
+                      onClick={() => handleRemove(item.productId)}
+                    >
+                      <Image src={RemoveIcon} />
+                    </button>
+                    <a>£{item.price * item.count}</a>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
         <div>
-          {items.length === 0 ? (
-            <p className="empty-cart">Your shopping cart is empty</p>
-          ) : (
-            items.map((item) => (
-              <div key={item.productId} className="cart-product">
-                <div>
-                  <div className="cart-product-container">
-                    <Image
-                      src={item.image}
-                      alt={item.product_name}
-                      width={100}
-                      height={150}
-                    />
-                  </div>
-                  <div className="cart-product-description">
-                    <h1>{item.product_name}</h1>
-                    <p>
-                      Beautiful and simple, this one is for the classic
-                      collections
-                    </p>
-                    <a>£{item.price}</a>
-                  </div>
-                </div>
-                <div className="price-quantity">
-                  <div className="counter">
-                    <button onClick={() => handleDecrease(item.productId)}>
-                      -
-                    </button>
-                    <p>{item.count}</p>
-                    <button onClick={() => handleIncrease(item.productId)}>
-                      +
-                    </button>
-                  </div>
-                  <button className="removeBtn" onClick={() => handleRemove(item.productId)}><Image src={RemoveIcon}/></button>
-                  <a>£{item.price * item.count}</a>
-                </div>
-              </div>
-            ))
-          )}
+          <div className="checkout-Btn">
+            {items.length > 0 && (
+              <>
+                <h2 className="checkout-sub">
+                  Subtotal <a>£{calculateSubtotal()}</a>
+                </h2>
+                <button className="checkoutBtn">Go to checkout</button>
+              </>
+            )}
+          </div>
         </div>
       </div>
-      <div>
-        <div className="checkout-Btn">
-          {items.length > 0 && (
-            <>
-              <h2 className="checkout-sub">
-                Subtotal <a>£{calculateSubtotal()}</a>
-              </h2>
-              <button className="checkoutBtn">Go to checkout</button>
-            </>
-          )}
-        </div>
-      </div>
-    </div>
+    </>
   );
 }

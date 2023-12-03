@@ -1,8 +1,11 @@
+import Head from "next/head";
+
 export default function Contact() {
-   
-      
   return (
     <>
+      <Head>
+        <title>Contact | ArtistryNest</title>
+      </Head>
       <div className="contact">
         <form className="contact-form">
           <h1>Get in touch</h1>
@@ -50,8 +53,15 @@ export default function Contact() {
             <div className="submit-section">
               <button id="contact-submitBtn">Submit</button>
               <div className="contact-info">
-                <a href='mailto:mokh@artistrynest.shop' className="contact-email">mokh@artistrynest.shop</a>
-                <a href='tel:+1 718-724-9873' className="contact-phone">718-724-9873</a>
+                <a
+                  href="mailto:mokh@artistrynest.shop"
+                  className="contact-email"
+                >
+                  mokh@artistrynest.shop
+                </a>
+                <a href="tel:+1 718-724-9873" className="contact-phone">
+                  718-724-9873
+                </a>
               </div>
             </div>
           </div>

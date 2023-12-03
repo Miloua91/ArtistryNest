@@ -1,3 +1,4 @@
+import Head from "next/head";
 import AllProducts from "@/pages/components/AllProducts";
 import { useSearch } from "@/context/SearchContext";
 
@@ -6,6 +7,9 @@ export default function All() {
   const all = `/api/products?search=${searchQuery}`;
   return (
     <>
+      <Head>
+        <title>All products | ArtistryNest</title>
+      </Head>
       <AllProducts apiEndpoint={all} />
     </>
   );
