@@ -135,6 +135,10 @@ body {
   color: var(--nav-color);
   text-decoration: none;
 }
+.bottom-nav > * > * > *{
+  color: var(--nav-color);
+  text-decoration: none;
+}
 .bottom-nav h2 {
   margin: 20px;
   position: relative;

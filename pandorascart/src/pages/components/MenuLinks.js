@@ -9,7 +9,6 @@ export default function Products({ apiEndpoint }) {
   const [products, setProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-  const [noProduct, setNoProduct] = useState(false);
 
   useEffect(() => {
     fetch(apiEndpoint)
@@ -22,7 +21,6 @@ export default function Products({ apiEndpoint }) {
         setFilterProducts(sortedProducts);
         setDisplayedProducts(sortedProducts.slice(0, 12));
         setLoading(false);
-        setNoProduct(sortedProducts.length === 0);
       });
   }, [apiEndpoint]);
 
@@ -31,10 +29,7 @@ export default function Products({ apiEndpoint }) {
       <div className="all-products">
         {[...Array(12)].map((_, index) => (
           <div key={index} className="products">
-            <Skeleton
-              className="mobile-skeleton" 
-              height={'12em'} 
-            />
+            <Skeleton className="mobile-skeleton" height={"12em"} />
             <Skeleton className="mobile-skeleton" width={292} />
             <Skeleton className="mobile-skeleton" width={60} />
           </div>
@@ -54,42 +49,33 @@ export default function Products({ apiEndpoint }) {
 
   return (
     <>
-      {noProduct ? (
-        <div className="no-product">
-          <h1>
-            We are sorry,
-            <br />
-            there are no products found that fit your search
-          </h1>
-        </div>
-      ) : (
-        <>
-          <div className="all-products">
-            {displayedProducts.map((product) => (
-              <div key={product.id} className="products">
-                <Link href={`/products/pdp/${product.id}`} style={{ textDecoration: "none" }}>
-                  <Image
-                    src={product.image}
-                    alt="ArtistryNest Product"
-                    width={405}
-                    height={475}
-                    onLoad={() => setLoading(false)}
-                  />
-                  <br />
-                  {product.product_name}
-                </Link>
-                <br />£{product.price}
-              </div>
-            ))}
+      <div className="all-products">
+        {displayedProducts.map((product) => (
+          <div key={product.id} className="products">
+            <Link
+              href={`/products/pdp/${product.id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <Image
+                src={product.image}
+                alt="ArtistryNest Product"
+                width={405}
+                height={475}
+                onLoad={() => setLoading(false)}
+              />
+              <br />
+              {product.product_name}
+            </Link>
+            <br />£{product.price}
           </div>
-          {displayedProducts.length < products.length && (
-            <div className="load-button">
-              <button id="loadBtn" onClick={loadProducts} disabled={loading}>
-                Load
-              </button>
-            </div>
-          )}
-        </>
+        ))}
+      </div>
+      {displayedProducts.length < products.length && (
+        <div className="load-button">
+          <button id="loadBtn" onClick={loadProducts} disabled={loading}>
+            Load
+          </button>
+        </div>
       )}
     </>
   );

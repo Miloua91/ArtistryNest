@@ -7,16 +7,32 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function ProductDetail() {
   const [product, setProduct] = useState([]);
   const [count, setCount] = useState(1);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { id } = router.query;
 
   function goBack() {
     router.back();
   }
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setLoading(true);
+    };
+
+    router.events.on("routeChangeStart", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, [router.events]);
+
 
   const { addToCart } = useCart();
   const productInfo = {
@@ -32,6 +48,7 @@ export default function ProductDetail() {
       .then((data) => {
         const productDetails = data.data[0];
         setProduct(productDetails);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching product details:", error);
@@ -87,50 +104,95 @@ export default function ProductDetail() {
       <Head>
         <title>{product.product_name} | ArtistryNest</title>
       </Head>
-      <div className="pdp">
-        <div className="pd-image">
-          {product.image && (
-            <Image
-              src={product.image}
-              alt={product.product_name}
-              width={1200}
-              height={1200}
-            />
-          )}
-        </div>
-        <div className="product-details">
-          <h1 className="title">{product.product_name}</h1>
-          <h2>£{product.price}</h2>
-          <a className="title">Product description</a>
-          <p className="details">{product.description}</p>
-          <a className="title">Dimensions</a>
-          <br />
-          <br />
-          <div className="dimensions">
-            <div>
-              <a className="title">Height</a>
-              <br />
-              <a className="details">{product.height}cm</a>
+      {loading ? (
+        <>
+          <div className="pdp">
+            <div className="pd-image">
+              <Skeleton height={"30em"} />
             </div>
-            <div>
-              <a className="title">Width</a>
+            <div className="product-details">
+              <h1 className="title">{<Skeleton width={400} />}</h1>
+              <h2>{<Skeleton width={100} />}</h2>
+              <a className="title">Product description</a>
+              <p className="details">{<Skeleton count={3} />}</p>
+              <a className="title">Dimensions</a>
               <br />
-              <a className="details">{product.width}cm</a>
+              <br />
+              <div className="dimensions">
+                <div>
+                  <a className="title">Height</a>
+                  <br />
+                  <a className="details">{<Skeleton width={50} />}</a>
+                </div>
+                <div>
+                  <a className="title">Width</a>
+                  <br />
+                  <a className="details">{<Skeleton width={50} />}</a>
+                </div>
+              </div>
+              <div className="addToCart-section">
+                <div className="counter">
+                  <a>Amount:</a>
+                  <button onClick={decrement}>-</button>
+                  <p>{count}</p>
+                  <button onClick={increment}>+</button>
+                </div>
+                <button onClick={handleCart} id="addToCartBtn">
+                  Add to cart
+                </button>
+              </div>
             </div>
           </div>
-          <div className="addToCart-section">
-            <div className="counter">
-              <a>Amount:</a>
-              <button onClick={decrement}>-</button>
-              <p>{count}</p>
-              <button onClick={increment}>+</button>
+        </>
+      ) : (
+        <div className="pdp">
+          <div className="pd-image">
+            {product.image && (
+              <Image
+                src={product.image}
+                alt={product.product_name}
+                width={1200}
+                height={1200}
+                blurDataURL="data:image/png>;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+R8AAvcB+vBGZskAAAAASUVORK5CYII="
+                placeholder="blur"
+              />
+            )}
+          </div>
+          <div className="product-details">
+            <h1 className="title">{product.product_name}</h1>
+            <h2>£{product.price}</h2>
+            <a className="title">Product description</a>
+            <p className="details">{product.description}</p>
+            <a className="title">Dimensions</a>
+            <br />
+            <br />
+            <div className="dimensions">
+              <div>
+                <a className="title">Height</a>
+                <br />
+                <a className="details">{product.height}cm</a>
+              </div>
+              <div>
+                <a className="title">Width</a>
+                <br />
+                <a className="details">{product.width}cm</a>
+              </div>
             </div>
-            <button onClick={handleCart} id="addToCartBtn">
-              Add to cart
-            </button>
+            <div className="addToCart-section">
+              <div className="counter">
+                <a>Amount:</a>
+                <button onClick={decrement}>-</button>
+                <p>{count}</p>
+                <button onClick={increment}>+</button>
+              </div>
+              <button onClick={handleCart} id="addToCartBtn">
+                Add to cart
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
       <Brand />
       <OurProducts resetCount={resetCount} />
       <Esign />

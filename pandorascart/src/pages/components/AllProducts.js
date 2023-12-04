@@ -14,7 +14,6 @@ export default function Products({ apiEndpoint }) {
   const [selectedSortingOption, setSelectedSortingOption] = useState("");
   const [filterProducts, setFilterProducts] = useState([]);
   const [noProduct, setNoProduct] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     fetch(apiEndpoint)

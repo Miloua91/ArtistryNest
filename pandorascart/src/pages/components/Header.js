@@ -15,12 +15,11 @@ export default function Header() {
 
   const [isSearchVisible, setSearchVisible] = useState(false);
 
-  function handleInputQuery(e){
+  function handleInputQuery(e) {
     const query = e.target.value;
     updateSearchQuery(query);
-  };
-  
-  
+  }
+
   const handleCartIconClick = () => {
     router.push({
       pathname: "/cart",
@@ -34,31 +33,34 @@ export default function Header() {
   };
 
   useEffect(() => {
-    if (router.pathname === '/products/special') {
-      setSearchVisible(true);
+    if (router.pathname === "/products/all") {
     } else {
       setSearchVisible(false);
-      updateSearchQuery('');
-
+      updateSearchQuery("");
     }
   }, [router.pathname]);
-  
-  
+
   const handleSearchIconClick = () => {
     const trimmedQuery = searchQuery.trim();
-    if (!isSearchVisible && trimmedQuery !== '') {
+    if (!isSearchVisible && trimmedQuery !== "") {
       updateSearchQuery(trimmedQuery);
-    } else if (trimmedQuery !== '') {
+    } else if (trimmedQuery !== "") {
       router.push({
-        pathname: '/products/special',
-        query: {searchQuery},
-    });
+        pathname: "/products/all",
+        query: { searchQuery: trimmedQuery },
+      });
+      setSearchVisible(true);
       return;
     }
     setSearchVisible(!isSearchVisible);
   };
-  
-  
+
+  const handleAllPageLinkClick = () => {
+    updateSearchQuery("");
+    setSearchVisible(false);
+    router.push("/products/all");
+  };
+
   return (
     <>
       <div className="name">
@@ -75,11 +77,13 @@ export default function Header() {
         </h2>
         {isSearchVisible && (
           <div className="search-input-container">
-            <input onChange={handleInputQuery} 
-            value={searchQuery} 
-            type="text" 
-            name="search" 
-            placeholder="Search for an item" />
+            <input
+              onChange={handleInputQuery}
+              value={searchQuery}
+              type="text"
+              name="search"
+              placeholder="Search for an item"
+            />
           </div>
         )}
         <div className="searchIcon">
@@ -99,8 +103,11 @@ export default function Header() {
       </div>
       <div className="bottom-nav">
         <h2>
-          {" "}
-          <Link href={"/products/all"}>All products</Link>
+          <div>
+            <Link href="/products/all" as="/products/all" passHref>
+              <span onClick={handleAllPageLinkClick}>All products</span>
+            </Link>
+          </div>
         </h2>
         <h2>
           <Link href={"/products/chairs"}>Chairs</Link>
