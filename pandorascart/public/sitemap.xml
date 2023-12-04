@@ -4,59 +4,75 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
 <url>
   <loc>https://artistrynest.shop/</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/about</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/contact</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/products/all</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/products/chairs</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/products/tables</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/products/sofas</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/products/lamps</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/products/crockery</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/products/ceramics</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://artistrynest.shop/products/pots</loc>
-  <lastmod>2023-12-01T19:06:59+00:00</lastmod>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://artistrynest.shop/products/best-sellers</loc>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://artistrynest.shop/products/new-arrivals</loc>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://artistrynest.shop/products/popular-this-week</loc>
+  <lastmod>2023-12-04T17:14:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 

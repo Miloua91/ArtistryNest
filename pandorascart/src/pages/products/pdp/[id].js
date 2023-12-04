@@ -104,7 +104,7 @@ export default function ProductDetail() {
       <Head>
         <title>{product.product_name} | ArtistryNest</title>
       </Head>
-      {loading == false? (
+      {loading ? (
         <>
           <div className="pdp">
             <div className="pd-image">
