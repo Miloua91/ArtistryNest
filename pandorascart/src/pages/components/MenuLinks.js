@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Products({ apiEndpoint }) {
   const [loading, setLoading] = useState(true);
@@ -8,12 +10,14 @@ export default function Products({ apiEndpoint }) {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
   const [noProduct, setNoProduct] = useState(false);
-  
+
   useEffect(() => {
     fetch(apiEndpoint)
       .then((res) => res.json())
       .then((data) => {
-        const sortedProducts = data.data.sort((a, b) => new Date(b.date_added) - new Date(a.date_added));
+        const sortedProducts = data.data.sort(
+          (a, b) => new Date(b.date_added) - new Date(a.date_added)
+        );
         setProducts(data.data);
         setFilterProducts(sortedProducts);
         setDisplayedProducts(sortedProducts.slice(0, 12));
@@ -22,49 +26,72 @@ export default function Products({ apiEndpoint }) {
       });
   }, [apiEndpoint]);
 
+  if (loading) {
+    return (
+      <div className="all-products">
+        {[...Array(12)].map((_, index) => (
+          <div key={index} className="products">
+            <Skeleton
+              className="mobile-skeleton" 
+              height={window.innerWidth <= 800 ? 200 : 342} 
+              width={292}
+            />
+            <Skeleton className="mobile-skeleton" width={292} />
+            <Skeleton className="mobile-skeleton" width={60} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   function loadProducts() {
     const currentProducts = displayedProducts.length;
     const remainingProducts = filterProducts.slice(
       currentProducts,
       currentProducts + 12
-      );
-      setDisplayedProducts([...displayedProducts, ...remainingProducts]);
-    }
-    return (
-      <>
-    {noProduct ? (
-      <div className="no-product"><h1>We are sorry,<br/>there are no products found that fits your search</h1></div>
-    ) : (
-      <>
-      <div className="all-products">
-        {displayedProducts.map((product) => (
-          <div key={product.id} className="products">
-            <Link
-              href={`/products/pdp/${product.id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Image
-                src={product.image}
-                alt="ArtistryNest Product"
-                width={405}
-                height={475}
-              />
-              <br />
-              {product.product_name}
-            </Link>
-            <br />£{product.price}
-          </div>
-        ))}
-      </div>
-      {displayedProducts.length < products.length && (
-        <div className="load-button">
-        <button id="loadBtn" onClick={loadProducts} disabled={loading}>
-        Load
-        </button>
+    );
+    setDisplayedProducts([...displayedProducts, ...remainingProducts]);
+  }
+
+  return (
+    <>
+      {noProduct ? (
+        <div className="no-product">
+          <h1>
+            We are sorry,
+            <br />
+            there are no products found that fit your search
+          </h1>
         </div>
-        )}
+      ) : (
+        <>
+          <div className="all-products">
+            {displayedProducts.map((product) => (
+              <div key={product.id} className="products">
+                <Link href={`/products/pdp/${product.id}`} style={{ textDecoration: "none" }}>
+                  <Image
+                    src={product.image}
+                    alt="ArtistryNest Product"
+                    width={405}
+                    height={475}
+                    onLoad={() => setLoading(false)}
+                  />
+                  <br />
+                  {product.product_name}
+                </Link>
+                <br />£{product.price}
+              </div>
+            ))}
+          </div>
+          {displayedProducts.length < products.length && (
+            <div className="load-button">
+              <button id="loadBtn" onClick={loadProducts} disabled={loading}>
+                Load
+              </button>
+            </div>
+          )}
         </>
-        )}
+      )}
     </>
   );
 }

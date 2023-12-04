@@ -3,6 +3,8 @@ import Link from "next/link";
 import Filter from "./FilterMenu";
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Products({ apiEndpoint }) {
   const [loading, setLoading] = useState(true);
@@ -27,6 +29,8 @@ export default function Products({ apiEndpoint }) {
       });
   }, [apiEndpoint]);
   
+  
+
   useEffect(() => {
     filteringProducts();
   }, [selectedPriceOption, selectedSortingOption]);
@@ -63,6 +67,25 @@ export default function Products({ apiEndpoint }) {
       );
       setDisplayedProducts([...displayedProducts, ...remainingProducts]);
     }
+
+    if (loading) {
+      return (
+        <div className="all-products">
+          {[...Array(12)].map((_, index) => (
+            <div key={index} className="products">
+              <Skeleton
+                className="mobile-skeleton" 
+                height={window.innerWidth <= 800 ? 200 : 342} 
+                width={292}
+              />
+              <Skeleton className="mobile-skeleton" width={292} />
+              <Skeleton className="mobile-skeleton" width={60} />
+            </div>
+          ))}
+        </div>
+      );
+    }
+
     return (
       <>
     {noProduct ? (
