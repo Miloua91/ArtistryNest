@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Filter from "./FilterMenu";
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -15,7 +15,7 @@ export default function Products({ apiEndpoint }) {
   const [filterProducts, setFilterProducts] = useState([]);
   const [noProduct, setNoProduct] = useState(false);
   const router = useRouter();
-  
+
   useEffect(() => {
     fetch(apiEndpoint)
       .then((res) => res.json())
@@ -28,8 +28,6 @@ export default function Products({ apiEndpoint }) {
         setNoProduct(sortedProducts.length === 0);
       });
   }, [apiEndpoint]);
-  
-  
 
   useEffect(() => {
     filteringProducts();
@@ -40,21 +38,21 @@ export default function Products({ apiEndpoint }) {
     "high-to-low": (a, b) => b.price - a.price,
     "alphabitical_a-z": (a, b) => a.product_name.localeCompare(b.product_name),
     "alphabitical_z-a": (a, b) => b.product_name.localeCompare(a.product_name),
-    "new": (a, b) => new Date(b.date_added) - new Date(a.date_added),
-    "old": (a, b) => new Date(a.date_added) - new Date(b.date_added),
+    new: (a, b) => new Date(b.date_added) - new Date(a.date_added),
+    old: (a, b) => new Date(a.date_added) - new Date(b.date_added),
   };
-  
+
   function filteringProducts() {
     let filteredProducts = [...filterProducts];
-      if (selectedPriceOption && filterFunctions[selectedPriceOption]) {
-        filteredProducts.sort(filterFunctions[selectedPriceOption]);
-      } else {
-        filteredProducts.sort((a, b) => a.id - b.id);
-      }
-      
-      if (selectedSortingOption && filterFunctions[selectedSortingOption]) {
-        filteredProducts.sort(filterFunctions[selectedSortingOption]);
-      }
+    if (selectedPriceOption && filterFunctions[selectedPriceOption]) {
+      filteredProducts.sort(filterFunctions[selectedPriceOption]);
+    } else {
+      filteredProducts.sort((a, b) => a.id - b.id);
+    }
+
+    if (selectedSortingOption && filterFunctions[selectedSortingOption]) {
+      filteredProducts.sort(filterFunctions[selectedSortingOption]);
+    }
     setDisplayedProducts(filteredProducts.slice(0, displayedProducts.length));
     setFilterProducts(filteredProducts);
   }
@@ -64,67 +62,70 @@ export default function Products({ apiEndpoint }) {
     const remainingProducts = filterProducts.slice(
       currentProducts,
       currentProducts + 12
-      );
-      setDisplayedProducts([...displayedProducts, ...remainingProducts]);
-    }
+    );
+    setDisplayedProducts([...displayedProducts, ...remainingProducts]);
+  }
 
-    if (loading) {
-      return (
-        <div className="all-products">
-          {[...Array(12)].map((_, index) => (
-            <div key={index} className="products">
-              <Skeleton
-                className="mobile-skeleton" 
-                height={342} 
-                width={292}
-              />
-              <Skeleton className="mobile-skeleton" width={292} />
-              <Skeleton className="mobile-skeleton" width={60} />
+  return (
+    <>
+      {noProduct ? (
+        <div className="no-product">
+          <h1>
+            We are sorry,
+            <br />
+            there are no products found that fits your search
+          </h1>
+        </div>
+      ) : (
+        <>
+          <Filter
+            onPriceChange={setSelectedPriceOption}
+            onSortingChange={setSelectedSortingOption}
+          />
+          {loading ? (
+            <div className="all-products">
+              {[...Array(12)].map((_, index) => (
+                <div key={index} className="products">
+                  <Skeleton className="mobile-skeleton" height={"12em"} />
+                  <Skeleton className="mobile-skeleton" width={292} />
+                  <Skeleton className="mobile-skeleton" width={60} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      );
-    }
-
-    return (
-      <>
-    {noProduct ? (
-      <div className="no-product"><h1>We are sorry,<br/>there are no products found that fits your search</h1></div>
-    ) : (
-      <>
-      <Filter
-      onPriceChange={setSelectedPriceOption}
-        onSortingChange={setSelectedSortingOption}
-      />
-      <div className="all-products">
-        {displayedProducts.map((product) => (
-          <div key={product.id} className="products">
-            <Link
-              href={`/products/pdp/${product.id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Image
-                src={product.image}
-                alt="ArtistryNest Product"
-                width={405}
-                height={475}
-              />
-              <br />
-              {product.product_name}
-            </Link>
-            <br />£{product.price}
-          </div>
-        ))}
-      </div>
-      {displayedProducts.length < products.length && (
-        <div className="load-button">
-        <button id="loadBtn" onClick={loadProducts} disabled={loading}>
-        Load
-        </button>
-        </div>
-        )}
+          ) : (
+            <div className="all-products">
+              {displayedProducts.map((product) => (
+                <div key={product.id} className="products">
+                  <Link
+                    href={`/products/pdp/${product.id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Image
+                      src={product.image}
+                      alt="ArtistryNest Product"
+                      width={405}
+                      height={475}
+                      blurDataURL="data:image/png>;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+R8AAvcB+vBGZskAAAAASUVORK5CYII="
+                      placeholder="blur"
+                    />
+                    <br />
+                    {product.product_name}
+                  </Link>
+                  <br />£{product.price}
+                </div>
+              ))}
+            </div>
+          )}
+          ;
+          {displayedProducts.length < products.length && (
+            <div className="load-button">
+              <button id="loadBtn" onClick={loadProducts} disabled={loading}>
+                Load
+              </button>
+            </div>
+          )}
         </>
-        )}
+      )}
     </>
   );
 }

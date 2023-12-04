@@ -35,7 +35,7 @@ export default function Esign() {
   return (
     <>
       <div className="email-signup">
-        <Image id="signup-image" src={Signup} alt="signup-image" />
+        <Image id="signup-image" src={Signup} alt="signup-image" placeholder="blur" priority/>
         <div className="join-the-club">Join the club and get the benefits</div>
         <div className="newsletter">
           Sign up for our newsletter and receive exclusive offers on new ranges,

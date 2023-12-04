@@ -27,49 +27,43 @@ export default function OurProducts({ resetCount }) {
       });
   }, []);
 
-  if (loading) {
-    return (
-      <div className="all-products">
-        {[...Array(4)].map((_, index) => (
-          <div key={index} className="products">
-            <Skeleton
-              className="mobile-skeleton" 
-              height={342} 
-              width={292}
-            />
-            <Skeleton className="mobile-skeleton" width={292} />
-            <Skeleton className="mobile-skeleton" width={60} />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   return (
     <>
       <div className="new-ceramics">
         <a>New products</a>
-        <div className="new-products">
-          {products.slice(0, 4).map((product) => (
-            <div key={product.id} className="product">
-              <Link
-                onClick={resetCount}
-                href={`/products/pdp/${product.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Image
-                  src={product.image}
-                  alt="ArtistryNest Product"
-                  width={405}
-                  height={475}
-                />
-                <br />
-                {product.product_name}
-              </Link>
-              <br />£{product.price}
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <div className="new-products">
+            {[...Array(4)].map((_, index) => (
+              <div key={index} className="product">
+                <Skeleton className="mobile-skeleton" height={"50vmin"} />
+                <Skeleton className="mobile-skeleton" width={292} />
+                <Skeleton className="mobile-skeleton" width={60} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="new-products">
+            {products.slice(0, 4).map((product) => (
+              <div key={product.id} className="product">
+                <Link
+                  onClick={resetCount}
+                  href={`/products/pdp/${product.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Image
+                    src={product.image}
+                    alt="ArtistryNest Product"
+                    width={405}
+                    height={475}
+                  />
+                  <br />
+                  {product.product_name}
+                </Link>
+                <br />£{product.price}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <div className="view-col">
         <Link href={"/products/all"}>
@@ -78,27 +72,39 @@ export default function OurProducts({ resetCount }) {
       </div>
       <div className="popular">
         <a>Our popular products</a>
-        <div className="popular-products">
-          {popularProducts.map((product) => (
-            <div key={product.id} className="our-product">
-              <Link
-                onClick={resetCount}
-                href={`/products/pdp/${product.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Image
-                  src={product.image}
-                  alt="ArtistryNest Product"
-                  width={405}
-                  height={475}
-                  sizes="100vw"
-                />
-                {product.product_name}
-              </Link>
-              <br />£{product.price}
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <div className="popular-products">
+            {[...Array(4)].map((_, index) => (
+              <div key={index} className="popular-product">
+                <Skeleton className="mobile-skeleton" height={"24em"} />
+                <Skeleton className="mobile-skeleton" width={292} />
+                <Skeleton className="mobile-skeleton" width={60} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="popular-products">
+            {popularProducts.map((product) => (
+              <div key={product.id} className="our-product">
+                <Link
+                  onClick={resetCount}
+                  href={`/products/pdp/${product.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Image
+                    src={product.image}
+                    alt="ArtistryNest Product"
+                    width={405}
+                    height={475}
+                    sizes="100vw"
+                  />
+                  {product.product_name}
+                </Link>
+                <br />£{product.price}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <div className="view-pop-col">
         <Link href={"/products/all"}>

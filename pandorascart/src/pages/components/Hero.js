@@ -12,6 +12,7 @@ export default function Hero() {
           alt="Hero-image"
           width={1920}
           height={1080}
+          placeholder="blur" 
           priority
         />
         <div className="block">

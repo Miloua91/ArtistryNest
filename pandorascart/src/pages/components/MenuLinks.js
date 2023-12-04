@@ -33,8 +33,7 @@ export default function Products({ apiEndpoint }) {
           <div key={index} className="products">
             <Skeleton
               className="mobile-skeleton" 
-              height={342} 
-              width={292}
+              height={'12em'} 
             />
             <Skeleton className="mobile-skeleton" width={292} />
             <Skeleton className="mobile-skeleton" width={60} />
