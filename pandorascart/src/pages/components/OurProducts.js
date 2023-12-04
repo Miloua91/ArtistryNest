@@ -1,8 +1,11 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function OurProducts({ resetCount }) {
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
 
@@ -11,6 +14,7 @@ export default function OurProducts({ resetCount }) {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.data);
+        setLoading(false);
       });
   }, []);
 
@@ -19,8 +23,27 @@ export default function OurProducts({ resetCount }) {
       .then((res) => res.json())
       .then((data) => {
         setPopularProducts(data.data);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="all-products">
+        {[...Array(4)].map((_, index) => (
+          <div key={index} className="products">
+            <Skeleton
+              className="mobile-skeleton" 
+              height={342} 
+              width={292}
+            />
+            <Skeleton className="mobile-skeleton" width={292} />
+            <Skeleton className="mobile-skeleton" width={60} />
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <>
