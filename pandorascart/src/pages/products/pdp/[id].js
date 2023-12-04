@@ -104,7 +104,7 @@ export default function ProductDetail() {
       <Head>
         <title>{product.product_name} | ArtistryNest</title>
       </Head>
-      {loading ? (
+      {loading == false? (
         <>
           <div className="pdp">
             <div className="pd-image">
@@ -137,7 +137,7 @@ export default function ProductDetail() {
                   <p>{count}</p>
                   <button onClick={increment}>+</button>
                 </div>
-                <button onClick={handleCart} id="addToCartBtn">
+                <button id="addToCartBtn">
                   Add to cart
                 </button>
               </div>
