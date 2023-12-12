@@ -4,6 +4,7 @@ import Footer from "@/pages/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import { SearchProvider } from "@/context/SearchContext";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function Layout({ children }) {
   return (
@@ -20,6 +21,7 @@ export default function Layout({ children }) {
           <Header />
           <main>{children}</main>
           <SpeedInsights />
+          <Analytics />
         </CartProvider>
       </SearchProvider>
       <Footer />
