@@ -3,6 +3,7 @@ import Header from "@/pages/components/Header";
 import Footer from "@/pages/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import { SearchProvider } from "@/context/SearchContext";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function Layout({ children }) {
   return (
@@ -18,6 +19,7 @@ export default function Layout({ children }) {
         <CartProvider>
           <Header />
           <main>{children}</main>
+          <SpeedInsights />
         </CartProvider>
       </SearchProvider>
       <Footer />

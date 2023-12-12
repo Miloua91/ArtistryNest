@@ -27,15 +27,12 @@ export default function Account() {
       const isValid = formRef.current.checkValidity();
 
       if (!isValid) {
-        // If the form is not valid, set the feedback message and return
         setFormValidityMessage("Please fill out all required fields.");
         return;
       }
 
-      // Reset the form validity message when the form is valid
       setFormValidityMessage("");
 
-      // Rest of your code for form submission...
       const formData = new FormData(formRef.current);
 
       const addressName = formData.get("address-name");
@@ -72,7 +69,8 @@ export default function Account() {
           .from("profiles")
           .select(
             "address_name, address1, address2, phone, city, zip_code, country"
-          );
+          )
+          .eq("id", user.id);
 
         if (error) {
           console.error("Error fetching data:", error);
