@@ -61,7 +61,8 @@ export default function Products({ apiEndpoint }) {
                 alt="ArtistryNest Product"
                 width={405}
                 height={475}
-                onLoad={() => setLoading(false)}
+                blurDataURL="data:image/png>;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+R8AAvcB+vBGZskAAAAASUVORK5CYII="
+                placeholder="blur"
               />
               <br />
               {product.product_name}

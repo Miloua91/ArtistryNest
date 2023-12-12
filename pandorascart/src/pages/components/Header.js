@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { useSearch } from "@/context/SearchContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import searchIcon from "@/pages/icons/Search.svg";
 import cartIcon from "@/pages/icons/Shopping--cart.svg";
 import userIcon from "@/pages/icons/User--avatar.svg";
@@ -12,8 +13,16 @@ export default function Header() {
   const { cart } = useCart();
   const router = useRouter();
   const { searchQuery, updateSearchQuery } = useSearch();
-
+  const [accountModal, setAccountModal] = useState(false);
   const [isSearchVisible, setSearchVisible] = useState(false);
+  const supabaseClient = useSupabaseClient();
+  const user = useUser();
+
+  const handleLogout = async () => {
+    let { error } = await supabaseClient.auth.signOut();
+    router.refresh;
+    router.push("/");
+  };
 
   function handleInputQuery(e) {
     const query = e.target.value;
@@ -61,6 +70,33 @@ export default function Header() {
     router.push("/products/all");
   };
 
+  const handleAccountModal = () => {
+    if (accountModal) {
+      setAccountModal(false);
+    } else {
+      setAccountModal(true);
+    }
+  };
+
+  const handleOutsideClick = (e) => {
+    // Check if the click is outside the account modal
+    if (
+      accountModal &&
+      e.target.closest('.account-modal') === null &&
+      e.target.closest('.account') === null
+    ) {
+      setAccountModal(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [accountModal]);
+
   return (
     <>
       <div className="name">
@@ -98,7 +134,24 @@ export default function Header() {
               {cart.count}
             </span>
           )}
-          <Image src={userIcon} alt="User" />
+          <div className="account">
+            <Image src={userIcon} alt="Account" onClick={handleAccountModal} />
+            <div className={`account-modal ${accountModal ? "active" : ""}`}>
+              {user ? (
+                <div className="account-info">
+                <div className="account-login">{user.user_metadata.full_name}</div>
+                <Link href={"/account"}><div className="account-login">Account</div></Link>
+                <button onClick={handleLogout}>Log out</button>
+                </div>
+              ) : (
+                <div className="account-signup">
+                <Link href={"/login"}><div className="account-login">Log in</div></Link>
+                <Link href={'/signup'}><div className="account-login">Sign up</div></Link>
+                </div>
+              )}
+              
+            </div>
+          </div>
         </div>
       </div>
       <div className="bottom-nav">

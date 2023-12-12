@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Filter from "./FilterMenu";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -115,7 +114,6 @@ export default function Products({ apiEndpoint }) {
               ))}
             </div>
           )}
-          ;
           {displayedProducts.length < products.length && (
             <div className="load-button">
               <button id="loadBtn" onClick={loadProducts} disabled={loading}>

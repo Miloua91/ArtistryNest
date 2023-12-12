@@ -9,6 +9,14 @@
 body {
   margin: 0;
   padding: 0;
+  position: relative;
+  min-height: 100vh;
+}
+body.modal-open {
+  overflow: hidden;
+}
+main{
+  min-height: 83vh;
 }
 @font-face {
   font-family: clashDisplay;
@@ -120,6 +128,74 @@ body {
 .cart-count:hover {
   background-color: var(--butt);
 }
+.account-modal{
+  display: none;
+}
+.account-modal a{
+  color: var(--nav-bottom);
+}
+.account-modal.active{
+  display: block;
+  position: relative;
+  border-radius: 3px;
+  width: 100px;
+  height: auto;
+  right: 80px;
+  opacity: 1;
+  background-color: var(--nav-name);
+  color: var(--nav-bottom);
+  z-index: 1;
+  cursor: auto;
+  font-family: satoshi;
+  font-size: 13px;
+}
+.account-info{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.account-info > * {
+  height: 28px;
+  width: 100%;
+}
+.account-info button {
+  background-color: var(--nav-name);
+  color: var(--nav-bottom);
+  border: none;
+  outline: none;
+}
+.account-info button:hover{
+  background-color: var(--foot-back);
+  cursor: pointer;
+}
+.account-info a:hover{
+  background-color: var(--foot-back);
+}
+.account-info a{
+  border-top: solid 1px var(--nav-bottom);
+  border-bottom: solid 1px var(--nav-bottom);
+} 
+.account-login{
+  position: relative;
+  top: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.account-signup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.account-signup > * {
+  width: 100%;
+  height: 28px;
+  text-align: center;
+  border-top: solid 1px var(--nav-bottom);
+}
+.account-signup a:hover{
+  background-color: var(--foot-back);
+}
 .bottom-nav {
   position: relative;
   display: flex;
@@ -135,7 +211,7 @@ body {
   color: var(--nav-color);
   text-decoration: none;
 }
-.bottom-nav > * > * > *{
+.bottom-nav > * > * > * {
   color: var(--nav-color);
   text-decoration: none;
 }
@@ -159,7 +235,6 @@ body {
   transform: scaleX(1);
 }
 .foot {
-  position: relative;
   display: flex;
   justify-content: space-evenly;
   font-family: satoshiLight;
@@ -176,10 +251,10 @@ body {
   font-size: 14px;
   margin-bottom: 5px;
 }
-.categories > *{
+.categories > * {
   display: flex;
 }
-.menu > *{
+.menu > * {
   display: flex;
 }
 .company > * {
@@ -327,7 +402,7 @@ body {
   font-family: satoshi;
   font-size: 20px;
 }
-.product{
+.product {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -628,7 +703,7 @@ input[type="checkbox"]:checked::before {
   color: var(--butt);
   margin-bottom: 50px;
 }
-.products{
+.products {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -850,7 +925,7 @@ input[type="checkbox"]:checked::before {
   width: 100px;
   text-align: center;
 }
-.removeBtn{
+.removeBtn {
   position: relative;
   width: 28px;
   height: 28px;
@@ -860,13 +935,13 @@ input[type="checkbox"]:checked::before {
   margin-left: -55px;
   margin-top: 1px;
 }
-.removeBtn img{
+.removeBtn img {
   position: absolute;
   width: 36px;
   margin-top: -27px;
   margin-left: -18px;
 }
-.removeBtn:hover{
+.removeBtn:hover {
   opacity: 90%;
   cursor: pointer;
 }
@@ -937,18 +1012,18 @@ input[type="checkbox"]:checked::before {
 .search-input-container input:focus {
   outline-color: var(--nav-color);
 }
-.no-product{
+.no-product {
   text-align: center;
   width: 100%;
   height: 300px;
   margin: auto;
 }
-.no-product > *{
+.no-product > * {
   font-size: 28px;
   margin-top: 100px;
   font-family: clashdisplay;
 }
-.contact{
+.contact {
   display: flex;
   margin-left: 60px;
   margin-right: 60px;
@@ -957,26 +1032,26 @@ input[type="checkbox"]:checked::before {
   font-size: 16px;
   color: var(--nav-name);
 }
-.contact-form{
+.contact-form {
   display: flex;
   flex-direction: column;
   width: 90%;
   height: 650px;
   background-color: var(--nav-bottom);
 }
-.contact-form h1{
+.contact-form h1 {
   font-family: clashdisplay;
   margin-bottom: -10px;
 }
-.contact-form > *{
+.contact-form > * {
   margin-left: 60px;
   margin-right: 200px;
   width: 47%;
 }
-.contact-input{
+.contact-input {
   position: relative;
 }
-.contact-input input{
+.contact-input input {
   width: 100%;
   height: 40px;
   margin-bottom: 10px;
@@ -988,23 +1063,23 @@ input[type="checkbox"]:checked::before {
   outline: none;
   background-color: var(--nav-bottom);
 }
-.contact.input input:focus{
+.contact.input input:focus {
   border-bottom: solid var(--nav-bottom);
 }
-.contact-city{
+.contact-city {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-#contact-postcode{
+#contact-postcode {
   position: absolute;
   width: 35%;
   right: -20px;
 }
-#contact-city{
+#contact-city {
   width: 110%;
 }
-#contact-message{
+#contact-message {
   position: relative;
   width: 100%;
   height: 40px;
@@ -1017,10 +1092,10 @@ input[type="checkbox"]:checked::before {
   padding-left: 15px;
   background-color: var(--nav-bottom);
 }
-#contact-message:focus{
+#contact-message:focus {
   height: 100px;
 }
-#contact-submitBtn{
+#contact-submitBtn {
   font-family: satoshi;
   font-size: 18px;
   width: 100%;
@@ -1031,32 +1106,374 @@ input[type="checkbox"]:checked::before {
   cursor: pointer;
   border-radius: 2px;
 }
-.submit-section{
+.submit-section {
   display: flex;
   flex-direction: column;
   margin-right: -17px;
 }
-.submit-section > *{
+.submit-section > * {
   margin-bottom: 15px;
 }
-.contact-info{
+.contact-info {
   display: flex;
   justify-content: space-between;
 }
-.contact-info > *{
+.contact-info > * {
   text-decoration: none;
   color: var(--nav-name);
   font-size: 18px;
 }
-.contact-map{
+.contact-map {
   position: relative;
   margin-top: 20px;
   margin-left: -260px;
   width: 50%;
 }
-.contact-map > *{
+.contact-map > * {
   width: 100%;
   height: 550px;
+}
+.sign-in-page {
+  position: relative;
+  display: flex;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-bottom: 60px;
+  background-color: var(--nav-bottom);
+}
+.sign-in-img {
+  width: 50%;
+  height: auto;
+  margin: 20px;
+}
+.sign-in-img img {
+  width: 90%;
+  height: auto;
+}
+.sign-in-form {
+  margin-top: 15px;
+  position: relative;
+  align-self: center;
+  width: 374px;
+  height: auto;
+}
+.sign-in-form input {
+  width: 270px;
+  height: 45px;
+  margin: 11px;
+  font-family: satoshi;
+  font-size: 16px;
+  padding-left: 15px;
+  padding-right: 55px;
+}
+.sign-in-form input::placeholder {
+  opacity: 0;
+}
+.sign-in-form input:focus::placeholder {
+  opacity: 0;
+}
+.sign-in-name {
+  display: flex;
+}
+.sign-in-name input {
+  width: 86px;
+}
+#lastName:focus + label,
+#lastName:not(:placeholder-shown) + label {
+  left: 195px;
+}
+#lastLabel {
+  left: 210px;
+}
+.sign-in-form label {
+  position: absolute;
+  top: 25px;
+  left: 28px;
+  color: #777;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  font-family: satoshi;
+  font-size: 16px;
+}
+.sign-in-form input:focus + label,
+.sign-in-form input:not(:placeholder-shown) + label {
+  top: -11px;
+  left: 12px;
+  font-family: satoshi;
+  font-size: 16px;
+  color: var(--nav-name);
+}
+#passwd:focus + label,
+#passwd:not(:placeholder-shown) + label {
+  top: 62px;
+  left: 14px;
+  font-family: satoshi;
+  font-size: 16px;
+  color: var(--nav-name);
+}
+#passwdLabel {
+  position: absolute;
+  top: 98px;
+  left: 28px;
+  color: #777;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  font-family: satoshi;
+  font-size: 16px;
+}
+.password-container {
+  position: relative;
+}
+.toggle-password {
+  position: absolute;
+  top: 175px;
+  left: 310px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #777;
+}
+.toggle-password-login {
+  position: absolute;
+  top: 103px;
+  left: 308px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #777;
+}
+.sign-up-button {
+  position: relative;
+  left: 12px;
+  font-family: satoshi;
+  display: flex;
+  gap: 75px;
+}
+.sign-up-button p {
+  margin-top: 0;
+  color: var(--nav-name);
+  width: 170px;
+}
+.sign-up-button a {
+  color: var(--foot-back);
+}
+.sign-up-button button {
+  height: 45px;
+  width: 100px;
+  background-color: var(--butt);
+  color: var(--nav-bottom);
+  font-family: satoshi;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.sign-up-button button:active {
+  background-color: var(--nav-bottom);
+  color: var(--butt);
+}
+.sign-up-button button:hover {
+  opacity: 90%;
+}
+.forgot {
+  margin-top: -8px;
+  margin-bottom: 20px;
+}
+.forgot > * {
+  position: relative;
+  color: var(--foot-back);
+  font-family: satoshi;
+  left: 195px;
+}
+.sign-in-email label {
+  top: 98px;
+  left: 28px;
+}
+.sign-in-email input:focus + label,
+.sign-in-email input:not(:placeholder-shown) + label {
+  top: 62px;
+  left: 12px;
+}
+#signpass:focus + label,
+#signpass:not(:placeholder-shown) + label {
+  top: 135px;
+  left: 14px;
+}
+#signLabel {
+  top: 171px;
+  left: 28px;
+}
+.password-conditions {
+  font-family: satoshi;
+  font-size: 15px;
+  opacity: 1;
+  max-height: 1000px;
+  transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+  margin-top: 0;
+}
+.password-conditions.active {
+  opacity: 0;
+  max-height: 0;
+}
+.my-account{
+  margin: 0 60px 60px 60px;
+  font-family: clashDisplay;
+  background-color: var(--nav-bottom);
+  padding: 60px;
+  color: var(--nav-name);
+}
+.my-account p{
+  margin-top: -5px;
+}
+.my-account-line{
+  position: relative;
+  top: -15px;
+  background-color: #dcdbe0;
+  height: 2px;
+  border: none;
+}
+.order-line{
+  position: relative;
+  top: -15px;
+  background-color: #dcdbe0;
+  height: 2px;
+  border: none;
+}
+.address-line{
+  position: relative;
+  top: -15px;
+  background-color: #dcdbe0;
+  height: 2px;
+  border: none;
+}
+.my-account-content{
+  display: flex;
+  gap: 50px;
+}
+.my-account-order{
+  width: 70%;
+}
+.my-account-address{
+  width: 30%;
+}
+.my-account-address button{
+  height: 45px;
+  width: 100%;
+  background-color: var(--butt);
+  color: var(--nav-bottom);
+  font-family: satoshi;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.my-account-address button:hover{
+  background-color: var(--foot-back);
+  color: var(--nav-bottom);
+}
+.my-account-address button:active{
+  background-color: var(--nav-bottom);
+  color: var(--butt);
+}
+.add-address-modal{
+  display: flex;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-family: satoshi;
+  font-size: 16px;
+  color: var(--nav-name);
+}
+.address-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  background-color: var(--nav-bottom);
+}
+.address-form h1 {
+  font-family: clashdisplay;
+  margin-bottom: -10px;
+}
+.address-form > * {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 85%;
+}
+.address-input {
+  position: relative;
+}
+.address-input input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  font-family: satoshi;
+  font-size: 16px;
+  padding-left: 15px;
+  border-style: hidden;
+  border-bottom: solid var(--butt);
+  outline: none;
+  background-color: var(--nav-bottom);
+}
+.address.input input:focus {
+  border-bottom: solid var(--nav-bottom);
+}
+.address-city {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+#address-postcode {
+  position: absolute;
+  width: 35%;
+  right: -20px;
+}
+#address-city {
+  width: 110%;
+}
+#address-message {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  border: none;
+  border-bottom: solid var(--butt);
+  outline: none;
+  font-family: satoshi;
+  font-size: 16px;
+  padding-left: 15px;
+  background-color: var(--nav-bottom);
+}
+#address-message:focus {
+  height: 100px;
+}
+#address-submitBtn {
+  font-family: satoshi;
+  font-size: 18px;
+  width: 100%;
+  height: 56px;
+  border: none;
+  background-color: var(--butt);
+  color: var(--nav-bottom);
+  cursor: pointer;
+  border-radius: 2px;
+}
+.submit-section {
+  display: flex;
+  flex-direction: column;
+  margin-right: -17px;
+}
+.submit-section > * {
+  margin-bottom: 15px;
+}
+.address-info {
+  display: flex;
+  justify-content: space-between;
+}
+.address-info > * {
+  text-decoration: none;
+  color: var(--nav-name);
+  font-size: 18px;
 }
 
 
@@ -1197,7 +1614,7 @@ input[type="checkbox"]:checked::before {
   #viewCol {
     width: 100%;
   }
-  .view-col{
+  .view-col {
     display: block;
     margin: 18px;
   }
@@ -1230,10 +1647,10 @@ input[type="checkbox"]:checked::before {
     font-size: 14px;
     margin-left: 0px;
   }
-  #viewPopCol{
+  #viewPopCol {
     width: 100%;
   }
-  .view-pop-col{
+  .view-pop-col {
     display: block;
     margin: 18px;
   }
@@ -1452,7 +1869,7 @@ input[type="checkbox"]:checked::before {
     text-align: center;
     top: 160px;
   }
-  .removeBtn{
+  .removeBtn {
     position: relative;
     width: 26px;
     height: 26px;
@@ -1462,13 +1879,13 @@ input[type="checkbox"]:checked::before {
     margin-left: 10px;
     margin-top: 0px;
   }
-  .removeBtn img{
+  .removeBtn img {
     position: absolute;
     width: 36px;
     margin-top: -61px;
     margin-left: -18px;
   }
-  .removeBtn:hover{
+  .removeBtn:hover {
     opacity: 90%;
     cursor: pointer;
   }
@@ -1491,38 +1908,155 @@ input[type="checkbox"]:checked::before {
     left: 0;
     transition: width 0.5s ease-out;
   }
-  .contact{
+  .contact {
     flex-direction: column;
     margin-left: 18px;
     margin-right: 18px;
     margin-bottom: 18px;
   }
-  .contact-form{
+  .contact-form {
     width: 100%;
     height: 710px;
   }
-  .contact-form > *{
+  .contact-form > * {
     margin-left: 18px;
     margin-right: 18px;
     width: 80%;
   }
-  .contact-info{
+  .contact-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 5px;
   }
-  .contact-map{
+  .contact-map {
     position: relative;
     margin-top: 20px;
     margin-left: 0;
     width: 100%;
   }
-  .contact-map > *{
+  .contact-map > * {
     width: 100%;
     height: 450px;
   }
+  .sign-in-page {
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-bottom: 56px;
+  }
+  .sign-in-img {
+    display: none;
+  }
+  .sign-in-form {
+    margin: 30px auto;
+    width: 240px;
+    height: auto;
+  }
+  .sign-in-form input {
+    width: 140px;
+  }
+  .sign-in-name {
+    display: flex;
+    flex-direction: column;
+  }
+  .sign-in-name input {
+    width: 140px;
+  }
+  #lastName:focus + label,
+  #lastName:not(:placeholder-shown) + label {
+    top: 62px;
+    left: 13px;
+  }
+  #lastLabel {
+    top: 98px;
+    left: 28px;
+  }
+  .sign-in-form label {
+    top: 25px;
+    left: 28px;
+  }
+  .sign-in-form input:focus + label,
+  .sign-in-form input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 12px;
+  }
+  #passwd:focus + label,
+  #passwd:not(:placeholder-shown) + label {
+    top: 62px;
+    left: 14px;
+  }
+  #passwdLabel {
+    top: 98px;
+    left: 28px;
+  }
+  .toggle-password {
+    top: 248px;
+    left: 180px;
+  }
+  .toggle-password-login {
+    left: 180px;
+  }
+  .sign-up-button {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  .sign-up-button button {
+    width: 213px;
+  }
+  .forgot > * {
+    left: 65px;
+  }
+  .sign-in-email label {
+    top: 171px;
+    left: 28px;
+  }
+  .sign-in-email input:focus + label,
+  .sign-in-email input:not(:placeholder-shown) + label {
+    top: 135px;
+    left: 12px;
+  }
+  #signpass:focus + label,
+  #signpass:not(:placeholder-shown) + label {
+    top: 208px;
+    left: 14px;
+  }
+  #signLabel {
+    top: 243px;
+    left: 28px;
+  }
+  .my-account{
+    margin: 0 18px 60px 18px;
+    padding: 18px;
+  }
+  .my-account-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .my-account-order{
+    width: 100%;
+  }
+  .my-account-address{
+    width: 100%;
+  }
+  .address-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: var(--nav-bottom);
+  }
+  .address-form h1 {
+    font-family: clashdisplay;
+    margin-bottom: -10px;
+  }
+  .address-form > * {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 78%;
+  }
 }
+
 
 @media screen and (min-width: 360px) and (max-width: 512px) {
   .drop-down {
@@ -1677,7 +2211,7 @@ input[type="checkbox"]:checked::before {
   #viewCol {
     width: 100%;
   }
-  .view-col{
+  .view-col {
     display: block;
   }
   .popular a {
@@ -1709,10 +2243,10 @@ input[type="checkbox"]:checked::before {
     font-size: 16px;
     margin-left: 0px;
   }
-  #viewPopCol{
+  #viewPopCol {
     width: 100%;
   }
-  .view-pop-col{
+  .view-pop-col {
     display: block;
     margin: 20px;
   }
@@ -1916,7 +2450,7 @@ input[type="checkbox"]:checked::before {
     text-align: center;
     top: 120px;
   }
-  .removeBtn{
+  .removeBtn {
     position: relative;
     width: 28px;
     height: 28px;
@@ -1926,11 +2460,11 @@ input[type="checkbox"]:checked::before {
     margin-left: 10px;
     margin-top: 0px;
   }
-  .removeBtn img{
+  .removeBtn img {
     position: absolute;
     width: 36px;
   }
-  .removeBtn:hover{
+  .removeBtn:hover {
     opacity: 90%;
     cursor: pointer;
   }
@@ -1963,36 +2497,105 @@ input[type="checkbox"]:checked::before {
     width: 100%;
     left: 0;
   }
-  .contact{
+  .contact {
     flex-direction: column;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
   }
-  .contact-form{
+  .contact-form {
     width: 100%;
     height: 690px;
   }
-  .contact-form > *{
+  .contact-form > * {
     margin-left: 20px;
     margin-right: 20px;
     width: 80%;
   }
-  .contact-info{
+  .contact-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 5px;
   }
-  .contact-map{
+  .contact-map {
     position: relative;
     margin-top: 20px;
     margin-left: 0;
     width: 100%;
   }
-  .contact-map > *{
+  .contact-map > * {
     width: 100%;
     height: 450px;
+  }
+  .sign-in-page {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 56px;
+  }
+  .sign-in-img {
+    display: none;
+  }
+  .sign-in-form {
+    margin: 50px auto;
+    width: 310px;
+  }
+  .sign-in-form input {
+    width: 216px;
+  }
+  .sign-in-name input {
+    width: 60px;
+  }
+  #lastName:focus + label,
+  #lastName:not(:placeholder-shown) + label {
+    left: 169px;
+  }
+  #lastLabel {
+    left: 184px;
+  }
+  .sign-up-button {
+    gap: 19px;
+  }
+  .toggle-password {
+    top: 175px;
+    left: 255px;
+  }
+  .toggle-password-login {
+    left: 255px;
+  }
+  .forgot > * {
+    left: 140px;
+  }
+  .my-account{
+    margin: 0 20px 60px 20px;
+    padding: 20px;
+  }
+  .my-account-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .my-account-order{
+    width: 100%;
+  }
+  .my-account-address{
+    width: 100%;
+  }
+  .address-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: var(--nav-bottom);
+  }
+  .address-form h1 {
+    font-family: clashdisplay;
+    margin-bottom: -10px;
+  }
+  .address-form > * {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 85%;
   }
 }
 
@@ -2284,7 +2887,7 @@ input[type="checkbox"]:checked::before {
     text-align: center;
     top: 160px;
   }
-  .removeBtn{
+  .removeBtn {
     position: relative;
     width: 28px;
     height: 28px;
@@ -2294,11 +2897,11 @@ input[type="checkbox"]:checked::before {
     margin-left: 10px;
     margin-top: 0px;
   }
-  .removeBtn img{
+  .removeBtn img {
     position: absolute;
     width: 36px;
   }
-  .removeBtn:hover{
+  .removeBtn:hover {
     opacity: 90%;
     cursor: pointer;
   }
@@ -2308,28 +2911,39 @@ input[type="checkbox"]:checked::before {
   .search-input-container input {
     width: 100%;
   }
-  .contact{
+  .contact {
     flex-direction: column;
     margin-left: 60px;
     margin-right: 60px;
     margin-bottom: 60px;
   }
-  .contact-form{
+  .contact-form {
     width: 100%;
   }
-  .contact-form > *{
+  .contact-form > * {
     margin-left: 60px;
     margin-right: 60px;
     width: 78%;
   }
-  .contact-map{
+  .contact-map {
     position: relative;
     margin-top: 20px;
     margin-left: 0;
     width: 100%;
   }
-  .contact-map > *{
+  .contact-map > * {
     width: 100%;
+  }
+  .sign-in-page {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 56px;
+  }
+  .sign-in-img {
+    display: none;
+  }
+  .sign-in-form {
+    margin: 20px auto;
   }
 }
 @media screen and (min-width: 512px) and (max-width: 780px) {
@@ -2340,7 +2954,7 @@ input[type="checkbox"]:checked::before {
     flex-direction: column;
   }
   .about-idea {
-    height: 400px;
+    height: auto;
   }
   .about-idea > h2 {
     margin-top: 60px;
@@ -2360,15 +2974,46 @@ input[type="checkbox"]:checked::before {
   .search-input-container input {
     width: 100%;
   }
-  .contact-info{
+  .contact-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 5px;
   }
-  .contact-form > *{
+  .contact-form > * {
     margin-left: 60px;
     margin-right: 60px;
     width: 70%;
+  }
+  .my-account{
+    margin: 0 60px 60px 60px;
+    padding: 60px;
+  }
+  .my-account-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .my-account-order{
+    width: 100%;
+  }
+  .my-account-address{
+    width: 100%;
+  }
+  .address-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: var(--nav-bottom);
+  }
+  .address-form h1 {
+    font-family: clashdisplay;
+    margin-bottom: -10px;
+  }
+  .address-form > * {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 85%;
   }
 }

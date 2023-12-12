@@ -20,21 +20,19 @@ export default function Contact() {
               placeholder="Name"
               required
             />
-            <input type="text" name="street" placeholder="Street" required />
+            <input type="text" name="street" placeholder="Street" />
             <div className="contact-city">
               <input
                 id="contact-city"
                 type="text"
                 name="city"
                 placeholder="City"
-                required
               />
               <input
                 id="contact-postcode"
                 type="text"
                 name="postcode"
                 placeholder="Postcode"
-                required
               />
             </div>
             <input type="tel" name="tel" placeholder="Phone number" />

@@ -55,6 +55,8 @@ export default function OurProducts({ resetCount }) {
                     alt="ArtistryNest Product"
                     width={405}
                     height={475}
+                    blurDataURL="data:image/png>;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+R8AAvcB+vBGZskAAAAASUVORK5CYII="
+                    placeholder="blur"
                   />
                   <br />
                   {product.product_name}
@@ -97,6 +99,8 @@ export default function OurProducts({ resetCount }) {
                     width={405}
                     height={475}
                     sizes="100vw"
+                    blurDataURL="data:image/png>;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+R8AAvcB+vBGZskAAAAASUVORK5CYII="
+                    placeholder="blur"
                   />
                   {product.product_name}
                 </Link>
