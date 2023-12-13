@@ -1106,6 +1106,18 @@ input[type="checkbox"]:checked::before {
   cursor: pointer;
   border-radius: 2px;
 }
+.contact-sub{
+  text-align: center;
+  font-family: satoshi;
+  font-size: 32px;
+}
+.contact-sub a{
+  text-decoration: none;
+  color: var(--foot-back);
+}
+.contact-sub a:hover{
+  text-decoration: underline;
+}
 .submit-section {
   display: flex;
   flex-direction: column;
@@ -1474,6 +1486,12 @@ input[type="checkbox"]:checked::before {
   text-decoration: none;
   color: var(--nav-name);
   font-size: 18px;
+}
+.confirmation-page{
+  text-align: center;
+  font-family: satoshi;
+  font-size: 18px;
+  color: var(--nav-name);
 }
 
 

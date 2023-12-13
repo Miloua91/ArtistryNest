@@ -13,11 +13,12 @@ export async function middleware(req: NextRequest) {
   const isAccountPath = req.nextUrl.pathname === '/account';
   const isLoginPath = req.nextUrl.pathname === '/login';
   const isSignupPath = req.nextUrl.pathname === '/signup';
+  const isConfirmPath = req.nextUrl.pathname === '/confirmation';
 
   // Check auth condition
   if (session) {
     // If the user is authenticated, restrict access to login and sign-up pages.
-    if (isLoginPath || isSignupPath) {
+    if (isLoginPath || isSignupPath || isConfirmPath) {
       const redirectUrl = req.nextUrl.clone();
       redirectUrl.pathname = '/';
       redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname);
@@ -28,7 +29,7 @@ export async function middleware(req: NextRequest) {
     return res;
   } else {
     // If the user is not authenticated, allow access to login and sign-up pages.
-    if (isLoginPath || isSignupPath) {
+    if (isLoginPath || isSignupPath || isConfirmPath) {
       return res;
     }
 
@@ -47,5 +48,5 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   // Update the matcher to include the '/account', '/login', and '/signup' paths.
-  matcher: ['/middleware-protected/:path*', '/account', '/login', '/signup'],
+  matcher: ['/middleware-protected/:path*', '/account', '/login', '/signup', '/confirmation'],
 };

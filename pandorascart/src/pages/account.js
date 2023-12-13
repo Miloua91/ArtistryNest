@@ -8,15 +8,6 @@ export default function Account() {
   const supabaseClient = useSupabaseClient();
   const user = useUser();
   const [isOpened, setIsOpened] = useState(false);
-  const [address, setAddress] = useState({
-    name: "",
-    address1: "",
-    address2: "",
-    tel: "",
-    city: "",
-    postcode: "",
-    country: "",
-  });
   const [loading, setLoading] = useState(true);
   const [retrievedAddress, setRetrievedAddress] = useState("");
   const [formValidityMessage, setFormValidityMessage] = useState("");
@@ -86,12 +77,13 @@ export default function Account() {
     fetchData();
   }, [onProceed]);
 
+
   return (
     <>
       <div className="my-account">
         <h1>My Account</h1>
         <hr className="my-account-line" />
-        <p>What is up my mokh</p>
+        <p>What's up {user.user_metadata.full_name.split(' ')[0]} </p>
         <div className="my-account-content">
           <div className="my-account-order">
             <h3>My Orders</h3>
@@ -103,23 +95,32 @@ export default function Account() {
             <hr className="address-line" />
             {loading ? (
               <Skeleton height={120} style={{ marginBottom: "20px" }} />
-            ) : retrievedAddress && retrievedAddress.length > 0 ? (
-              <p>
-                {retrievedAddress[0].address_name}
-                <br />
-                {retrievedAddress[0].address1}
-                <br />
-                {retrievedAddress[0].address2}
-                <br />
-                {retrievedAddress[0].city}
-                <br />
-                {retrievedAddress[0].zip_code}
-                <br />
-                {retrievedAddress[0].country}
-              </p>
             ) : (
-              <p>Add an address to your account.</p>
+              <>
+                {retrievedAddress &&
+                retrievedAddress[0] &&
+                Object.values(retrievedAddress[0]).some(
+                  (value) => value !== null
+                ) ? (
+                  <p>
+                    {retrievedAddress[0].address_name}
+                    <br />
+                    {retrievedAddress[0].address1}
+                    <br />
+                    {retrievedAddress[0].address2}
+                    <br />
+                    {retrievedAddress[0].city}
+                    <br />
+                    {retrievedAddress[0].zip_code}
+                    <br />
+                    {retrievedAddress[0].country}
+                  </p>
+                ) : (
+                  <p>Add an address to your account.</p>
+                )}
+              </>
             )}
+
             {formValidityMessage && (
               <p style={{ color: "red" }}>{formValidityMessage}</p>
             )}
