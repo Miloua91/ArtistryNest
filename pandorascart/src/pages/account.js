@@ -83,7 +83,9 @@ export default function Account() {
       <div className="my-account">
         <h1>My Account</h1>
         <hr className="my-account-line" />
-        <p>What's up {user.user_metadata.full_name.split(' ')[0]} </p>
+        {user && (
+          <p>What's up {user.user_metadata.full_name.split(' ')[0]} </p>
+        )}
         <div className="my-account-content">
           <div className="my-account-order">
             <h3>My Orders</h3>
