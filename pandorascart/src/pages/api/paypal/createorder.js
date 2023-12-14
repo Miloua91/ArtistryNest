@@ -46,11 +46,11 @@ const createOrder = async (cart) => {
     intent: "CAPTURE",
     purchase_units: cart.map((item) => ({
       amount: {
-        currency_code: "USD",
+        currency_code: "GBP",
         value: `${item.quantity * item.price}`,
         breakdown: {
           item_total: {
-            currency_code: "USD",
+            currency_code: "GBP",
             value: `${item.quantity * item.price}`,
           },
         },
@@ -64,7 +64,7 @@ const createOrder = async (cart) => {
           name: `${item.product_name}`,
           quantity: `${item.quantity}`,
           unit_amount: {
-            currency_code: "USD",
+            currency_code: "GBP",
             value: `${item.price}`,
           },
         },
