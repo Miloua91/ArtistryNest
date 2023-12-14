@@ -14,6 +14,7 @@ export async function middleware(req: NextRequest) {
   const isLoginPath = req.nextUrl.pathname === '/login';
   const isSignupPath = req.nextUrl.pathname === '/signup';
   const isConfirmPath = req.nextUrl.pathname === '/confirmation';
+  const isCheckoutPath = req.nextUrl.pathname === '/checkout';
 
   // Check auth condition
   if (session) {
@@ -40,6 +41,13 @@ export async function middleware(req: NextRequest) {
       redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname);
       return NextResponse.redirect(redirectUrl);
     }
+
+    if (isCheckoutPath) {
+      const redirectUrl = req.nextUrl.clone();
+      redirectUrl.pathname = '/signup';
+      redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname);
+      return NextResponse.redirect(redirectUrl);
+    }
   }
 
   // Auth condition not met for other paths, allow access.
@@ -48,5 +56,5 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   // Update the matcher to include the '/account', '/login', and '/signup' paths.
-  matcher: ['/middleware-protected/:path*', '/account', '/login', '/signup', '/confirmation'],
+  matcher: ['/middleware-protected/:path*', '/account', '/login', '/signup', '/confirmation', '/checkout'],
 };

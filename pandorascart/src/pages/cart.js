@@ -1,5 +1,7 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useCart } from "@/context/CartContext";
+import { useUser } from "@supabase/auth-helpers-react";
 import { toast } from "sonner";
 import Image from "next/image";
 import RemoveIcon from "@/pages/img/remove-icon.svg";
@@ -7,6 +9,7 @@ import RemoveIcon from "@/pages/img/remove-icon.svg";
 export default function Cart() {
   const { updateItemCount, undoRemove, cart, calculateSubtotal } = useCart();
   const { items } = cart;
+  const user  = useUser();
 
   const handleIncrease = (productId) => {
     const { updatedItems, currentCount } = updateItemCount(productId, 1);
@@ -120,7 +123,7 @@ export default function Cart() {
                 <h2 className="checkout-sub">
                   Subtotal <a>£{calculateSubtotal()}</a>
                 </h2>
-                <button className="checkoutBtn">Go to checkout</button>
+                <button onClick={() => user ? ('') : (toast.info('You need to sign up or log in to checkout')) } className="checkoutBtn"><Link href={'/checkout'}>Go to checkout</Link></button>
               </>
             )}
           </div>
