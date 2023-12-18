@@ -18,9 +18,41 @@ export default function Esign() {
     }));
   };
 
+  async function Sub() {
+    if (sub.subType.length === 0) {
+      toast.error("Please select at least one subscription type.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify([
+          {
+            id: email,
+            offers: sub.subType.includes("offers"),
+            events: sub.subType.includes("events"),
+            discounts: sub.subType.includes("discounts"),
+          },
+        ]),
+      });
+      if (response.ok) {
+        toast.success("Subscription successful!");
+      } else {
+        toast.error("Subscription failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred. Please try again later.");
+    }
+  }
+
   const handleSignUp = () => {
     if (validateEmail(email)) {
-      toast.success("Thank you for subscribing!");
+      Sub();
     } else {
       toast.error("Please enter a valide email.");
     }
@@ -34,7 +66,13 @@ export default function Esign() {
   return (
     <>
       <div className="email-signup">
-        <Image id="signup-image" src={Signup} alt="signup-image" placeholder="blur" priority/>
+        <Image
+          id="signup-image"
+          src={Signup}
+          alt="signup-image"
+          placeholder="blur"
+          priority
+        />
         <div className="join-the-club">Join the club and get the benefits</div>
         <div className="newsletter">
           Sign up for our newsletter and receive exclusive offers on new ranges,
