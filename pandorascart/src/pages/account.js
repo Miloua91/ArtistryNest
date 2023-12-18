@@ -174,7 +174,6 @@ export default function Account() {
     }
   });
 
-  //console.log(orderMap);
   return (
     <>
       <div className="my-account">

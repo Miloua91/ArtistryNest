@@ -13,8 +13,6 @@ export default function Checkout() {
   const [transaction, setTransaction] = useState();
   const [totalPrice, setTotalPrice] = useState(calculateSubtotal());
 
-  console.log(totalPrice);
-
   async function insertOrder() {
     try {
       const response = await fetch("/api/order", {
@@ -31,11 +29,12 @@ export default function Checkout() {
         ]),
       });
 
-      if (response.ok) {
-        console.log("Order inserted successfully!");
+      /*  if (response.ok) {
+        console.log("Your order is pending!");
       } else {
         console.error("Failed to insert order:", response.statusText);
       }
+      */
     } catch (error) {
       console.error("Error inserting order:", error);
     }
@@ -56,7 +55,7 @@ export default function Checkout() {
       });
 
       if (response.ok) {
-        console.log("Order items inserted successfully!");
+        //   console.log("Order items inserted successfully!");
         resetCart();
       } else {
         console.error("Failed to insert order items:", response.statusText);
@@ -127,7 +126,6 @@ export default function Checkout() {
                 </div>
               ))}
             </div>
-            <button onClick={() => fetchData()}>add</button>
           </div>
         </div>
         <div className="checkout-pay">

@@ -20,7 +20,6 @@ export default function Esign() {
 
   const handleSignUp = () => {
     if (validateEmail(email)) {
-      console.log(email, sub);
       toast.success("Thank you for subscribing!");
     } else {
       toast.error("Please enter a valide email.");
