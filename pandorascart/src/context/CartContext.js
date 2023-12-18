@@ -123,6 +123,10 @@ export function CartProvider({ children }) {
     );
   };
 
+  const resetCart = () => {
+    setCart({ count: 0, items: [] });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -131,6 +135,7 @@ export function CartProvider({ children }) {
         calculateSubtotal,
         updateItemCount,
         undoRemove,
+        resetCart,
       }}
     >
       {children}

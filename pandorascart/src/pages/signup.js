@@ -74,7 +74,7 @@ export default function SignUp() {
         if (error) {
           toast.error(error.message);
         } else {
-          router.push('/confirmation')
+          router.push("/confirmation");
         }
       } catch (error) {
         toast.error(error.message);

@@ -34,12 +34,6 @@ const generateAccessToken = async () => {
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
 const createOrder = async (cart) => {
-  // use the cart information passed from the front-end to calculate the purchase unit details
-  console.log(
-    "shopping cart information passed from the frontend createOrder() callback:",
-    cart[0].price
-  );
-
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
   const payload = {
@@ -75,6 +69,8 @@ const createOrder = async (cart) => {
       paypal: {
         experience_context: {
           brand_name: "ArtistryNest",
+          return_url: "http://localhost:3000/",
+          cancel_url: "http://localhost:3000/",
         },
       },
     },

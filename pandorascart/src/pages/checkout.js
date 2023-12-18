@@ -1,12 +1,76 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useCart } from "@/context/CartContext";
+import { useUser } from "@supabase/auth-helpers-react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
 import Head from "next/head";
 
 export default function Checkout() {
-  const { cart, calculateSubtotal } = useCart();
+  const { cart, calculateSubtotal, resetCart } = useCart();
+  const user = useUser();
   const { items } = cart;
+  const [transaction, setTransaction] = useState();
+  const [totalPrice, setTotalPrice] = useState(calculateSubtotal());
+
+  console.log(totalPrice);
+
+  async function insertOrder() {
+    try {
+      const response = await fetch("/api/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify([
+          {
+            transaction_id: transaction,
+            user_id: user.id,
+            total_price: totalPrice,
+          },
+        ]),
+      });
+
+      if (response.ok) {
+        console.log("Order inserted successfully!");
+      } else {
+        console.error("Failed to insert order:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error inserting order:", error);
+    }
+    try {
+      const response = await fetch("/api/order_items", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          items.map((item) => ({
+            order_id: transaction,
+            product_id: item.productId,
+            quantity: item.count,
+            unit_price: item.price,
+          }))
+        ),
+      });
+
+      if (response.ok) {
+        console.log("Order items inserted successfully!");
+        resetCart();
+      } else {
+        console.error("Failed to insert order items:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error inserting order items:", error);
+    }
+  }
+
+  useEffect(() => {
+    if (transaction) {
+      insertOrder();
+    }
+  }, [transaction]);
 
   if (items.length === 0) {
     return (
@@ -63,6 +127,7 @@ export default function Checkout() {
                 </div>
               ))}
             </div>
+            <button onClick={() => fetchData()}>add</button>
           </div>
         </div>
         <div className="checkout-pay">
@@ -107,7 +172,7 @@ export default function Checkout() {
                     throw new Error(errorMessage);
                   }
                 } catch (error) {
-                  toast.error(`Could not initiate PayPal Checkout...${error}`);
+                  toast.error(`Could not initiate PayPal Checkout...`);
                 }
               }}
               onApprove={async (data, actions) => {
@@ -147,10 +212,11 @@ export default function Checkout() {
                     toast.success(
                       `Transaction ${transaction.status}: ${transaction.id}.`
                     );
+                    setTransaction(transaction.id);
                   }
                 } catch (error) {
                   toast.error(
-                    `Sorry, your transaction could not be processed...${error}`
+                    `Sorry, your transaction could not be processed...`
                   );
                 }
               }}

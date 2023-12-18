@@ -9,7 +9,7 @@ import RemoveIcon from "@/pages/img/remove-icon.svg";
 export default function Cart() {
   const { updateItemCount, undoRemove, cart, calculateSubtotal } = useCart();
   const { items } = cart;
-  const user  = useUser();
+  const user = useUser();
 
   const handleIncrease = (productId) => {
     const { updatedItems, currentCount } = updateItemCount(productId, 1);
@@ -123,7 +123,16 @@ export default function Cart() {
                 <h2 className="checkout-sub">
                   Subtotal <a>£{calculateSubtotal()}</a>
                 </h2>
-                <button onClick={() => user ? ('') : (toast.info('You need to sign up or log in to checkout')) } className="checkoutBtn"><Link href={'/checkout'}>Go to checkout</Link></button>
+                <button
+                  onClick={() =>
+                    user
+                      ? ""
+                      : toast.info("You need to sign up or log in to checkout")
+                  }
+                  className="checkoutBtn"
+                >
+                  <Link href={"/checkout"}>Go to checkout</Link>
+                </button>
               </>
             )}
           </div>

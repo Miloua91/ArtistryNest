@@ -15,7 +15,7 @@ body {
 body.modal-open {
   overflow: hidden;
 }
-main{
+main {
   min-height: 83vh;
 }
 @font-face {
@@ -128,13 +128,13 @@ main{
 .cart-count:hover {
   background-color: var(--butt);
 }
-.account-modal{
+.account-modal {
   display: none;
 }
-.account-modal a{
+.account-modal a {
   color: var(--nav-bottom);
 }
-.account-modal.active{
+.account-modal.active {
   display: block;
   position: relative;
   border-radius: 3px;
@@ -149,7 +149,7 @@ main{
   font-family: satoshi;
   font-size: 13px;
 }
-.account-info{
+.account-info {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -164,25 +164,25 @@ main{
   border: none;
   outline: none;
 }
-.account-info button:hover{
+.account-info button:hover {
   background-color: var(--foot-back);
   cursor: pointer;
 }
-.account-info a:hover{
+.account-info a:hover {
   background-color: var(--foot-back);
 }
-.account-info a{
+.account-info a {
   border-top: solid 1px var(--nav-bottom);
   border-bottom: solid 1px var(--nav-bottom);
-} 
-.account-login{
+}
+.account-login {
   position: relative;
   top: 4px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.account-signup{
+.account-signup {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,7 +193,7 @@ main{
   text-align: center;
   border-top: solid 1px var(--nav-bottom);
 }
-.account-signup a:hover{
+.account-signup a:hover {
   background-color: var(--foot-back);
 }
 .bottom-nav {
@@ -971,7 +971,7 @@ input[type="checkbox"]:checked::before {
   bottom: -70px;
   text-align: end;
 }
-.checkout-Btn a{
+.checkout-Btn a {
   text-decoration: none;
   color: inherit;
 }
@@ -1110,16 +1110,16 @@ input[type="checkbox"]:checked::before {
   cursor: pointer;
   border-radius: 2px;
 }
-.contact-sub{
+.contact-sub {
   text-align: center;
   font-family: satoshi;
   font-size: 32px;
 }
-.contact-sub a{
+.contact-sub a {
   text-decoration: none;
   color: var(--foot-back);
 }
-.contact-sub a:hover{
+.contact-sub a:hover {
   text-decoration: underline;
 }
 .submit-section {
@@ -1332,48 +1332,48 @@ input[type="checkbox"]:checked::before {
   opacity: 0;
   max-height: 0;
 }
-.my-account{
+.my-account {
   margin: 0 60px 60px 60px;
   font-family: clashDisplay;
   background-color: var(--nav-bottom);
   padding: 60px;
   color: var(--nav-name);
 }
-.my-account p{
+.my-account p {
   margin-top: -5px;
 }
-.my-account-line{
+.my-account-line {
   position: relative;
   top: -15px;
   background-color: #dcdbe0;
   height: 2px;
   border: none;
 }
-.order-line{
+.order-line {
   position: relative;
   top: -15px;
   background-color: #dcdbe0;
   height: 2px;
   border: none;
 }
-.address-line{
+.address-line {
   position: relative;
   top: -15px;
   background-color: #dcdbe0;
   height: 2px;
   border: none;
 }
-.my-account-content{
+.my-account-content {
   display: flex;
   gap: 50px;
 }
-.my-account-order{
+.my-account-order {
   width: 70%;
 }
-.my-account-address{
+.my-account-address {
   width: 30%;
 }
-.my-account-address button{
+.my-account-address button {
   height: 45px;
   width: 100%;
   background-color: var(--butt);
@@ -1383,15 +1383,15 @@ input[type="checkbox"]:checked::before {
   border: none;
   cursor: pointer;
 }
-.my-account-address button:hover{
+.my-account-address button:hover {
   background-color: var(--foot-back);
   color: var(--nav-bottom);
 }
-.my-account-address button:active{
+.my-account-address button:active {
   background-color: var(--nav-bottom);
   color: var(--butt);
 }
-.add-address-modal{
+.add-address-modal {
   display: flex;
   margin-left: 0;
   margin-right: 0;
@@ -1491,13 +1491,13 @@ input[type="checkbox"]:checked::before {
   color: var(--nav-name);
   font-size: 18px;
 }
-.confirmation-page{
+.confirmation-page {
   text-align: center;
   font-family: satoshi;
   font-size: 18px;
   color: var(--nav-name);
 }
-.checkout{
+.checkout {
   display: flex;
   justify-content: center;
   background-color: var(--nav-bottom);
@@ -1505,16 +1505,17 @@ input[type="checkbox"]:checked::before {
   padding: 40px;
   gap: 100px;
 }
-.checkout-summary{
+.checkout-summary {
   font-family: clashDisplay;
   color: var(--nav-name);
   width: 60%;
 }
-.checkout-pay{
+.checkout-pay {
   width: 30%;
   font-family: clashDisplay;
   color: var(--nav-name);
   text-align: center;
+  color: var(--nav-name);
 }
 .cart-container {
   position: relative;
@@ -1576,11 +1577,35 @@ input[type="checkbox"]:checked::before {
   width: 100px;
   text-align: center;
 }
-.checkout-empty{
+.checkout-empty {
   font-family: clashDisplay;
   text-align: center;
+  color: var(--nav-name);
 }
-
+.orders-ref {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.orders-items {
+  font-family: satoshi;
+}
+.orders-items > * {
+  width: 50%;
+}
+table {
+  width: 100%;
+  border-top: 2px solid #dcdbe0;
+  border-bottom: 2px solid #dcdbe0;
+  margin-bottom: 20px;
+  padding: 10px 0 10px;
+}
+.table-header > * {
+  border-bottom: 2px solid #dcdbe0;
+}
+.cell-center {
+  text-align: center;
+}
 
 @media screen and (max-width: 360px) {
   .drop-down {
@@ -2129,19 +2154,19 @@ input[type="checkbox"]:checked::before {
     top: 243px;
     left: 28px;
   }
-  .my-account{
+  .my-account {
     margin: 0 18px 60px 18px;
     padding: 18px;
   }
-  .my-account-content{
+  .my-account-content {
     display: flex;
     flex-direction: column;
     gap: 0;
   }
-  .my-account-order{
+  .my-account-order {
     width: 100%;
   }
-  .my-account-address{
+  .my-account-address {
     width: 100%;
   }
   .address-form {
@@ -2165,29 +2190,33 @@ input[type="checkbox"]:checked::before {
     flex-direction: column;
     align-items: center;
   }
-  .checkout{
+  .checkout {
     flex-direction: column;
     margin: 0 18px 56px 18px;
     padding: 10px;
     gap: 0;
   }
-  .checkout-summary{
+  .checkout-summary {
     text-align: center;
     width: 100%;
   }
-  .checkout-pay{
+  .checkout-pay {
     width: 100%;
   }
   .checkout-price-quantity > * {
     width: 100px;
     text-align: center;
   }
-  .checkout-price-quantity{
+  .checkout-price-quantity {
     display: flex;
     flex-direction: row;
   }
+  .orders-ref {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
 }
-
 
 @media screen and (min-width: 360px) and (max-width: 512px) {
   .drop-down {
@@ -2697,19 +2726,19 @@ input[type="checkbox"]:checked::before {
   .forgot > * {
     left: 140px;
   }
-  .my-account{
+  .my-account {
     margin: 0 20px 60px 20px;
     padding: 20px;
   }
-  .my-account-content{
+  .my-account-content {
     display: flex;
     flex-direction: column;
     gap: 0;
   }
-  .my-account-order{
+  .my-account-order {
     width: 100%;
   }
-  .my-account-address{
+  .my-account-address {
     width: 100%;
   }
   .address-form {
@@ -2728,18 +2757,23 @@ input[type="checkbox"]:checked::before {
     margin-right: 20px;
     width: 85%;
   }
-  .checkout{
+  .checkout {
     flex-direction: column;
     margin: 0 20px 56px 20px;
     padding: 10px;
     gap: 0;
   }
-  .checkout-summary{
+  .checkout-summary {
     text-align: center;
     width: 100%;
   }
-  .checkout-pay{
+  .checkout-pay {
     width: 100%;
+  }
+  .orders-ref {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 }
 
@@ -3089,16 +3123,21 @@ input[type="checkbox"]:checked::before {
   .sign-in-form {
     margin: 20px auto;
   }
-  .checkout{
+  .checkout {
     flex-direction: column;
     gap: 0;
   }
-  .checkout-summary{
+  .checkout-summary {
     text-align: center;
     width: 100%;
   }
-  .checkout-pay{
+  .checkout-pay {
     width: 100%;
+  }
+  .orders-ref {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 }
 @media screen and (min-width: 512px) and (max-width: 780px) {
@@ -3140,19 +3179,19 @@ input[type="checkbox"]:checked::before {
     margin-right: 60px;
     width: 70%;
   }
-  .my-account{
+  .my-account {
     margin: 0 60px 60px 60px;
     padding: 60px;
   }
-  .my-account-content{
+  .my-account-content {
     display: flex;
     flex-direction: column;
     gap: 0;
   }
-  .my-account-order{
+  .my-account-order {
     width: 100%;
   }
-  .my-account-address{
+  .my-account-address {
     width: 100%;
   }
   .address-form {

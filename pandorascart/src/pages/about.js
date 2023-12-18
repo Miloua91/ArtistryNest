@@ -8,7 +8,6 @@ import AboutUsImg2 from "@/pages/img/about-us-img-2.webp";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-
 export default function About() {
   return (
     <>
@@ -36,12 +35,22 @@ export default function About() {
             </div>
           </div>
           <div className="about-img">
-            <Image src={AboutUsImg1} alt="About us image" placeholder="blur" priority/>
+            <Image
+              src={AboutUsImg1}
+              alt="About us image"
+              placeholder="blur"
+              priority
+            />
           </div>
         </div>
         <div className="about-2nd">
           <div className="about-img">
-            <Image src={AboutUsImg2} alt="About us image" placeholder="blur" priority/>
+            <Image
+              src={AboutUsImg2}
+              alt="About us image"
+              placeholder="blur"
+              priority
+            />
           </div>
           <div className="about-brand">
             <h2>

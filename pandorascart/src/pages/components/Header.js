@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { useSearch } from "@/context/SearchContext";
-import { useRouter } from "next/navigation";
+import { useRouter as useRouterDefault } from "next/router";
+import { useRouter as useRouterNavigation } from "next/navigation";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import searchIcon from "@/pages/icons/Search.svg";
 import cartIcon from "@/pages/icons/Shopping--cart.svg";
@@ -11,7 +12,8 @@ import userIcon from "@/pages/icons/User--avatar.svg";
 
 export default function Header() {
   const { cart } = useCart();
-  const router = useRouter();
+  const router = useRouterDefault();
+  const routerNaviagtion = useRouterNavigation();
   const { searchQuery, updateSearchQuery } = useSearch();
   const [accountModal, setAccountModal] = useState(false);
   const [isSearchVisible, setSearchVisible] = useState(false);
@@ -20,7 +22,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     let { error } = await supabaseClient.auth.signOut();
-    router.refresh;
+    routerNaviagtion.refresh();
     router.push("/");
   };
 
@@ -42,12 +44,16 @@ export default function Header() {
   };
 
   useEffect(() => {
-    if (router.pathname === "/products/all") {
-    } else {
+    const handleRouteChange = () => {
       setSearchVisible(false);
       updateSearchQuery("");
-    }
-  }, [router.pathname]);
+      setAccountModal(false);
+    };
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, []);
 
   const handleSearchIconClick = () => {
     const trimmedQuery = searchQuery.trim();
@@ -79,21 +85,20 @@ export default function Header() {
   };
 
   const handleOutsideClick = (e) => {
-    // Check if the click is outside the account modal
     if (
       accountModal &&
-      e.target.closest('.account-modal') === null &&
-      e.target.closest('.account') === null
+      e.target.closest(".account-modal") === null &&
+      e.target.closest(".account") === null
     ) {
       setAccountModal(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener("click", handleOutsideClick);
 
     return () => {
-      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener("click", handleOutsideClick);
     };
   }, [accountModal]);
 
@@ -139,17 +144,24 @@ export default function Header() {
             <div className={`account-modal ${accountModal ? "active" : ""}`}>
               {user ? (
                 <div className="account-info">
-                <div className="account-login">{user.user_metadata.full_name}</div>
-                <Link href={"/account"}><div className="account-login">Account</div></Link>
-                <button onClick={handleLogout}>Log out</button>
+                  <div className="account-login">
+                    {user.user_metadata.full_name}
+                  </div>
+                  <Link href={"/account"}>
+                    <div className="account-login">Account</div>
+                  </Link>
+                  <button onClick={handleLogout}>Log out</button>
                 </div>
               ) : (
                 <div className="account-signup">
-                <Link href={"/login"}><div className="account-login">Log in</div></Link>
-                <Link href={'/signup'}><div className="account-login">Sign up</div></Link>
+                  <Link href={"/login"}>
+                    <div className="account-login">Log in</div>
+                  </Link>
+                  <Link href={"/signup"}>
+                    <div className="account-login">Sign up</div>
+                  </Link>
                 </div>
               )}
-              
             </div>
           </div>
         </div>

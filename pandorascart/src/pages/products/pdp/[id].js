@@ -111,7 +111,7 @@ export default function ProductDetail() {
               <Skeleton height={"30em"} />
             </div>
             <div className="product-details">
-              <h1 className="title">{<Skeleton width={"100%"} />}</h1>
+              <h1 className="title">{<Skeleton width={400} />}</h1>
               <h2>{<Skeleton width={100} />}</h2>
               <a className="title">Product description</a>
               <p className="details">{<Skeleton count={3} />}</p>
