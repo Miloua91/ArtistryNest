@@ -1,3 +1,4 @@
+import Head from "next/head";
 import DialogModal from "@/pages/components/Modal";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useState, useRef, useEffect } from "react";
@@ -176,6 +177,9 @@ export default function Account() {
 
   return (
     <>
+      <Head>
+        <title>Account | ArtistryNest</title>
+      </Head>
       <div className="my-account">
         <h1>My Account</h1>
         <hr className="my-account-line" />

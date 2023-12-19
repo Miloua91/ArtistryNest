@@ -10,7 +10,7 @@ export default function All() {
       <Head>
         <title>All products | ArtistryNest</title>
       </Head>
-      <AllProducts apiEndpoint={all} />
+      <AllProducts pageHeader={"All products"} apiEndpoint={all} />
     </>
   );
 }

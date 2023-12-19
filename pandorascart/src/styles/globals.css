@@ -33,24 +33,28 @@ main {
   src: url(satoshi-light.woff2) format("woff2");
   font-display: swap;
 }
+.skeleton{
+  width: 500em;
+}
 .drop-down > * {
   border: none;
   font-family: satoshi;
   font-size: 16px;
   color: var(--nav-name);
+  background-color: var(--nav-bottom);
 }
 .drop-down > *:focus {
   outline: none;
 }
 .drop-down > *:hover {
-  background-color: var(--nav-bottom);
+  background-color: #dcdbe0;
   border-radius: 5px;
 }
 .filter {
   display: flex;
   gap: 50px;
-  margin-left: 60px;
   margin-bottom: 40px;
+  padding-top: 20px;
 }
 .name {
   position: relative;
@@ -450,6 +454,9 @@ main {
   margin-left: 60px;
   color: var(--butt);
 }
+.popular > * > * {
+  width: 100%;
+}
 .popular-products {
   position: relative;
   display: flex;
@@ -459,10 +466,12 @@ main {
   margin-right: 60px;
   font-family: satoshi;
   font-size: 20px;
+
 }
 .popular-container {
   display: flex;
   box-sizing: border-box;
+
 }
 .our-product img {
   flex: 0 0 auto;
@@ -1606,6 +1615,19 @@ table {
 .cell-center {
   text-align: center;
 }
+.page-header{
+  font-family: clashDisplay;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 60px;
+  margin-right: 60px;
+  align-items: center;
+  color: var(--nav-name);
+  background-color: var(--nav-bottom);
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
 
 @media screen and (max-width: 360px) {
   .drop-down {
@@ -1615,7 +1637,7 @@ table {
     width: 100%;
   }
   .filter {
-    margin-left: 20px;
+    padding-top: 0;
     gap: 5px;
   }
   .top-right h2 {
@@ -2216,6 +2238,13 @@ table {
     gap: 10px;
     text-align: center;
   }
+  .page-header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 18px;
+    margin-right: 18px;
+  }
 }
 
 @media screen and (min-width: 360px) and (max-width: 512px) {
@@ -2226,7 +2255,7 @@ table {
     width: 90%;
   }
   .filter {
-    margin-left: 20px;
+    padding-top: 0;
     gap: 10px;
   }
   .top-right h2 {
@@ -2775,6 +2804,13 @@ table {
     gap: 10px;
     text-align: center;
   }
+  .page-header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 @media screen and (min-width: 512px) and (max-width: 880px) {
@@ -3209,5 +3245,12 @@ table {
     margin-left: 20px;
     margin-right: 20px;
     width: 85%;
+  }
+  .page-header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 60px;
+    margin-right: 60px;
   }
 }

@@ -8,7 +8,7 @@ export default function Sofas() {
       <Head>
         <title>Sofas | ArtistryNest</title>
       </Head>
-      <AllProducts apiEndpoint={sofas} />
+      <AllProducts pageHeader={"Sofas"} apiEndpoint={sofas} />
     </>
   );
 }

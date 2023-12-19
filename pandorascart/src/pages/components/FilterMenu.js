@@ -20,7 +20,6 @@ export default function Filter({ onPriceChange, onSortingChange }) {
   const handlePriceChange = (value) => {
     setPriceOption(value);
     onPriceChange(value);
-    // Reset sorting option when price is changed
     setSortingOption("");
     onSortingChange("");
   };

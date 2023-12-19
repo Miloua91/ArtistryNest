@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-export default function Products({ apiEndpoint }) {
+export default function Products({ apiEndpoint, pageHeader }) {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
@@ -76,10 +76,17 @@ export default function Products({ apiEndpoint }) {
         </div>
       ) : (
         <>
-          <Filter
-            onPriceChange={setSelectedPriceOption}
-            onSortingChange={setSelectedSortingOption}
-          />
+          <div className="page-header">
+            <div>
+              <h1>{pageHeader}</h1>
+            </div>
+            <div>
+              <Filter
+                onPriceChange={setSelectedPriceOption}
+                onSortingChange={setSelectedSortingOption}
+              />
+            </div>
+          </div>
           {loading ? (
             <div className="all-products">
               {[...Array(12)].map((_, index) => (

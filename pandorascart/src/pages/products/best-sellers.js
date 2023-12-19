@@ -9,7 +9,7 @@ export default function All() {
       <Head>
         <title>Best sellers | ArtistryNest</title>
       </Head>
-      <Links apiEndpoint={all} />
+      <Links pageHeader={"Best sellers"} apiEndpoint={all} />
     </>
   );
 }

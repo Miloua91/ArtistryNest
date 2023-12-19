@@ -8,7 +8,7 @@ export default function Chairs() {
       <Head>
         <title>Chairs | ArtistryNest</title>
       </Head>
-      <AllProducts apiEndpoint={chairs} />
+      <AllProducts pageHeader={"Chairs"} apiEndpoint={chairs} />
     </>
   );
 }

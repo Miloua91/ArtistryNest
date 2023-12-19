@@ -44,27 +44,31 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const handleRouteChange = () => {
-      setSearchVisible(false);
-      updateSearchQuery("");
+    const handleRouteChange = (url) => {
       setAccountModal(false);
+      if (url && !url.includes("/products/all")) {
+        setSearchVisible(false);
+        updateSearchQuery("");
+      }
     };
+
     router.events.on("routeChangeStart", handleRouteChange);
+
     return () => {
       router.events.off("routeChangeStart", handleRouteChange);
     };
-  }, []);
+  }, [router]);
 
   const handleSearchIconClick = () => {
     const trimmedQuery = searchQuery.trim();
     if (!isSearchVisible && trimmedQuery !== "") {
       updateSearchQuery(trimmedQuery);
     } else if (trimmedQuery !== "") {
+      setSearchVisible(true);
       router.push({
         pathname: "/products/all",
         query: { searchQuery: trimmedQuery },
       });
-      setSearchVisible(true);
       return;
     }
     setSearchVisible(!isSearchVisible);

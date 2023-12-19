@@ -8,7 +8,7 @@ export default function Pots() {
       <Head>
         <title>Plant Pots | ArtistryNest</title>
       </Head>
-      <AllProducts apiEndpoint={pots} />
+      <AllProducts pageHeader={"Plant pots"} apiEndpoint={pots} />
     </>
   );
 }

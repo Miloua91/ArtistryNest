@@ -8,7 +8,7 @@ export default function Crockery() {
       <Head>
         <title>Crockery | ArtistryNest</title>
       </Head>
-      <AllProducts apiEndpoint={crockery} />
+      <AllProducts pageHeader={"Crockery"} apiEndpoint={crockery} />
     </>
   );
 }

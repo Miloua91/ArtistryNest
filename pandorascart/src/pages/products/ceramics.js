@@ -8,7 +8,7 @@ export default function Ceramics() {
       <Head>
         <title>Ceramics | ArtistryNest</title>
       </Head>
-      <AllProducts apiEndpoint={ceramics} />
+      <AllProducts pageHeader={"Ceramics"} apiEndpoint={ceramics} />
     </>
   );
 }

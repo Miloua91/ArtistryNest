@@ -13,7 +13,10 @@ export default function OurProducts({ resetCount }) {
     fetch("/api/products?search=*")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.data);
+        const sortedProducts = data.data.sort(
+          (a, b) => new Date(b.date_added) - new Date(a.date_added)
+        );
+        setProducts(sortedProducts);
         setLoading(false);
       });
   }, []);
@@ -77,16 +80,16 @@ export default function OurProducts({ resetCount }) {
         {loading ? (
           <div className="popular-products">
             {[...Array(4)].map((_, index) => (
-              <div key={index} className="popular-product">
-                <Skeleton className="mobile-skeleton" height={"24em"} />
-                <Skeleton className="mobile-skeleton" width={292} />
+              <div key={index} className="our-products">
+                <Skeleton className="mobile-skeleton" width={'100%'} height={"20em"} />
+                <Skeleton className="mobile-skeleton" width={'12ch'} />
                 <Skeleton className="mobile-skeleton" width={60} />
               </div>
             ))}
           </div>
         ) : (
           <div className="popular-products">
-            {popularProducts.map((product) => (
+            {popularProducts.slice(0, 4).map((product) => (
               <div key={product.id} className="our-product">
                 <Link
                   onClick={resetCount}

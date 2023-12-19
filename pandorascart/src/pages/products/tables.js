@@ -8,7 +8,7 @@ export default function Tables() {
       <Head>
         <title>Tables | ArtistryNest</title>
       </Head>
-      <AllProducts apiEndpoint={tables} />
+      <AllProducts pageHeader={"Tables"} apiEndpoint={tables} />
     </>
   );
 }

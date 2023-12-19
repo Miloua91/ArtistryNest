@@ -8,7 +8,7 @@ export default function All() {
       <Head>
         <title>Popular this week | ArtistryNest</title>
       </Head>
-      <Links apiEndpoint={all} />
+      <Links pageHeader={"Popular this week"} apiEndpoint={all} />
     </>
   );
 }
