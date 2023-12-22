@@ -9,7 +9,7 @@ export default function Account() {
   const supabaseClient = useSupabaseClient();
   const user = useUser();
   const [isOpened, setIsOpened] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [orderLoad, setOrderLoad] = useState(true);
   const [retrievedAddress, setRetrievedAddress] = useState("");
   const [transactions, setTransactions] = useState([]);
@@ -140,7 +140,7 @@ export default function Account() {
           }
           if (isMounted) {
             setOrders(orders);
-            setOrderLoad(false);
+            setOrderLoad(true);
           }
         } catch (error) {
           console.error(`Sorry, we could not get your orders: ${error}`);
@@ -169,7 +169,6 @@ export default function Account() {
       orderPrice[transactionId] += order.order_id.total_price;
     }
 
-    // Assuming 'status' is a property in the order object
     if (!orderMap[transactionId].status) {
       orderMap[transactionId].status = order.order_id.status;
     }
@@ -188,7 +187,7 @@ export default function Account() {
           <div className="my-account-order">
             <h3>My Orders</h3>
             <hr className="order-line" />
-            {!orderLoad ? (
+            {orderLoad ? (
               Object.keys(orderMap).length > 0 ? (
                 Object.keys(orderMap).map((orderId) => (
                   <div key={orderId} className="orders-transaction">

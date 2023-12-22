@@ -68,6 +68,7 @@ export default function SignUp() {
             data: {
               full_name: `${firstName} ${lastName}`,
             },
+            redirectTo: "https://artistrynest.shop/account"
           },
         });
 

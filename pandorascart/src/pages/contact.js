@@ -36,6 +36,7 @@ export default function Contact() {
               name="contactName"
               placeholder="Name"
               value={user ? user.user_metadata.full_name : ""}
+              readOnly
               required
             />
             <ValidationError
@@ -79,6 +80,7 @@ export default function Contact() {
               type="email"
               name="email"
               value={user ? user.email : ""}
+              readOnly
               placeholder="your@email.com"
               required
             />

@@ -30,7 +30,7 @@ export default function LogIn() {
         router.push("/");
       }
     } catch (error) {
-      toast.error("error.message");
+      toast.error(error.message);
     }
   };
 
@@ -73,7 +73,7 @@ export default function LogIn() {
                 {showPassword ? "Hide" : "Show"}
               </button>
               <div className="forgot">
-                <Link href={"pass"}>Forgot your password?</Link>
+                <Link href={"/forgot_password"}>Forgot your password?</Link>
               </div>
             </div>
             <div className="sign-up-button">

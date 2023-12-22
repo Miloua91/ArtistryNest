@@ -1628,7 +1628,93 @@ table {
   padding-right: 10px;
   margin-bottom: 20px;
 }
-
+.pass-rec{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: auto;
+  background-color: var(--nav-bottom);
+  height: auto;
+  width: 50%;
+  font-family: satoshi;
+  font-size: 20px;
+  text-align: center;
+  padding: 60px;
+}
+.pass-rec input{
+  height: 40px;
+  padding-left: 15px;
+  margin: auto;
+  width: 70%;
+  font-family: satoshi;
+  font-size: 16px;
+}
+.pass-rec button{
+  margin: auto;
+  width: 120px;
+  height: 40px;
+  border: none;
+  font-family: satoshi;
+  font-size: 16px;
+  background-color: var(--butt);
+  color: var(--nav-bottom);
+  cursor: pointer;
+}
+.pass-rec button:hover{
+  background-color: var(--foot-back);
+}
+.pass-rec button:active{
+  background-color: var(--nav-color);
+}
+.pass-rec-form{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background-color: var(--nav-bottom);
+  height: auto;
+  width: 50%;
+  font-family: satoshi;
+  font-size: 20px;
+  text-align: center;
+  padding: 60px;
+}
+.pass-rec-inner{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 400px;
+}
+.pass-rec-form input{
+  height: 40px;
+  padding-left: 15px;
+  padding-right: 40px;
+  margin: auto;
+  width: 60%;
+  font-family: satoshi;
+  font-size: 16px;
+}
+.pass-rec-toggle{
+  position: absolute;
+  top: 57px;
+  left: 305px;
+  background: none;
+  border: none;
+  color: #777;
+}
+.pass-rec-sub{
+  margin: auto;
+  width: 120px;
+  height: 40px;
+  border: none;
+  font-family: satoshi;
+  font-size: 16px;
+  background-color: var(--butt);
+  color: var(--nav-bottom);
+  cursor: pointer;
+}
 @media screen and (max-width: 360px) {
   .drop-down {
     width: 45%;
@@ -2245,6 +2331,27 @@ table {
     margin-left: 18px;
     margin-right: 18px;
   }
+  .pass-rec{
+    margin: 18px;
+    width: unset;
+    padding: 5px;
+  }
+  .pass-rec input{
+    width: 80%;
+  }
+  .pass-rec button{
+    width: 90%;
+  }
+  .pass-rec-inner{
+    width: 250px;
+  }
+  .pass-rec-form input{
+    width: 180px;
+  }
+  .pass-rec-toggle{
+    top: 57px;
+    left: 195px;
+  }
 }
 
 @media screen and (min-width: 360px) and (max-width: 512px) {
@@ -2811,6 +2918,27 @@ table {
     margin-left: 20px;
     margin-right: 20px;
   }
+  .pass-rec{
+    margin: 18px;
+    width: unset;
+    padding: 15px;
+  }
+  .pass-rec input{
+    width: 80%;
+  }
+  .pass-rec button{
+    width: 86%;
+  }
+  .pass-rec-inner{
+    width: 300px;
+  }
+  .pass-rec-form input{
+    width: 220px;
+  }
+  .pass-rec-toggle{
+    top: 57px;
+    left: 233px;
+  }
 }
 
 @media screen and (min-width: 512px) and (max-width: 880px) {
@@ -3175,6 +3303,9 @@ table {
     gap: 10px;
     text-align: center;
   }
+  .pass-rec-form{
+   width: 60%;
+  }
 }
 @media screen and (min-width: 512px) and (max-width: 780px) {
   .top-right h2 {
@@ -3253,4 +3384,35 @@ table {
     margin-left: 60px;
     margin-right: 60px;
   }
+  .pass-rec{
+    margin: auto;
+    width: 60%;
+    padding: 40px;
+  }
+  .pass-rec input{
+    width: 80%;
+  }
+.pass-rec-form{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background-color: var(--nav-bottom);
+  height: auto;
+  width: 70%;
+  font-family: satoshi;
+  font-size: 20px;
+  text-align: center;
+  padding: 60px;
+}
+.pass-rec-inner{
+  width: 300px;
+}
+.pass-rec-form input{
+  width: 240px;
+}
+.pass-rec-toggle{
+  top: 57px;
+  left: 253px;
+}
 }
