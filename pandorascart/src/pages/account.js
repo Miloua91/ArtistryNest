@@ -110,6 +110,7 @@ export default function Account() {
             return;
           }
           setTransactions(transaction);
+          setOrderLoad(true);
         } catch (error) {
           console.error(`Sorry we could not get your orders ${error}`);
         }
@@ -138,18 +139,13 @@ export default function Account() {
             console.error("Error fetching data:", error);
             return;
           }
+
           if (isMounted) {
             setOrders(orders);
-            if (!orders || orders.length === 0) {
-              setOrderLoad(true);
-            }
+            setOrderLoad(true);
           }
         } catch (error) {
           console.error(`Sorry, we could not get your orders: ${error}`);
-        }
-      } else {
-        if (isMounted) {
-          setOrderLoad(true);
         }
       }
     };
@@ -194,7 +190,7 @@ export default function Account() {
             <h3>My Orders</h3>
             <hr className="order-line" />
             {orderLoad ? (
-              Object.keys(orderMap).length > 0 ? (
+              transactions.length > 0 ? (
                 Object.keys(orderMap).map((orderId) => (
                   <div key={orderId} className="orders-transaction">
                     <div className="orders-ref">
