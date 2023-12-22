@@ -29,7 +29,7 @@ export default function PassOublier() {
   return (
     <>
       <Head>
-        <title>Forgot password | ArtistryNest</title>
+        <title>Password reset | ArtistryNest</title>
       </Head>
       <div>
         {resetSuccessful ? (

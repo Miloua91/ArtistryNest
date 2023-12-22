@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
@@ -14,9 +15,8 @@ export default function PassRec() {
 
     try {
       const { data, error } = await supabaseClient.auth.updateUser({
-          password: pass,
-        }
-      );
+        password: pass,
+      });
       if (error) {
         toast.error(error.message);
       } else {
@@ -34,6 +34,9 @@ export default function PassRec() {
 
   return (
     <>
+      <Head>
+        <title>Password reset | ArtistryNest</title>
+      </Head>
       <div>
         <form className="pass-rec-form" onSubmit={handleSubmit}>
           <div className="pass-rec-inner">
