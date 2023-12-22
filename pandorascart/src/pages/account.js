@@ -9,8 +9,8 @@ export default function Account() {
   const supabaseClient = useSupabaseClient();
   const user = useUser();
   const [isOpened, setIsOpened] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [orderLoad, setOrderLoad] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [orderLoad, setOrderLoad] = useState(false);
   const [retrievedAddress, setRetrievedAddress] = useState("");
   const [transactions, setTransactions] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -140,10 +140,16 @@ export default function Account() {
           }
           if (isMounted) {
             setOrders(orders);
-            setOrderLoad(true);
+            if (!orders || orders.length === 0) {
+              setOrderLoad(true);
+            }
           }
         } catch (error) {
           console.error(`Sorry, we could not get your orders: ${error}`);
+        }
+      } else {
+        if (isMounted) {
+          setOrderLoad(true);
         }
       }
     };
