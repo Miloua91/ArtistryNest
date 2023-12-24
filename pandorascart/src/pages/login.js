@@ -28,6 +28,7 @@ export default function LogIn() {
       } else {
         toast.success(`Nice seeing you again`);
         router.push("/");
+        router.reload();
       }
     } catch (error) {
       toast.error(error.message);

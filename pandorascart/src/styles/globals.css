@@ -33,7 +33,7 @@ main {
   src: url(satoshi-light.woff2) format("woff2");
   font-display: swap;
 }
-.skeleton{
+.skeleton {
   width: 500em;
 }
 .drop-down > * {
@@ -466,12 +466,10 @@ main {
   margin-right: 60px;
   font-family: satoshi;
   font-size: 20px;
-
 }
 .popular-container {
   display: flex;
   box-sizing: border-box;
-
 }
 .our-product img {
   flex: 0 0 auto;
@@ -1615,7 +1613,7 @@ table {
 .cell-center {
   text-align: center;
 }
-.page-header{
+.page-header {
   font-family: clashDisplay;
   display: flex;
   justify-content: space-between;
@@ -1628,7 +1626,7 @@ table {
   padding-right: 10px;
   margin-bottom: 20px;
 }
-.pass-rec{
+.pass-rec {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1642,7 +1640,7 @@ table {
   text-align: center;
   padding: 60px;
 }
-.pass-rec input{
+.pass-rec input {
   height: 40px;
   padding-left: 15px;
   margin: auto;
@@ -1650,7 +1648,7 @@ table {
   font-family: satoshi;
   font-size: 16px;
 }
-.pass-rec button{
+.pass-rec button {
   margin: auto;
   width: 120px;
   height: 40px;
@@ -1661,13 +1659,13 @@ table {
   color: var(--nav-bottom);
   cursor: pointer;
 }
-.pass-rec button:hover{
+.pass-rec button:hover {
   background-color: var(--foot-back);
 }
-.pass-rec button:active{
+.pass-rec button:active {
   background-color: var(--nav-color);
 }
-.pass-rec-form{
+.pass-rec-form {
   position: relative;
   display: flex;
   justify-content: center;
@@ -1680,14 +1678,14 @@ table {
   text-align: center;
   padding: 60px;
 }
-.pass-rec-inner{
+.pass-rec-inner {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 400px;
 }
-.pass-rec-form input{
+.pass-rec-form input {
   height: 40px;
   padding-left: 15px;
   padding-right: 40px;
@@ -1696,7 +1694,7 @@ table {
   font-family: satoshi;
   font-size: 16px;
 }
-.pass-rec-toggle{
+.pass-rec-toggle {
   position: absolute;
   top: 57px;
   left: 305px;
@@ -1704,7 +1702,7 @@ table {
   border: none;
   color: #777;
 }
-.pass-rec-sub{
+.pass-rec-sub {
   margin: auto;
   width: 120px;
   height: 40px;
@@ -2324,31 +2322,31 @@ table {
     gap: 10px;
     text-align: center;
   }
-  .page-header{
+  .page-header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-left: 18px;
     margin-right: 18px;
   }
-  .pass-rec{
+  .pass-rec {
     margin: 18px;
     width: unset;
     padding: 5px;
   }
-  .pass-rec input{
+  .pass-rec input {
     width: 80%;
   }
-  .pass-rec button{
+  .pass-rec button {
     width: 90%;
   }
-  .pass-rec-inner{
+  .pass-rec-inner {
     width: 250px;
   }
-  .pass-rec-form input{
+  .pass-rec-form input {
     width: 180px;
   }
-  .pass-rec-toggle{
+  .pass-rec-toggle {
     top: 57px;
     left: 195px;
   }
@@ -2911,31 +2909,31 @@ table {
     gap: 10px;
     text-align: center;
   }
-  .page-header{
+  .page-header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-left: 20px;
     margin-right: 20px;
   }
-  .pass-rec{
+  .pass-rec {
     margin: 18px;
     width: unset;
     padding: 15px;
   }
-  .pass-rec input{
+  .pass-rec input {
     width: 80%;
   }
-  .pass-rec button{
+  .pass-rec button {
     width: 86%;
   }
-  .pass-rec-inner{
+  .pass-rec-inner {
     width: 300px;
   }
-  .pass-rec-form input{
+  .pass-rec-form input {
     width: 220px;
   }
-  .pass-rec-toggle{
+  .pass-rec-toggle {
     top: 57px;
     left: 233px;
   }
@@ -3303,8 +3301,8 @@ table {
     gap: 10px;
     text-align: center;
   }
-  .pass-rec-form{
-   width: 60%;
+  .pass-rec-form {
+    width: 60%;
   }
 }
 @media screen and (min-width: 512px) and (max-width: 780px) {
@@ -3377,42 +3375,42 @@ table {
     margin-right: 20px;
     width: 85%;
   }
-  .page-header{
+  .page-header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-left: 60px;
     margin-right: 60px;
   }
-  .pass-rec{
+  .pass-rec {
     margin: auto;
     width: 60%;
     padding: 40px;
   }
-  .pass-rec input{
+  .pass-rec input {
     width: 80%;
   }
-.pass-rec-form{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  background-color: var(--nav-bottom);
-  height: auto;
-  width: 70%;
-  font-family: satoshi;
-  font-size: 20px;
-  text-align: center;
-  padding: 60px;
-}
-.pass-rec-inner{
-  width: 300px;
-}
-.pass-rec-form input{
-  width: 240px;
-}
-.pass-rec-toggle{
-  top: 57px;
-  left: 253px;
-}
+  .pass-rec-form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: var(--nav-bottom);
+    height: auto;
+    width: 70%;
+    font-family: satoshi;
+    font-size: 20px;
+    text-align: center;
+    padding: 60px;
+  }
+  .pass-rec-inner {
+    width: 300px;
+  }
+  .pass-rec-form input {
+    width: 240px;
+  }
+  .pass-rec-toggle {
+    top: 57px;
+    left: 253px;
+  }
 }
