@@ -24,9 +24,6 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#installation">Installation</a>
-    </li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -64,37 +61,6 @@ Supabase: Backend platform for user authentication, database management, and coo
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-### Installation
-
-
-To get a local copy up and running follow these simple example steps.
-
-Open your terminal or command prompt.<br/>
-Navigate to the directory where you want to clone the repository.<br/>
-Run the following command to clone the repository:
-
-  ```sh
-  git clone https://github.com/Miloua91/pandorascart.git
-  ```
-
-Navigate into the cloned repository directory:
-
-  ```sh
-  cd pandorascart
-  ```
-
-and run this command:
-
-  ```sh
-  npm run dev
-  ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
