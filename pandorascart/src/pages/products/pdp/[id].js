@@ -102,7 +102,7 @@ export default function ProductDetail() {
   return (
     <>
       <Head>
-        <title>{product.product_name} | ArtistryNest</title>
+      <title>{`${product.product_name || 'Product'} | ArtistryNest`}</title>
       </Head>
       {loading ? (
         <>

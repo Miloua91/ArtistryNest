@@ -52,7 +52,7 @@ export default function Footer() {
           <Link href={"/"}>Vacancies</Link>
         </div>
         <div className="credit">
-          <h3>Copyright 2023 ArtistryNest LLC</h3>
+          <h3>Copyright {new Date().getFullYear()} ArtistryNest LLC</h3>
         </div>
       </div>
     </>

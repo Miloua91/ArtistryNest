@@ -9,6 +9,9 @@ import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import searchIcon from "@/pages/icons/Search.svg";
 import cartIcon from "@/pages/icons/Shopping--cart.svg";
 import userIcon from "@/pages/icons/User--avatar.svg";
+import { getCookies, setCookie, deleteCookie } from "cookies-next";
+
+const CART_COOKIE_NAME = "cart";
 
 export default function Header() {
   const { cart } = useCart();
@@ -20,6 +23,23 @@ export default function Header() {
   const supabaseClient = useSupabaseClient();
   const user = useUser();
 
+ /* useEffect(() => {
+    fetch('https://ac-controle.anem.dz/AllocationChomage/api/RendezVous/GetAvailableDates?StructureId=ed72b384-196a-4d7a-a226-7525b2593b06&PreInscriptionId=6f881ec9-9147-4700-a878-a62d2dcc0af1')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.dates.length > 0) {
+          console.log('date', data.dates);
+          alert('Data is available!'); // You can replace this with your preferred notification method
+        }
+      });
+  }, []);
+  */
+
+  /*
+  useEffect(() => {
+    setCookie(CART_COOKIE_NAME, cart, { maxAge: 60 * 6 * 24, path: '/' });
+  }, [cart]);
+*/
   const handleLogout = async () => {
     let { error } = await supabaseClient.auth.signOut();
     routerNaviagtion.refresh();

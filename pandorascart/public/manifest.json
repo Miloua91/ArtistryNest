@@ -1,0 +1,18 @@
+{
+  "short_name": "ArtNest",
+  "name": "ArtistryNest",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ],
+  "id": "/?source=pwa",
+  "start_url": "/",
+  "background_color": "#22202e",
+  "display": "fullscreen",
+  "scope": "/",
+  "theme_color": "#22202e",
+  "description": "Timless furniture for your home."
+}

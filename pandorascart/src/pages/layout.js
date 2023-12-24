@@ -17,6 +17,8 @@ export default function Layout({ children }) {
           property="og:image"
           content="https://i1.sndcdn.com/avatars-dtgHaUZPb1l7U5RX-ly3X3w-t500x500.jpg"
         />
+        <meta name="theme-color" content="#22202e" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SearchProvider>

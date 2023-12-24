@@ -1,12 +1,69 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { createClient } from "@supabase/supabase-js";
+import { v4 as uuidv4 } from "uuid";
+import { setCookie, getCookie } from "cookies-next";
+
+const userId = getCookie("userId") || uuidv4();
+
+setCookie("userId", userId);
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
+  const userId = getCookie("userId");
   const [cart, setCart] = useState({ count: 0, items: [] });
   const [removedItems, setRemovedItems] = useState([]);
+  const [isResetCart, SetIsResetCart] = useState(false);
 
-  //TODO:implemant cookies;
+  async function CookiesUpdate() {
+    const { data: data, error } = await supabase
+      .from("cookies")
+      .update({
+        cart: cart,
+      })
+      .eq("id", userId)
+      .select("cart");
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("cookies")
+          .select("cart")
+          .eq("id", userId);
+
+        if (error) {
+          throw error;
+        }
+
+        // If the user ID doesn't exist, insert a new record
+        if (data.length === 0) {
+          await supabase.from("cookies").upsert([
+            {
+              id: userId,
+              cart: { count: 0, items: [] },
+            },
+          ]);
+        }
+
+        const initialCart = data[0]?.cart || { count: 0, items: [] };
+        setCart(initialCart);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [userId]);
+
+  if (cart.items.length > 0 || removedItems.length > 0 || isResetCart) {
+    CookiesUpdate();
+  }
 
   const addToCart = (count, productId, productInfo) => {
     const existingItemIndex = cart.items.findIndex(
@@ -65,6 +122,8 @@ export function CartProvider({ children }) {
           );
           if (newTotalCount === 0) {
             setRemovedItems((prevRemovedItems) => [...prevRemovedItems, item]);
+            CookiesUpdate();
+
             return null;
           }
           const updatedItem = { ...item, count: newTotalCount };
@@ -125,6 +184,7 @@ export function CartProvider({ children }) {
 
   const resetCart = () => {
     setCart({ count: 0, items: [] });
+    SetIsResetCart(true);
   };
 
   return (

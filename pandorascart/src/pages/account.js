@@ -168,7 +168,7 @@ export default function Account() {
       orderPrice[transactionId] = order.order_id.total_price;
     } else {
       orderMap[transactionId].push(order);
-      orderPrice[transactionId] += order.order_id.total_price;
+      orderPrice[transactionId] = order.order_id.total_price;
     }
 
     if (!orderMap[transactionId].status) {
