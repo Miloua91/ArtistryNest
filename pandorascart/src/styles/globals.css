@@ -3313,7 +3313,7 @@ table {
     flex-direction: column;
   }
   .about-idea {
-    height: auto;
+    height: 300px;
   }
   .about-idea > h2 {
     margin-top: 60px;
