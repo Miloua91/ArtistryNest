@@ -13,25 +13,6 @@
   </p>
 </div>
 
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://artistrynest.shop/)
@@ -47,10 +28,6 @@ Key Features:
 I started this project to challenge myself and see it through from concept to completion. While my primary focus is on front-end development, I believe in creating fully functional and polished projects.
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ### Built With
 
 Next.js: Front-end framework for building React applications.<br/>
@@ -60,34 +37,11 @@ Supabase: Backend platform for user authentication, database management, and coo
 * [![Supabase][Supabase]][Supabase-url]
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- CONTACT -->
 ## Contact
 
-Miloua Mokhtar - [LinkedIn](https://www.linkedin.com/in/mokhtar-miloua-5a5791230/) - [email](miloua23@gmail.com)
+Miloua Mokhtar - [LinkedIn](https://www.linkedin.com/in/mokhtar-miloua-5a5791230/) - <a href = "mailto: miloua23@gmail.com">Email</a>
 
-Project Link: [https://github.com/Miloua91/pandorascart](https://github.com/Miloua91/pandorascart)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-This project would not be complete without acknowledging the valuable contributions of the following tools and platforms:
-
-* [Vercel](https://vercel.com/)
-* [Next.js](https://nextjs.org/)
-* [Supabase](https://supabase.com/)
-* [Figma](https://www.figma.com/)
-* [OpenAI](https://openai.com/)
-* [Unsplash](https://unsplash.com)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+Website: [mokhincode.com](https://mokhincode.com)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
