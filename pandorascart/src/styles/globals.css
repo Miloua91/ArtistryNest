@@ -15,9 +15,6 @@ body {
 body.modal-open {
   overflow: hidden;
 }
-main {
-  min-height: 83vh;
-}
 @font-face {
   font-family: clashDisplay;
   src: url(clashdisplay-regular.woff2) format("woff2");
@@ -871,7 +868,7 @@ input[type="checkbox"]:checked::before {
   margin-bottom: 100px;
 }
 .cart {
-  margin: 4px 60px 60px 60px;
+  margin: 4px 60px 90px 60px;
   justify-content: space-between;
   background-color: var(--nav-bottom);
   padding: 50px;
@@ -3304,6 +3301,9 @@ table {
   .pass-rec-form {
     width: 60%;
   }
+  main {
+        min-height: 70vh;
+  }
 }
 @media screen and (min-width: 512px) and (max-width: 780px) {
   .top-right h2 {
@@ -3412,5 +3412,13 @@ table {
   .pass-rec-toggle {
     top: 57px;
     left: 253px;
+  }
+  main {
+      min-height: 70vh;
+  }
+}
+@media screen and (min-width: 1400px){
+  main {
+    min-height: 83vh;
   }
 }

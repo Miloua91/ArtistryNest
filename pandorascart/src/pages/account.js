@@ -73,7 +73,6 @@ export default function Account() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (user && user.id != null) {
         try {
           const { data: profiles, error } = await supabaseClient
             .from("profiles")
@@ -91,7 +90,6 @@ export default function Account() {
         } catch (error) {
           console.error("Unexpected error:", error);
         }
-      }
     };
 
     fetchData();
@@ -189,8 +187,7 @@ export default function Account() {
           <div className="my-account-order">
             <h3>My Orders</h3>
             <hr className="order-line" />
-            {orderLoad ? (
-              transactions.length > 0 ? (
+            {orderLoad ? ( transactions.length > 0 ? (
                 Object.keys(orderMap).map((orderId) => (
                   <div key={orderId} className="orders-transaction">
                     <div className="orders-ref">
