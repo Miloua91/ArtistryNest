@@ -27,7 +27,6 @@ Key Features:
 
 I started this project to challenge myself and see it through from concept to completion. While my primary focus is on front-end development, I believe in creating fully functional and polished projects.
 
-
 ### Built With
 
 Next.js: Front-end framework for building React applications.<br/>
