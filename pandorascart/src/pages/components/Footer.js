@@ -7,6 +7,8 @@ import pinterestLogo from "@/pages/icons/Logo--pinterest.svg";
 import skypeLogo from "@/pages/icons/Logo--skype.svg";
 import twitterLogo from "@/pages/icons/Logo--twitter.svg";
 
+//TODO: Make Footer stick to the bottom 
+
 export default function Footer() {
   return (
     <>
