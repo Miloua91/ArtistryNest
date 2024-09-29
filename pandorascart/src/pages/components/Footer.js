@@ -7,11 +7,9 @@ import pinterestLogo from "@/pages/icons/Logo--pinterest.svg";
 import skypeLogo from "@/pages/icons/Logo--skype.svg";
 import twitterLogo from "@/pages/icons/Logo--twitter.svg";
 
-//TODO: Make Footer stick to the bottom 
-
 export default function Footer() {
   return (
-    <>
+    <div style={{ position: "sticky" }}>
       <div className="foot">
         <div className="adress">
           <h1 className="foot-name">ArtistryNest</h1>
@@ -57,6 +55,6 @@ export default function Footer() {
           <h3>Copyright {new Date().getFullYear()} ArtistryNest LLC</h3>
         </div>
       </div>
-    </>
+    </div>
   );
 }
