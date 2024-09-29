@@ -12,6 +12,9 @@ body {
   position: relative;
   min-height: 100vh;
 }
+main {
+  min-height: 60vh;
+}
 body.modal-open {
   overflow: hidden;
 }
@@ -245,7 +248,7 @@ body.modal-open {
   height: 250px;
   width: 100%;
   left: 0;
-  bottom: 0;
+  bottom: 0 !important;
 }
 .foot > * > * {
   color: var(--nav-bottom);
@@ -1329,7 +1332,9 @@ input[type="checkbox"]:checked::before {
   font-size: 15px;
   opacity: 1;
   max-height: 1000px;
-  transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+  transition:
+    opacity 0.5s ease-in-out,
+    max-height 0.5s ease-in-out;
   margin-top: 0;
 }
 .password-conditions.active {
@@ -3302,7 +3307,7 @@ table {
     width: 60%;
   }
   main {
-        min-height: 70vh;
+    min-height: 70vh;
   }
 }
 @media screen and (min-width: 512px) and (max-width: 780px) {
@@ -3414,10 +3419,10 @@ table {
     left: 253px;
   }
   main {
-      min-height: 70vh;
+    min-height: 70vh;
   }
 }
-@media screen and (min-width: 1400px){
+@media screen and (min-width: 1400px) {
   main {
     min-height: 83vh;
   }
