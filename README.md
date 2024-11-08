@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://artistrynest.shop">
+  <a href="https://artistrynest.vercel.app/">
     <img src="pandorascart/public/icon.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -9,13 +9,13 @@
 
   <p align="center">
     An e-commerce website for home furniture.
-    <a href="https://artistrynest.shop">Check the website.</a>
+    <a href="https://artistrynest.vercel.app">Check the website.</a>
   </p>
 </div>
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://artistrynest.shop/)
+[![Product Name Screen Shot][product-screenshot]](https://artistrynest.vercel.app//)
 
 Artistry Nest is a minimalist e-commerce website specializing in modern home furniture. Built using Next.js, this project is a showcase of my front-end development skills, focusing on a clean design and a straightforward user experience.
 
